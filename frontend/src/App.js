@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Form from './components/Form'
 
 
 
@@ -26,16 +27,37 @@ function App() {
     })
     })
   }, [])
+
+  const registerUser = async(name, email, password) => {
+    console.log("in reggy!")
+    const userInfo = {
+      name,
+      email,
+      password
+    }
+    
+    axios.post(`/users`, userInfo, {"Content-Type": "application/json"})
+      .then(res => {
+        console.log(res)
+      })
+  }
+
   
   return (
-    <div className="App">
+    <main className="App">
       <header className="App-header">
         {stuff ? <h1>we are in {stuff.users.map(user => (user.name)).join(", ")}</h1> : <div></div>}
         {stuff ? <h1>we are in {stuff.instances.map(instance => (instance.name)).join(", ")}</h1> : <div></div>}
         {stuff ? <h1>we are in {stuff.instance_colours.map(instance_colour => (instance_colour.colour)).join(", ")}</h1> : <div></div>}
         {stuff ? <h1>we are in {stuff.timelines.map(timeline => (timeline.name)).join(", ")}</h1> : <div></div>}
+        
       </header>
-    </div>
+      <div>
+        <Form
+          registerUser={registerUser}
+        />
+      </div>
+    </main>
   );
 }
 
