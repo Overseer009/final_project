@@ -1,0 +1,2 @@
+module InstanceColoursHelper
+end

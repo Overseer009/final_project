@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
 
   resources :test1
+  resources :data
+  resources :users
+  resources :instances
+  resources :timelines
+  resources :instance_colours
 
 
   # The priority is based upon order of creation: first created -> highest priority.
