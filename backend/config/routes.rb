@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :test1
   resources :data
+
   resources :users
   resources :instances
   resources :timelines
