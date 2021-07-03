@@ -1,7 +1,6 @@
-class CreateInstance < ActiveRecord::Migration
+class CreateInstances < ActiveRecord::Migration
   def change
     create_table :instances do |t|
-
       t.string :name
       t.text :description
       t.date :instance_date
