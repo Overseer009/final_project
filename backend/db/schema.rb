@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210702201441) do
+ActiveRecord::Schema.define(version: 20210703152428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,27 +21,33 @@ ActiveRecord::Schema.define(version: 20210702201441) do
   end
 
   create_table "instances", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.date     "instance_date"
-    t.string   "instance_image"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer "timeline_id"
+    t.integer "instance_colour_id"
+    t.string  "name"
+    t.text    "description"
+    t.date    "instance_date"
+    t.string  "instance_image"
   end
+
+  add_index "instances", ["instance_colour_id"], name: "index_instances_on_instance_colour_id", using: :btree
+  add_index "instances", ["timeline_id"], name: "index_instances_on_timeline_id", using: :btree
 
   create_table "timelines", force: :cascade do |t|
-    t.integer  "start_month"
-    t.integer  "end_month"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer "user_id"
+    t.integer "start_month"
+    t.integer "end_month"
+    t.string  "name"
   end
+
+  add_index "timelines", ["user_id"], name: "index_timelines_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "email"
+    t.string "password"
   end
 
+  add_foreign_key "instances", "instance_colours"
+  add_foreign_key "instances", "timelines"
+  add_foreign_key "timelines", "users"
 end
