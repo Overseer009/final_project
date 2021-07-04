@@ -21,7 +21,7 @@ const Nav = function (props) {
 
   return (
 
-        <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav">
           <a className="navbar-brand" href="/">THE TIMELINE GANG</a>
                  
           <div className="collapse navbar-collapse" >

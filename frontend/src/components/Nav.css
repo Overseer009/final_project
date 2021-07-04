@@ -3,12 +3,15 @@ nav {
   top: 0;
 }
 
-.navbar {
-  overflow: hidden;
-  background-color: #333;
+#nav {
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
+  left: 0;
+  right: 0;
+  z-index: 9999;
   width: 100%; /* Full width */
+  overflow: hidden;
+  background-color: #333;
 }
 
 .navbar-brand {
