@@ -8,13 +8,13 @@ const Nav = function (props) {
 
   const noUser = <div className="navbar-nav">
     <Link className="nav-item nav-link" to="/login">Login</Link>
-    <a className="nav-item nav-link" link_to="/register">Register</a> 
+    <Link className="nav-item nav-link" to="/register">Register</Link> 
     </div>;
 
   const yesUser =  <a className="navbar-brand user-display" >Hardcoded User</a>;
 
   const myTimelines = <div className="navbar-nav">
-      <a className="nav-item nav-link" href="/timelines/new">+ NEW TIMELINE</a>
+      <Link className="nav-item nav-link" to="/timelines/new">+ New Timeline</Link> 
       <a className="nav-item nav-link" href="/timelines">MY TIMELINES</a>
     </div>
 
