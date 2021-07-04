@@ -57,9 +57,6 @@ const TimelineCard = function () {
         </div>
       </div>
     </section>
-
-
-
   )
 }
 

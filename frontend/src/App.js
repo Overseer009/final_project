@@ -7,7 +7,7 @@ import Login from './components/logister/Login';
 import Nav from './components/Nav';
 // import Sidebar from './components/Sidebar';
 import TimelineCard from './components/Cards/TimelineCard';
-// import InstanceCard from './components/Cards/InstanceCard';
+import InstanceCard from './components/Cards/InstanceCard';
 
 
 
@@ -53,9 +53,9 @@ function App() {
     <main className="App">
       {/* <Sidebar /> */}
       {/* <Register /> */}
-      {/* <instanceCard /> */}
+      <InstanceCard />
       <Router>
-        <Nav user_id={false} />
+        {/* <Nav user_id={false} /> */}
         <Switch>
           <Route path='/login' component={Login} />
           <Route path='/newtimeline' component={TimelineCard} />
