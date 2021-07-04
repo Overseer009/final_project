@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Form from './components/Form'
 import Nav from './components/Nav'
+import TimelineCard from './components/Cards/TimelineCard';
 
 
 
@@ -52,6 +53,9 @@ function App() {
             registerUser={registerUser}
           />
         </div>
+        <div>
+        <TimelineCard />
+      </div>
       </main>
     </body>
   );
