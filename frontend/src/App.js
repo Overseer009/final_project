@@ -56,7 +56,7 @@ function App() {
         <InstanceCard />
         <Switch>
           <Route path='/login' component={Login} />
-          <Route path='/newtimeline' component={TimelineCard} />
+          <Route path='/timelines/new' component={TimelineCard} />
         </Switch>
       </Router>
     </main>
