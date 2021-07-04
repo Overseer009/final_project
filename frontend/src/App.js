@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Form from './components/Form'
+import Nav from './components/Nav'
 
 
 
@@ -43,16 +44,16 @@ function App() {
 
   
   return (
-    <main className="App">
-      <header className="App-header">
-      {stuff ? <h1>we are in {stuff.users.name}</h1> : <h1>"hello"</h1>}
-      </header>
-      <div>
-        <Form
-          registerUser={registerUser}
-        />
-      </div>
-    </main>
+    <body>
+      <Nav user_id={true} />
+      <main className="App">
+        <div>
+          <Form
+            registerUser={registerUser}
+          />
+        </div>
+      </main>
+    </body>
   );
 }
 
