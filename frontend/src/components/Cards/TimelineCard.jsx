@@ -6,8 +6,6 @@ const TimelineCard = function () {
 
 
   return (
-
-
     <section className="card">
       <div className="content">
         <div className='title'>

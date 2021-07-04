@@ -1,5 +1,6 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import axios from 'axios';
 import Login from './components/logister/Login'
 import Nav from './components/Nav'
@@ -45,19 +46,17 @@ function App() {
 
   
   return (
-    <body>
-      <Nav user_id={true} />
-      <main className="App">
-        <div>
-          <Login
-            registerUser={registerUser}
-          />
-        </div>
-        <div>
-        <TimelineCard />
-      </div>
-      </main>
-    </body>
+    <main className="App">
+
+      <Router>
+        <Nav user_id={false} />
+        <Switch>
+          <Route path='/login' component={Login} />
+          <Route path='/newtimeline' component={TimelineCard} />
+        </Switch>
+      </Router>
+   
+    </main>
   );
 }
 
