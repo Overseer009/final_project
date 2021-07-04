@@ -1,0 +1,74 @@
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 25%;
+  border: solid black 3px !important;
+  border-radius: 25px !important;
+  width: 50%;
+  background-color: turquoise !important;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+   
+}
+
+#title {
+  font-size: 30px;
+}
+
+.content{
+  padding-top: 20px
+}
+
+.enterName{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.name{
+  border: transparent;
+  background-color: inherit ;
+  border-bottom: solid black 2px;
+}
+
+input {
+  text-align: center;
+}
+
+.name:focus{
+  outline: none;
+}
+
+.note {
+  text-align: center;
+  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+}
+
+.scale{
+  display: flex;
+  justify-content: space-around;
+}
+
+.months {
+  border: none;
+  background-color: inherit;
+  border-bottom: solid black 3px;
+}
+
+.months:focus{
+  outline: none;
+}
+
+.button {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}

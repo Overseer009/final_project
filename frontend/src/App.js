@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Form from './components/Form'
+import TimelineCard from './components/Cards/TimelineCard';
 
 
 
@@ -51,6 +52,9 @@ function App() {
         <Form
           registerUser={registerUser}
         />
+      </div>
+      <div>
+        <TimelineCard />
       </div>
     </main>
   );
