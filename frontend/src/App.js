@@ -5,7 +5,7 @@ import axios from 'axios';
 import Login from './components/logister/Login';
 // import Register from './components/logister/Login';
 import Nav from './components/Nav';
-// import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sidebar';
 import TimelineCard from './components/Cards/TimelineCard';
 import InstanceCard from './components/Cards/InstanceCard';
 
@@ -51,11 +51,11 @@ function App() {
   
   return (
     <main className="App">
-      {/* <Sidebar /> */}
       {/* <Register /> */}
       <InstanceCard />
       <Router>
-        {/* <Nav user_id={false} /> */}
+        <Nav user_id={false} />
+        <Sidebar timelineName={"Timeline Name"}/>
         <Switch>
           <Route path='/login' component={Login} />
           <Route path='/newtimeline' component={TimelineCard} />
