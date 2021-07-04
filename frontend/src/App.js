@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Form from './components/Form'
+import Login from './components/logister/Login'
 import Nav from './components/Nav'
 import TimelineCard from './components/Cards/TimelineCard';
 
@@ -49,7 +49,7 @@ function App() {
       <Nav user_id={true} />
       <main className="App">
         <div>
-          <Form
+          <Login
             registerUser={registerUser}
           />
         </div>
