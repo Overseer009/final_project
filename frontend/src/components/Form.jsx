@@ -9,7 +9,7 @@ const Form = function (props) {
   console.log(name)
 
   return (
-    <form action="/users" method="POST" onSubmit={() => {props.registerUser(name, email, password)}}>
+    <form action="/api/users" method="POST" onSubmit={() => {props.registerUser(name, email, password)}}>
       <div className="form-group">
         <label>Name</label>
         <input

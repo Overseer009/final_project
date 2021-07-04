@@ -11,14 +11,13 @@ function App() {
 
   useEffect(() => {
     Promise.all([
-      axios.get('/users'),
-      axios.get('/instances'),
-      axios.get('/instance_colours'),
-      axios.get('/timelines')
+      axios.get('/api/users'),
+      axios.get('/api/instances'),
+      axios.get('/api/instance_colours'),
+      axios.get('/api/timelines')
     ]).then(all => {
-      console.log(all[0].data, all[1].data, all[2].data, all[3].data);
       const [users, instances, instance_colours, timelines] = all;
-      console.log("lz:", users.data)
+      console.log("line 21 ------ :", users.data)
       setStuff({
         users: users.data,
         instances: instances.data,
@@ -36,9 +35,9 @@ function App() {
       password
     }
     
-    axios.post(`/users`, userInfo, {"Content-Type": "application/json"})
+    axios.post(`/api/users`, userInfo)
       .then(res => {
-        console.log(res)
+        console.log("inside regeisterUser", res)
       })
   }
 
@@ -46,11 +45,7 @@ function App() {
   return (
     <main className="App">
       <header className="App-header">
-        {stuff ? <h1>we are in {stuff.users.map(user => (user.name)).join(", ")}</h1> : <div></div>}
-        {stuff ? <h1>we are in {stuff.instances.map(instance => (instance.name)).join(", ")}</h1> : <div></div>}
-        {stuff ? <h1>we are in {stuff.instance_colours.map(instance_colour => (instance_colour.colour)).join(", ")}</h1> : <div></div>}
-        {stuff ? <h1>we are in {stuff.timelines.map(timeline => (timeline.name)).join(", ")}</h1> : <div></div>}
-        
+      {stuff ? <h1>we are in {stuff.users.name}</h1> : <h1>"hello"</h1>}
       </header>
       <div>
         <Form
