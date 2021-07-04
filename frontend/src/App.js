@@ -52,10 +52,10 @@ function App() {
   return (
     <main className="App">
       {/* <Register /> */}
-      <InstanceCard />
       <Router>
         <Nav user_id={false} />
         <Sidebar timelineName={"Timeline Name"}/>
+        <InstanceCard />
         <Switch>
           <Route path='/login' component={Login} />
           <Route path='/newtimeline' component={TimelineCard} />
