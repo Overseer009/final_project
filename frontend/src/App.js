@@ -1,10 +1,14 @@
 import './App.css';
 import { useEffect, useState, Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from 'axios';
-import Login from './components/logister/Login'
-import Nav from './components/Nav'
+import Login from './components/logister/Login';
+// import Register from './components/logister/Login';
+import Nav from './components/Nav';
+// import Sidebar from './components/Sidebar';
 import TimelineCard from './components/Cards/TimelineCard';
+// import InstanceCard from './components/Cards/InstanceCard';
+
 
 
 
@@ -47,7 +51,9 @@ function App() {
   
   return (
     <main className="App">
-
+      {/* <Sidebar /> */}
+      {/* <Register /> */}
+      {/* <instanceCard /> */}
       <Router>
         <Nav user_id={false} />
         <Switch>
