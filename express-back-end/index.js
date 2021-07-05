@@ -13,6 +13,8 @@ const {
   getInstancesForTimelines,
   getColoursForInstances,
   validateUser,
+  getInstanceByName,
+  createInstance
 } = require("./lib/dbHelpers");
 
 //Express Configuration
@@ -66,6 +68,14 @@ app.get("/api/instances", (req, res) => {
     res.status(200).json(response);
   });
 });
+
+app.post("/api/instances/new", (req, res) => {
+  createInstance(req.body)
+    .then((newInstance) => {
+      res.status(200).json(newInstance);
+    })
+    .catch((err) => err.message)
+})
 
 app.get("/api/instance_colours", (req, res) => {
   getColoursForInstances(2).then((response) => {

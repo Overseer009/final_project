@@ -74,7 +74,8 @@ const getInstancesForTimelines = (id) => {
 const getInstanceByName = (name) => {
   const stringQuery = `
   SELECT * FROM instances
-  WHERE name = $1;
+  WHERE name = $1
+  LIMIT 1;
   `;
   return db.query(stringQuery, [name]).then((data) => data.rows[0]);
 };
@@ -92,7 +93,7 @@ const createInstance = (
     VALUES ($1, $2, $3, $4, $5, $6);
     `;
   return db
-    .query(queryString, [
+    .query(stringQuery, [
       timeline_id,
       instance_colour_id,
       name,
@@ -100,7 +101,7 @@ const createInstance = (
       date,
       image,
     ])
-    .then((data) => getInstancesForTimelines())
+    .then((data) => getInstanceByName(name))
     .catch((err) => err.message);
 };
 //----------------------------------------
@@ -122,4 +123,5 @@ module.exports = {
   getColoursForInstances,
   createInstance,
   validateUser,
+  getInstanceByName
 };
