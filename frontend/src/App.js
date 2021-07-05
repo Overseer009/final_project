@@ -1,6 +1,11 @@
 import "./App.css";
 import { useEffect, useState, Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 import axios from "axios";
 import Login from "./components/logister/Login";
 import Register from "./components/logister/Register";
@@ -11,6 +16,13 @@ import InstanceCard from "./components/Cards/InstanceCard";
 
 function App() {
   const [stuff, setStuff] = useState();
+
+  const [currentUser, setCurrentUser] = useState({
+    id: null,
+    name: "",
+    email: "",
+    password: "",
+  });
 
   useEffect(() => {
     Promise.all([
@@ -30,6 +42,10 @@ function App() {
     });
   }, []);
 
+  if (stuff) {
+    console.log(stuff.users.email);
+  }
+
   const registerUser = async (name, email, password) => {
     console.log("in reggy!");
     const userInfo = {
@@ -46,6 +62,22 @@ function App() {
   const loginInfo = (loginData, event) => {
     event.preventDefault();
     console.log("this is line 47 app.js", loginData);
+
+    axios
+      .post("/api/users", loginData)
+      .then((res) => {
+        console.log("inside loginInfo", res);
+        if (res.data) {
+          setCurrentUser({
+            ...currentUser,
+            id: res.data.id,
+            name: res.data.name,
+            email: res.data.email,
+            password: res.data.password,
+          });
+        }
+      })
+      .catch((err) => console.log("Invalid User: ------>", err));
   };
 
   return (
@@ -56,7 +88,13 @@ function App() {
         <InstanceCard />
         <Switch>
           <Route path="/login">
-            <Login users={stuff ? stuff.users : "nope"} loginInfo={loginInfo} />
+            {currentUser.id === null && ( 
+              <Login
+                users={stuff ? stuff.users : "nope"}
+                loginInfo={loginInfo}
+                setCurrentUser={setCurrentUser}
+              />
+            )}
           </Route>
           <Route path="/timelines/new">
             <TimelineCard />

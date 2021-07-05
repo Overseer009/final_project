@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 
 const Login = function (props) {
   const [user, setUser] = useState({
-    email: null,
-    password: null,
+    email: "",
+    password: "",
   });
 
-  console.log(user);
+  // console.log(user);
+  console.log("inside login component", props.currentUser);
 
   return (
     <form className="login">
