@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const PORT = 3002;
 
 const {
-  getUser,
+  getUserByEmail,
   createUser,
   getTimelinesForUser,
   getInstancesForTimelines,
@@ -23,7 +23,7 @@ app.use(express.static("public"));
 //Routes
 // USERS
 app.get("/api/users", (req, res) => {
-  getUser("darius.homenick@tod.ca").then((response) => {
+  getUserByEmail("darius.homenick@tod.ca").then((response) => {
     res.status(200).json(response);
   });
 });
@@ -38,13 +38,16 @@ app.post("/api/users", (req, res) => {
 });
 
 app.post("/api/users/new", (req, res) => {
-  createUser(req.body)
-    .then((response) => {
-      res.status(200).json(response);
-    })
-    .catch((err) => err.message);
+  getUserByEmail(req.body.email).then((userInfo) => {
+    if (!userInfo) {
+      createUser(req.body)
+        .then((newUser) => {
+          res.status(200).json(newUser);
+        })
+        .catch((err) => err.message);
+    }
+  });
 });
-
 
 // TIMELINES
 app.get("/api/timelines", (req, res) => {

@@ -5,6 +5,7 @@ import {
   Redirect,
   Route,
   Switch,
+  useHistory,
 } from "react-router-dom";
 import axios from "axios";
 import Login from "./components/logister/Login";
@@ -15,14 +16,8 @@ import TimelineCard from "./components/Cards/TimelineCard";
 import InstanceCard from "./components/Cards/InstanceCard";
 
 function App() {
+  const history = useHistory();
   const [stuff, setStuff] = useState();
-
-  const [currentUser, setCurrentUser] = useState({
-    id: null,
-    name: "",
-    email: "",
-    password: "",
-  });
 
   useEffect(() => {
     Promise.all([
@@ -30,51 +25,36 @@ function App() {
       axios.get("/api/instances"),
       axios.get("/api/instance_colours"),
       axios.get("/api/timelines"),
-    ]).then((all) => {
-      const [users, instances, instance_colours, timelines] = all;
-      console.log("line 21 ------ :", users.data);
-      setStuff({
-        users: users.data,
-        instances: instances.data,
-        instance_colours: instance_colours.data,
-        timelines: timelines.data,
-      });
-    });
+    ]).then((all) => {});
   }, []);
 
-  if (stuff) {
-    console.log(stuff.users.email);
-  }
-
-  const registerUser = async (name, email, password) => {
-    console.log("in reggy!");
-    const userInfo = {
-      name,
-      email,
-      password,
-    };
-
-    axios.post(`/api/users`, userInfo).then((res) => {
-      console.log("inside regeisterUser", res);
+  const registerUser = (registerData) => {
+    axios.post("/api/users/new", registerData).then((res) => {
+      console.log("inside loginInfo", res);
+      if (res.data) {
+        localStorage.setItem("currentUser", JSON.stringify(res.data));
+        window.location = "/timelines/new";
+      }
     });
   };
 
-  const loginInfo = (loginData, event) => {
-    event.preventDefault();
+  const logout = () => {
+    console.log("inside logout");
+    localStorage.clear();
+    window.location = "/login";
+  };
+
+  const loginUser = (loginData) => {
     console.log("this is line 47 app.js", loginData);
 
     axios
       .post("/api/users", loginData)
       .then((res) => {
-        console.log("inside loginInfo", res);
+        console.log("inside loginInfo", res.data);
         if (res.data) {
-          setCurrentUser({
-            ...currentUser,
-            id: res.data.id,
-            name: res.data.name,
-            email: res.data.email,
-            password: res.data.password,
-          });
+          localStorage.setItem("currentUser", JSON.stringify(res.data));
+          // history.push("/timelines/new");
+          window.location = "/timelines/new";
         }
       })
       .catch((err) => console.log("Invalid User: ------>", err));
@@ -83,24 +63,18 @@ function App() {
   return (
     <main className="App">
       <Router>
-        <Nav user_id={true} />
+        <Nav user_id={true} logout={logout} />
         <Sidebar timelineName={"Timeline Name"} />
-        <InstanceCard />
+        {/* <InstanceCard /> */}
         <Switch>
           <Route path="/login">
-            {currentUser.id === null && ( 
-              <Login
-                users={stuff ? stuff.users : "nope"}
-                loginInfo={loginInfo}
-                setCurrentUser={setCurrentUser}
-              />
-            )}
+            <Login loginUser={loginUser} />
           </Route>
           <Route path="/timelines/new">
             <TimelineCard />
           </Route>
           <Route path="/register">
-            <Register />
+            <Register registerUser={registerUser} />
           </Route>
         </Switch>
       </Router>

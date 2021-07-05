@@ -21,7 +21,7 @@ const TimelineCard = function () {
           <span>Enter the <strong>Start</strong> and <strong>End</strong> Month of your Timeline:</span>
         </div>
         <div className="scale">
-          <label for='end'>Select Start Month:</label>
+          <label htmlFor='end'>Select Start Month:</label>
           <select className="months" name="start">
             <option value="1">January</option>
             <option value="2">February</option>
@@ -36,7 +36,7 @@ const TimelineCard = function () {
             <option value="11">November</option>
             <option value="12">December</option>
           </select>
-          <label for='end'>Select End Month:</label>
+          <label htmlFor='end'>Select End Month:</label>
           <select className="months" name="end">
             <option value="1">January</option>
             <option value="2">February</option>

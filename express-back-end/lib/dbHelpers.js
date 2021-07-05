@@ -1,11 +1,10 @@
 const db = require("./db");
 
-const getUser = (email) => {
+const getUserByEmail = (email) => {
   const stringQuery = `
-  SELECT name FROM users
+  SELECT * FROM users
   WHERE email = $1;
   `;
-  console.log("Inside getUser line 8");
   return db
     .query(stringQuery, [email])
     .then((data) => data.rows[0])
@@ -15,22 +14,13 @@ const getUser = (email) => {
 const createUser = (user) => {
   const { name, email, password } = user;
 
-  getUser(email)
-    .then((dbRes) => {
-      if (!dbRes) {
-        const stringQuery = `
-        INSERT INTO users (name, email, password)
-        VALUES ($1, $2, $3);
-        `;
-        return db
-          .query(stringQuery, [name, email, password])
-          .then((data) => data.rows[0])
-          .catch((err) => err.message);
-      } else {
-        return "Sorry, that email is already taken.";
-      }
-    })
-    .catch((err) => err.message);
+  const stringQuery = `
+    INSERT INTO users (name, email, password)
+       VALUES ($1, $2, $3);
+       `;
+  return db
+    .query(stringQuery, [name, email, password])
+    .then((data) => getUserByEmail(email));
 };
 
 const validateUser = (email, password) => {
@@ -117,7 +107,7 @@ const getColoursForInstances = (id) => {
 };
 
 module.exports = {
-  getUser,
+  getUserByEmail,
   createUser,
   getTimelinesForUser,
   getInstancesForTimelines,
