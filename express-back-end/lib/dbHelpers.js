@@ -50,14 +50,16 @@ const getTimelinesForUser = (id) => {
   return db.query(stringQuery, [id]).then((data) => data.rows);
 };
 
-const createTimeline = (user_id, name, start_month, end_month) => {
+
+const createTimeline = (timeline) => {
+  const { user_id, name, start_month, end_month } = timeline;
   const stringQuery = `
   INSERT INTO timelines (user_id, name, start_month, end_month)
   VALUES ($1, $2, $3, $4);
   `;
   return db
-    .query(queryString, [user_id, name, start_month, end_month])
-    .then((data) => data.rows[0])
+    .query(stringQuery, [user_id, name, start_month, end_month])
+    .then((data) => getTimelinesForUser(user_id))
     .catch((err) => err.message);
 };
 //----------------------------------------
@@ -122,4 +124,5 @@ module.exports = {
   getColoursForInstances,
   createInstance,
   validateUser,
+  createTimeline
 };

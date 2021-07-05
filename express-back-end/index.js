@@ -13,6 +13,7 @@ const {
   getInstancesForTimelines,
   getColoursForInstances,
   validateUser,
+  createTimeline,
 } = require("./lib/dbHelpers");
 
 //Express Configuration
@@ -57,8 +58,10 @@ app.get("/api/timelines", (req, res) => {
 });
 
 app.post("/api/timelines", (req, res) => {
-  createTimeline(1, "My timeline", 1, 12);
-  res.status(200).send("Timeline Created");
+  console.log("backend timeline info", req.body)
+  createTimeline(req.body).then((newTimeline) => {
+    console.log(newTimeline);
+  })
 });
 
 app.get("/api/instances", (req, res) => {
