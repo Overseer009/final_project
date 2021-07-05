@@ -62,7 +62,6 @@ app.get('/api/instance_colours', (req, res) => {
     })
 })
 
-
  app.listen (PORT, () => {
   console.log('Server if running, better catch it.');
 })
