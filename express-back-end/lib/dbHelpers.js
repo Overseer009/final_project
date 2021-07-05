@@ -71,6 +71,14 @@ const getInstancesForTimelines = (id) => {
   return db.query(stringQuery, [id]).then((data) => data.rows);
 };
 
+const getInstanceByName = (name) => {
+  const stringQuery = `
+  SELECT * FROM instances
+  WHERE name = $1;
+  `;
+  return db.query(stringQuery, [name]).then((data) => data.rows[0]);
+};
+
 const createInstance = (
   timeline_id,
   instance_colour_id,
@@ -80,9 +88,9 @@ const createInstance = (
   image
 ) => {
   const stringQuery = `
-INSERT INTO instances (timeline_id, instance_colour_id, name, description, date, image)
-VALUES ($1, $2, $3, $4, $5, $6);
-`;
+    INSERT INTO instances (timeline_id, instance_colour_id, name, description, date, image)
+    VALUES ($1, $2, $3, $4, $5, $6);
+    `;
   return db
     .query(queryString, [
       timeline_id,
@@ -92,7 +100,7 @@ VALUES ($1, $2, $3, $4, $5, $6);
       date,
       image,
     ])
-    .then((date) => data.row[0])
+    .then((data) => getInstancesForTimelines())
     .catch((err) => err.message);
 };
 //----------------------------------------
