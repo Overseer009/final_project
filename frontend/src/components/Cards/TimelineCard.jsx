@@ -53,7 +53,7 @@ const TimelineCard = function () {
           </select>
         </div>
         <div className="button">
-          <button type="button" class="btn btn-primary">Create</button>
+          <button type="button" className="btn btn-primary">Create</button>
         </div>
       </div>
     </section>
