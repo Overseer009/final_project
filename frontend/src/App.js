@@ -60,11 +60,26 @@ function App() {
       .catch((err) => console.log("Invalid User: ------>", err));
   };
 
+  const createInstance = (instanceData) => {
+    console.log("Inside createInstance --------- ", instanceData);
+
+    axios.post("/api/instances/new", instanceData).then((res) => {
+      console.log("Inside new Instance POST request -------- ", res.data);
+      window.location = "/timelines/new";
+    });
+  };
+  let currentUser = localStorage.getItem("currentUser");
+  currentUser = JSON.parse(currentUser);
   return (
     <main className="App">
       <Router>
         <Nav user_id={true} logout={logout} />
-        <Sidebar timelineName={"Timeline Name"} />
+        {currentUser && (
+          <Sidebar
+            createInstance={createInstance}
+            timelineName={"Timeline Name"}
+          />
+        )}
         {/* <InstanceCard /> */}
         <Switch>
           <Route path="/login">
