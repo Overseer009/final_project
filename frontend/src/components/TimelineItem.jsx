@@ -13,7 +13,7 @@ const TimelineItem = function (props) {
         </span>
         <time>2021-07-17</time>
         <p>{description}</p>
-        <a>image url</a>
+        <a>Link</a>
         <span className="circle"></span>
       </div>
     </div>

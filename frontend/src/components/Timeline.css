@@ -71,12 +71,12 @@ body {
   content: " ";
   background-color: #fff;
   box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  transform: rotate(45deg);
   right: -7.5px;
   top: calc(50% - 7.5px);
   width: 15px;
   height: 15px;
-  transform: rotate(45deg);
-  position: absolute;
 }
 
 .timeline-item:nth-child(odd) .timeline-item-content {
@@ -84,13 +84,13 @@ body {
   text-align: left;
 }
 
-/* .timeline-item:nth-child(odd) .timeline-item-content::after {
+.timeline-item:nth-child(odd) .timeline-item-content::after {
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2);
   right: auto;
   left: -7.5px;
-  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2);
-} */
+}
 
-/* .timeline-item-content .tag {
+.timeline-item-content .tag {
   color: #fff;
   font-size: 12px;
   font-weight: bold;
@@ -100,33 +100,31 @@ body {
   top: 5px;
   left: 5px;
   text-transform: uppercase;
-} */
+}
 
-/* .timeline-item:nth-child(odd) .timeline-item-content .tag {
+.timeline-item:nth-child(odd) .timeline-item-content .tag {
   left: auto;
   right: 5px;
-} */
-/* 
-.timeline-item-content .time {
+}
+
+.timeline-item-content time {
   color: #777;
   font-size: 12px;
-} */
+}
 
-/* .timeline-item-content p {
+.timeline-item-content p {
   font-size: 16px;
   line-height: 24px;
   margin: 15px 0;
-  margin-left: 10px;
   max-width: 250px;
-} */
-/* 
+}
+
 .timeline-item-content a {
   color: #333;
   text-decoration: none;
   font-size: 14px;
-  margin-left: 10px;
-} */
-/* 
+}
+
 .timeline-item-content .circle {
   background-color: #fff;
   border: 3px solid goldenrod;
@@ -137,9 +135,9 @@ body {
   width: 20px;
   height: 20px;
   z-index: 100;
-} */
+}
 
-/* .timeline-item:nth-child(odd) .timeline-item-content .circle {
+.timeline-item:nth-child(odd) .timeline-item-content .circle {
   right: auto;
   left: -40px;
-} */
+}
