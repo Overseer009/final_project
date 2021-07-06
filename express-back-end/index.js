@@ -14,7 +14,9 @@ const {
   getColoursForInstances,
   validateUser,
   getInstanceByName,
-  createInstance
+  createInstance,
+  createTimeline,
+  getTimelineByNameForUser,
 } = require("./lib/dbHelpers");
 
 //Express Configuration
@@ -58,9 +60,19 @@ app.get("/api/timelines", (req, res) => {
   });
 });
 
+// CREATES A NEW TIMELINE IN THE DB FOR A SPECIFIC USER (NO SAME NAMES)
 app.post("/api/timelines", (req, res) => {
-  createTimeline(1, "My timeline", 1, 12);
-  res.status(200).send("Timeline Created");
+  getTimelineByNameForUser(req.body.name, req.body.user_id).then(
+    (userTimelines) => {
+      if(!userTimelines) {
+        createTimeline(req.body).then((newTimeline) => {
+          res.status(200).json(newTimeline)
+        });
+      } else {
+        console.log("Sorry already exists!!!!!");
+        res.status(401).send("----- Invalid Timeline name -----");
+      } 
+    });
 });
 
 app.get("/api/instances", (req, res) => {
