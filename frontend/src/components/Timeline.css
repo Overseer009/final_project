@@ -64,7 +64,7 @@ body {
 }
 
 .timeline-item:nth-child(even) .timeline-item-content {
-  margin-left: 140px;
+  margin-left: 200px;
 }
 
 .timeline-item-content::after {
