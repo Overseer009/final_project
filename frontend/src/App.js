@@ -105,7 +105,7 @@ function App() {
 
         <Switch>
           <Route path="/timeline">
-            <TimelineItem />
+            <Timeline />
           </Route>
           <Route path="/login">
             <Login loginUser={loginUser} />

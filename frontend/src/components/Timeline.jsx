@@ -6,9 +6,10 @@ const Timeline = function (props) {
   return (
     <div className="timeline-container">
       {/* mapping data  */}
-      {/* <TimelineItem /> */}
+      <TimelineItem />
+      <TimelineItem />
+      <TimelineItem />
     </div>
-
   );
 };
 
