@@ -68,8 +68,21 @@ function App() {
       window.location = "/timelines/new";
     });
   };
+
   let currentUser = localStorage.getItem("currentUser");
+
   currentUser = JSON.parse(currentUser);
+  
+  const timelineData = (timelineObj) => {
+    console.log("timeline data:----->", timelineObj);
+    
+    axios
+      .post("/api/timelines", timelineObj)
+      .then((res) => {
+        console.log("timeline info sending", res.data)
+      })
+  }
+
   return (
     <main className="App">
       <Router>
@@ -86,7 +99,7 @@ function App() {
             <Login loginUser={loginUser} />
           </Route>
           <Route path="/timelines/new">
-            <TimelineCard />
+            <TimelineCard timelineData={timelineData}/>
           </Route>
           <Route path="/register">
             <Register registerUser={registerUser} />

@@ -1,6 +1,6 @@
-INSERT INTO users (name, email, password) VALUES ('Stephanie Wolff', 'darius.homenick@tod.ca', 'password');
-INSERT INTO users (name, email, password) VALUES ('Stan Miller', 'mcdermott.maxie@schoen.com', 'password');
-INSERT INTO users (name, email, password) VALUES ('Armand Hilll', 'lera_hahn@dickens.org', 'password');
+INSERT INTO users (name, email, password) VALUES ('Sascha', 'sascha@sascha.com', '123');
+INSERT INTO users (name, email, password) VALUES ('Jesse', 'jesse@jesse.com', '123');
+INSERT INTO users (name, email, password) VALUES ('Mark', 'mark@mark.com', '123');
 INSERT INTO users (name, email, password) VALUES ('Elliot Dickinson', 'derrick_pollich@gmail.com', 'password');
 INSERT INTO users (name, email, password) VALUES ('Lloyd Boehm', 'ebba.deckow@yahoo.com', 'password');
 INSERT INTO users (name, email, password) VALUES ('Erna Cassin', 'miguel.barrows@yahoo.com', 'password');
