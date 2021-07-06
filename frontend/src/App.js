@@ -68,15 +68,18 @@ function App() {
       window.location = "/timelines/new";
     });
   };
-
+  let currentUser = localStorage.getItem("currentUser");
+  currentUser = JSON.parse(currentUser);
   return (
     <main className="App">
       <Router>
         <Nav user_id={true} logout={logout} />
-        <Sidebar
-          createInstance={createInstance}
-          timelineName={"Timeline Name"}
-        />
+        {currentUser && (
+          <Sidebar
+            createInstance={createInstance}
+            timelineName={"Timeline Name"}
+          />
+        )}
         {/* <InstanceCard /> */}
         <Switch>
           <Route path="/login">
