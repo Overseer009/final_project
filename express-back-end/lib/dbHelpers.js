@@ -50,6 +50,16 @@ const getTimelinesForUser = (id) => {
   return db.query(stringQuery, [id]).then((data) => data.rows);
 };
 
+const getTimelineByNameForUser = (name, user_id) => {
+  const stringQuery = `
+  SELECT * FROM timelines
+  WHERE name = $1
+  AND user_id = $2;
+  `;
+  return db
+  .query(stringQuery, [name, user_id])
+  .then((data)=> data.rows[0])
+}
 
 const createTimeline = (timeline) => {
   const { user_id, name, start_month, end_month } = timeline;
@@ -59,7 +69,7 @@ const createTimeline = (timeline) => {
   `;
   return db
     .query(stringQuery, [user_id, name, start_month, end_month])
-    .then((data) => getTimelinesForUser(user_id))
+    .then(() => getTimelineByNameForUser(name, user_id))
     .catch((err) => err.message);
 };
 //----------------------------------------
@@ -78,7 +88,7 @@ const getInstanceByName = (name) => {
   SELECT * FROM instances
   WHERE name = $1;
   `;
-  return db.query(stringQuery, [name]).then((data) => data.rows[0]);
+  return db.query(stringQuery, [name]).then((data) => data.rows);
 };
 
 const createInstance = (
@@ -91,7 +101,7 @@ const createInstance = (
 ) => {
   const stringQuery = `
     INSERT INTO instances (timeline_id, instance_colour_id, name, description, date, image)
-    VALUES ($1, $2, $3, $4, $5, $6);
+    VALUES ($1, $2, $3, $4, $5, $6);d
     `;
   return db
     .query(queryString, [
@@ -124,5 +134,6 @@ module.exports = {
   getColoursForInstances,
   createInstance,
   validateUser,
-  createTimeline
+  createTimeline,
+  getTimelineByNameForUser,
 };
