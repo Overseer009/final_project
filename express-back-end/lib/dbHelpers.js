@@ -80,14 +80,10 @@ const getInstanceByName = (name) => {
   return db.query(stringQuery, [name]).then((data) => data.rows[0]);
 };
 
-const createInstance = (
-  timeline_id,
-  instance_colour_id,
-  name,
-  description,
-  date,
-  image
-) => {
+const createInstance = (newInstance) => {
+  const { timeline_id, name, instance_colour_id, description, date, image } =
+    newInstance;
+
   const stringQuery = `
     INSERT INTO instances (timeline_id, instance_colour_id, name, description, date, image)
     VALUES ($1, $2, $3, $4, $5, $6);
@@ -123,5 +119,5 @@ module.exports = {
   getColoursForInstances,
   createInstance,
   validateUser,
-  getInstanceByName
+  getInstanceByName,
 };

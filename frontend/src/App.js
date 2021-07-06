@@ -63,17 +63,20 @@ function App() {
   const createInstance = (instanceData) => {
     console.log("Inside createInstance --------- ", instanceData);
 
-    axios.post("/api/instances/new", instanceData)
-      .then((res) => {
-        console.log("Inside new Instance POST request -------- ", res.data);
-      })
-  }
+    axios.post("/api/instances/new", instanceData).then((res) => {
+      console.log("Inside new Instance POST request -------- ", res.data);
+      window.location = "/timelines/new";
+    });
+  };
 
   return (
     <main className="App">
       <Router>
         <Nav user_id={true} logout={logout} />
-        <Sidebar createInstance={createInstance} timelineName={"Timeline Name"} />
+        <Sidebar
+          createInstance={createInstance}
+          timelineName={"Timeline Name"}
+        />
         {/* <InstanceCard /> */}
         <Switch>
           <Route path="/login">

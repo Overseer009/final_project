@@ -1,8 +1,7 @@
-
 .card {
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 55px;
   margin-left: 25%;
   border: solid black 3px !important;
   border-radius: 25px !important;
@@ -13,26 +12,25 @@
 .title {
   text-align: center;
   margin-bottom: 20px;
-   
 }
 
 #title {
   font-size: 30px;
 }
 
-.content{
-  padding-top: 20px
+.content {
+  padding-top: 20px;
 }
 
-.enterName{
+.enterName {
   display: flex;
   justify-content: center;
   padding-bottom: 20px;
 }
 
-.name{
+.name {
   border: transparent;
-  background-color: inherit ;
+  background-color: inherit;
   border-bottom: solid black 2px;
 }
 
@@ -40,7 +38,7 @@ input {
   text-align: center;
 }
 
-.name:focus{
+.name:focus {
   outline: none;
 }
 
@@ -50,7 +48,7 @@ input {
   color: rgb(255, 255, 255);
 }
 
-.scale{
+.scale {
   display: flex;
   justify-content: space-around;
 }
@@ -61,7 +59,7 @@ input {
   border-bottom: solid black 3px;
 }
 
-.months:focus{
+.months:focus {
   outline: none;
 }
 
@@ -82,7 +80,7 @@ input {
 
 #image {
   border: solid black 2px;
-  border-radius: 25px; 
+  border-radius: 25px;
   margin: 10px;
   padding: 40px;
   background-color: beige;
