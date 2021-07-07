@@ -36,7 +36,7 @@ body {
 
 .timeline-item {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   padding-right: 30px;
   margin: 10px 0;
   width: 50%;
@@ -58,13 +58,9 @@ body {
   align-items: flex-end;
   padding: 15px;
   max-width: 70%;
-  width: 400px;
+  width: 60%;
   text-align: right;
   position: relative;
-}
-
-.timeline-item:nth-child(even) .timeline-item-content {
-  margin-left: 200px;
 }
 
 .timeline-item-content::after {
@@ -140,4 +136,22 @@ body {
 .timeline-item:nth-child(odd) .timeline-item-content .circle {
   right: auto;
   left: -40px;
+}
+
+@media screen and (min-width: 1600px) {
+  .timeline-item:nth-child(even) .timeline-item-content {
+    margin-left: 50%;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .timeline-item:nth-child(even) .timeline-item-content {
+    margin-left: 55%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .timeline-item:nth-child(even) .timeline-item-content {
+    margin-left: 60%;
+  }
 }

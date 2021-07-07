@@ -3,9 +3,8 @@ import "./Timeline.css";
 import TimelineItem from "./TimelineItem.jsx";
 
 const Timeline = function (props) {
-  console.log(props.currentTimeline)
+  console.log(props.currentTimeline);
   const timelineBuilder = (start, end) => {
-
     // console.log(timelineData);
     const months = {
       1: "January",
@@ -25,13 +24,19 @@ const Timeline = function (props) {
     // const start = months{timelineData.start_month}
   };
 
-//   timelineBuilder(props.currentTimeline)
+  //   timelineBuilder(props.currentTimeline)
 
-
-    return (
+  return (
     <div className="timeline-container">
-        <span>something here</span>
+      <span>something here</span>
       {/* mapping data  */}
+      <TimelineItem />
+      <TimelineItem />
+      <TimelineItem />
+      <TimelineItem />
+      <TimelineItem />
+      <TimelineItem />
+      <TimelineItem />
       <TimelineItem />
       <TimelineItem />
       <TimelineItem />
