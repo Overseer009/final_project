@@ -43,8 +43,8 @@ function App() {
 
   const logout = () => {
     console.log("inside logout");
-    localStorage.clear()
-    history.push("/login")
+    localStorage.clear();
+    history.push("/login");
   };
 
   const loginUser = (loginData) => {
@@ -106,20 +106,19 @@ function App() {
       {/*  */}
 
       <Router history={history}>
-     
-        {/* {currentUser && (
+        {currentUser && (
           <Sidebar
             createInstance={createInstance}
-            timelineName={"Timeline Name"}
+            currentTimeline={currentTimeline}
           />
-        )} */}
+        )}
         {/* <InstanceCard /> */}
-        <Switch>  
+        <Switch>
           <Route path="/timelines/new">
             <TimelineCard timelineData={timelineData} />
             <Nav user_id={true} logout={logout} />
           </Route>
-          <Route exact path="/timeline" >
+          <Route exact path="/timeline">
             <Timeline currentTimeline={currentTimeline} />
             <Nav user_id={true} logout={logout} />
           </Route>

@@ -15,7 +15,7 @@ const Sidebar = function (props) {
   return (
     <form className="createInstance" onSubmit={(e) => e.preventDefault()}>
       <div className="sidenav bg-dark">
-        <h3 className="theName">{props.timelineName}</h3>
+        <h3 className="theName">{props.currentTimeline.name}</h3>
 
         <div className="enterName">
           <input
