@@ -62,17 +62,20 @@ app.get("/api/timelines", (req, res) => {
 
 // CREATES A NEW TIMELINE IN THE DB FOR A SPECIFIC USER (NO SAME NAMES)
 app.post("/api/timelines", (req, res) => {
+  console.log("req body?", req.body);
   getTimelineByNameForUser(req.body.name, req.body.user_id).then(
     (userTimelines) => {
-      if(!userTimelines) {
+      console.log("userTimelines:", userTimelines);
+      if (!userTimelines) {
         createTimeline(req.body).then((newTimeline) => {
-          res.status(200).json(newTimeline)
+          res.status(200).json(newTimeline);
         });
       } else {
         console.log("Sorry already exists!!!!!");
         res.status(401).send("----- Invalid Timeline name -----");
-      } 
-    });
+      }
+    }
+  );
 });
 
 app.get("/api/instances", (req, res) => {
@@ -86,8 +89,8 @@ app.post("/api/instances/new", (req, res) => {
     .then((newInstance) => {
       res.status(200).json(newInstance);
     })
-    .catch((err) => err.message)
-})
+    .catch((err) => err.message);
+});
 
 app.get("/api/instance_colours", (req, res) => {
   getColoursForInstances(2).then((response) => {

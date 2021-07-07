@@ -42,9 +42,10 @@ const Nav = function (props) {
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav">
-      <a className="navbar-brand" href="/">
-        THE TIMELINE GANG
-      </a>
+      <Link to="/timeline">THE TIMELINE GANG</Link>
+      {/* <a className="navbar-brand" href="/">
+        
+      </a> */}
 
       <div className="collapse navbar-collapse">
         {currentUser ? myTimelines : <div></div>}

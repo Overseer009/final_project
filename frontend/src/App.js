@@ -1,6 +1,7 @@
 import "./App.css";
 import { useEffect, useState, Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import axios from "axios";
 import Login from "./components/logister/Login";
 import Register from "./components/logister/Register";
@@ -19,6 +20,8 @@ function App() {
     end_month: null,
   });
 
+  const history = createBrowserHistory();
+
   useEffect(() => {
     Promise.all([
       axios.get("/api/users"),
@@ -33,15 +36,15 @@ function App() {
       console.log("inside loginInfo", res);
       if (res.data) {
         localStorage.setItem("currentUser", JSON.stringify(res.data));
-        window.location = "/timelines/new";
+        history.push("/timelines/new");
       }
     });
   };
 
   const logout = () => {
     console.log("inside logout");
-    localStorage.clear();
-    window.location = "/login";
+    localStorage.clear()
+    history.push("/login")
   };
 
   const loginUser = (loginData) => {
@@ -53,8 +56,7 @@ function App() {
         console.log("inside loginInfo", res.data);
         if (res.data) {
           localStorage.setItem("currentUser", JSON.stringify(res.data));
-          // history.push("/timelines/new");
-          window.location = "/timelines/new";
+          history.push("/timelines/new");
         }
       })
       .catch((err) => console.log("Invalid User: ------>", err));
@@ -65,7 +67,8 @@ function App() {
 
     axios.post("/api/instances/new", instanceData).then((res) => {
       console.log("Inside new Instance POST request -------- ", res.data);
-      window.location = "/timelines/new";
+
+      history.push("/timelines/new");
     });
   };
 
@@ -76,45 +79,57 @@ function App() {
   const timelineData = (timelineObj) => {
     console.log("timeline data:----->", timelineObj);
 
-    axios.post("/api/timelines", timelineObj).then((res) => {
-      setCurrentTimeline({
-        ...currentTimeline,
-        user_id: res.data.user_id,
-        name: res.data.name,
-        start_month: res.data.start_month,
-        end_month: res.data.end_month,
-      });
-    });
+    axios
+      .post("/api/timelines", timelineObj)
+      .then((res) => {
+        console.log("line 81:", res);
+        if (res.data) {
+          setCurrentTimeline({
+            ...currentTimeline,
+            user_id: res.data.user_id,
+            name: res.data.name,
+            start_month: res.data.start_month,
+            end_month: res.data.end_month,
+          });
+          history.push("/timeline");
+        } else console.log("something went wrong");
+      })
+      .catch((err) => console.log("nothing here---------->", err));
   };
-  console.log(currentTimeline);
+  console.log("outside func: ====>", currentTimeline);
 
   //receiving start and end points for timeline
   //start  middle1  middle2  middle3  ...    end
 
   return (
     <main className="App">
-      <Router>
-        {/* <Nav user_id={true} logout={logout} />
-        {currentUser && (
-          <Sidebar
-            createInstance={createInstance}
-            timelineName={"Timeline Name"}
-          />
+      {/*  */}
+
+      <Router history={history}>
+     
+        {/* {currentUser && (
+          // <Sidebar
+          //   createInstance={createInstance}
+          //   timelineName={"Timeline Name"}
+          // />
         )} */}
         {/* <InstanceCard /> */}
-
         <Switch>
-          <Route path="/timeline">
-            <TimelineItem />
+          <Route path="/timelines/new">
+            <TimelineCard timelineData={timelineData} />
+            <Nav user_id={true} logout={logout} />
+          </Route>
+          <Route exact path="/timeline" >
+            <Timeline currentTimeline={currentTimeline} />
+            <Nav user_id={true} logout={logout} />
           </Route>
           <Route path="/login">
             <Login loginUser={loginUser} />
-          </Route>
-          <Route path="/timelines/new">
-            <TimelineCard timelineData={timelineData} />
+            <Nav user_id={true} logout={logout} />
           </Route>
           <Route path="/register">
             <Register registerUser={registerUser} />
+            <Nav user_id={true} logout={logout} />
           </Route>
         </Switch>
       </Router>
