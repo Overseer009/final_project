@@ -108,13 +108,13 @@ function App() {
       <Router history={history}>
      
         {/* {currentUser && (
-          // <Sidebar
-          //   createInstance={createInstance}
-          //   timelineName={"Timeline Name"}
-          // />
+          <Sidebar
+            createInstance={createInstance}
+            timelineName={"Timeline Name"}
+          />
         )} */}
         {/* <InstanceCard /> */}
-        <Switch>
+        <Switch>  
           <Route path="/timelines/new">
             <TimelineCard timelineData={timelineData} />
             <Nav user_id={true} logout={logout} />
