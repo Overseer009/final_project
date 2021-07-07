@@ -32,9 +32,11 @@ const Timeline = function (props) {
     <div className="timeline-container">
         <span>something here</span>
       {/* mapping data  */}
-      {/* <TimelineItem /> */}
+      <TimelineItem />
+      <TimelineItem />
+      <TimelineItem />
     </div>
-    );
+  );
 };
 
 export default Timeline;
