@@ -118,7 +118,6 @@ function App() {
 
   return (
     <main className="App">
-
       <Router history={history}>
         {currentUser && (
           <Sidebar
@@ -128,11 +127,6 @@ function App() {
         )}
         {/* <InstanceCard /> */}
         <Switch>
-          <Route path="/timelines/new">
-            <TimelineCard timelineData={timelineData} />
-            <Nav user_id={true} logout={logout} />
-          </Route>
-
           {currentUser ? (
             <Route exact path="/timeline">
               <Timeline currentTimeline={currentTimeline} />
@@ -144,8 +138,8 @@ function App() {
             </Route>
           ) : (
             history.push("/login")
-          )};
-
+          )}
+          ;
           {currentUser ? (
             <Route exact path="/mytimelines">
               <MyTimelines
@@ -160,8 +154,8 @@ function App() {
             </Route>
           ) : (
             history.push("/login")
-          )};
-
+          )}
+          ;
           <Route path="/timelines/new">
             <TimelineCard timelineData={timelineData} />
             <Nav
@@ -190,6 +184,6 @@ function App() {
       </Router>
     </main>
   );
-};
+}
 
 export default App;
