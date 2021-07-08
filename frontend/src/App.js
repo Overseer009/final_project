@@ -128,11 +128,6 @@ function App() {
         )}
         {/* <InstanceCard /> */}
         <Switch>
-          <Route path="/timelines/new">
-            <TimelineCard timelineData={timelineData} />
-            <Nav user_id={true} logout={logout} />
-          </Route>
-
           {currentUser ? (
             <Route exact path="/timeline">
               <Timeline currentTimeline={currentTimeline} />
