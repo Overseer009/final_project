@@ -11,8 +11,13 @@ import TimelineCard from "./components/Cards/TimelineCard";
 import InstanceCard from "./components/Cards/InstanceCard";
 import Timeline from "./components/Timeline";
 import TimelineItem from "./components/TimelineItem";
+import MyTimelines from "./components/MyTimelines";
+
+const history = createBrowserHistory();
 
 function App() {
+  let currentUser = localStorage.getItem("currentUser");
+
   const [currentTimeline, setCurrentTimeline] = useState({
     user_id: null,
     name: null,
@@ -20,16 +25,33 @@ function App() {
     end_month: null,
   });
 
-  const history = createBrowserHistory();
+  const [myTimelines, setMyTimelines] = useState();
 
-  useEffect(() => {
-    Promise.all([
-      axios.get("/api/users"),
-      axios.get("/api/instances"),
-      axios.get("/api/instance_colours"),
-      axios.get("/api/timelines"),
-    ]).then((all) => {});
-  }, []);
+  // useEffect(() => {
+  //   Promise.all([
+  //     axios.get("/api/users"),
+  //     axios.get("/api/instances"),
+  //     axios.get("/api/instance_colours"),
+  //     axios.get("/api/timelines"),
+  //   ]).then((all) => {});
+  // }, []);
+
+  const getUserTimelines = (user) => {
+    axios.get(`/api/timelines${user.id}`).then((res) => {
+      setMyTimelines(res.data);
+      history.push("/mytimelines");
+    });
+  };
+  // const dummyUser = {
+  //   id: 2
+  // };
+
+  // getUserTimeLines(dummyUser);
+
+  // const getCurrentUser = () => {
+  //   let currentUser = localStorage.getItem('currentUser')
+  //    return currentUser = JSON.parse(currentUser)
+  // }
 
   const registerUser = (registerData) => {
     axios.post("/api/users/new", registerData).then((res) => {
@@ -43,13 +65,11 @@ function App() {
 
   const logout = () => {
     console.log("inside logout");
-    localStorage.clear()
-    history.push("/login")
+    localStorage.clear();
+    history.push("/login");
   };
 
   const loginUser = (loginData) => {
-    console.log("this is line 47 app.js", loginData);
-
     axios
       .post("/api/users", loginData)
       .then((res) => {
@@ -72,13 +92,9 @@ function App() {
     });
   };
 
-  let currentUser = localStorage.getItem("currentUser");
-
   currentUser = JSON.parse(currentUser);
 
   const timelineData = (timelineObj) => {
-    console.log("timeline data:----->", timelineObj);
-
     axios
       .post("/api/timelines", timelineObj)
       .then((res) => {
@@ -96,45 +112,76 @@ function App() {
       })
       .catch((err) => console.log("nothing here---------->", err));
   };
-  console.log("outside func: ====>", currentTimeline);
 
   //receiving start and end points for timeline
   //start  middle1  middle2  middle3  ...    end
 
-  return (
-    <main className="App">
-      {/*  */}
-
-      <Router history={history}>
-     
-        {/* {currentUser && (
-          <Sidebar
-            createInstance={createInstance}
-            timelineName={"Timeline Name"}
-          />
-        )} */}
-        {/* <InstanceCard /> */}
-        <Switch>  
-          <Route path="/timelines/new">
-            <TimelineCard timelineData={timelineData} />
-            <Nav user_id={true} logout={logout} />
-          </Route>
-          <Route exact path="/timeline" >
+  const routes = (
+    <Router history={history}>
+      {/* {currentUser && (
+      <Sidebar
+        createInstance={createInstance}
+        timelineName={"Timeline Name"}
+      />
+    )} */}
+      {/* <InstanceCard /> */}
+      <Switch>
+        {currentUser ? (
+          <Route exact path="/timeline">
             <Timeline currentTimeline={currentTimeline} />
-            <Nav user_id={true} logout={logout} />
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
           </Route>
-          <Route path="/login">
-            <Login loginUser={loginUser} />
-            <Nav user_id={true} logout={logout} />
+        ) : (
+          history.push("/login")
+        )}
+        {currentUser ? (
+          <Route exact path="/mytimelines">
+            <MyTimelines
+              myTimelines={myTimelines}
+              setCurrentTimeline={setCurrentTimeline}
+            />
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
           </Route>
-          <Route path="/register">
-            <Register registerUser={registerUser} />
-            <Nav user_id={true} logout={logout} />
-          </Route>
-        </Switch>
-      </Router>
-    </main>
+        ) : (
+          history.push("/login")
+        )}
+        <Route path="/timelines/new">
+          <TimelineCard timelineData={timelineData} />
+          <Nav
+            user_id={true}
+            logout={logout}
+            getUserTimelines={getUserTimelines}
+          />
+        </Route>
+        <Route path="/login">
+          <Login loginUser={loginUser} />
+          <Nav
+            user_id={true}
+            logout={logout}
+            getUserTimelines={getUserTimelines}
+          />
+        </Route>
+        <Route path="/register">
+          <Register registerUser={registerUser} />
+          <Nav
+            user_id={true}
+            logout={logout}
+            getUserTimelines={getUserTimelines}
+          />
+        </Route>
+      </Switch>
+    </Router>
   );
+
+  return <main className="App">{routes}</main>;
 }
 
 export default App;

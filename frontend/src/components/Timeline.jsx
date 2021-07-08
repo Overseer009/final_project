@@ -47,17 +47,8 @@ const Timeline = function (props) {
       <span>{props.currentTimeline.name}</span>
       {newTimeline.map((months) => {
         console.log(months);
-        return <TimelineItem />
-      })}
-      {/* <TimelineItem />
-      <TimelineItem />
-      <TimelineItem />
-      <TimelineItem />
-      <TimelineItem />
-      <TimelineItem />
-      <TimelineItem />
-      <TimelineItem />
-      <TimelineItem /> */}
+        return <TimelineItem key={months} />
+      })};
     </div>
   );
 };

@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import "./Nav.css";
 
 const Nav = function (props) {
+  
   let currentUser = localStorage.getItem("currentUser");
 
   currentUser = JSON.parse(currentUser);
+  // console.log(currentUser.id)
 
   const noUser = (
     <div className="navbar-nav">
@@ -34,15 +36,15 @@ const Nav = function (props) {
       <Link className="nav-item nav-link" to="/timelines/new">
         + New Timeline
       </Link>
-      <a className="nav-item nav-link" href="/timelines">
+      <div className="nav-item nav-link" onClick={() => props.getUserTimelines(currentUser)}>
         MY TIMELINES
-      </a>
+      </div>
     </div>
   );
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav">
-      <Link to="/timeline">THE TIMELINE GANG</Link>
+      <span style={{color: "white"}}>THE TIMELINE GANG</span>
       {/* <a className="navbar-brand" href="/">
         
       </a> */}

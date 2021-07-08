@@ -1,0 +1,11 @@
+.timeline-list{
+  border: solid black 3px;
+  width: 50%;
+  height: 100px;
+}
+
+.timeline-list-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
