@@ -116,72 +116,80 @@ function App() {
   //receiving start and end points for timeline
   //start  middle1  middle2  middle3  ...    end
 
-  const routes = (
-    <Router history={history}>
-      {/* {currentUser && (
-      <Sidebar
-        createInstance={createInstance}
-        timelineName={"Timeline Name"}
-      />
-    )} */}
-      {/* <InstanceCard /> */}
-      <Switch>
-        {currentUser ? (
-          <Route exact path="/timeline">
-            <Timeline currentTimeline={currentTimeline} />
-            <Nav
-              user_id={true}
-              logout={logout}
-              getUserTimelines={getUserTimelines}
-            />
-          </Route>
-        ) : (
-          history.push("/login")
-        )}
-        {currentUser ? (
-          <Route exact path="/mytimelines">
-            <MyTimelines
-              myTimelines={myTimelines}
-              setCurrentTimeline={setCurrentTimeline}
-            />
-            <Nav
-              user_id={true}
-              logout={logout}
-              getUserTimelines={getUserTimelines}
-            />
-          </Route>
-        ) : (
-          history.push("/login")
-        )}
-        <Route path="/timelines/new">
-          <TimelineCard timelineData={timelineData} />
-          <Nav
-            user_id={true}
-            logout={logout}
-            getUserTimelines={getUserTimelines}
-          />
-        </Route>
-        <Route path="/login">
-          <Login loginUser={loginUser} />
-          <Nav
-            user_id={true}
-            logout={logout}
-            getUserTimelines={getUserTimelines}
-          />
-        </Route>
-        <Route path="/register">
-          <Register registerUser={registerUser} />
-          <Nav
-            user_id={true}
-            logout={logout}
-            getUserTimelines={getUserTimelines}
-          />
-        </Route>
-      </Switch>
-    </Router>
-  );
+  return (
+    <main className="App">
 
-  return <main className="App">{routes}</main>;
-}
+      <Router history={history}>
+        {currentUser && (
+          <Sidebar
+            createInstance={createInstance}
+            currentTimeline={currentTimeline}
+          />
+        )}
+        {/* <InstanceCard /> */}
+        <Switch>
+          <Route path="/timelines/new">
+            <TimelineCard timelineData={timelineData} />
+            <Nav user_id={true} logout={logout} />
+          </Route>
+
+          {currentUser ? (
+            <Route exact path="/timeline">
+              <Timeline currentTimeline={currentTimeline} />
+              <Nav
+                user_id={true}
+                logout={logout}
+                getUserTimelines={getUserTimelines}
+              />
+            </Route>
+          ) : (
+            history.push("/login")
+          )};
+
+          {currentUser ? (
+            <Route exact path="/mytimelines">
+              <MyTimelines
+                myTimelines={myTimelines}
+                setCurrentTimeline={setCurrentTimeline}
+              />
+              <Nav
+                user_id={true}
+                logout={logout}
+                getUserTimelines={getUserTimelines}
+              />
+            </Route>
+          ) : (
+            history.push("/login")
+          )};
+
+          <Route path="/timelines/new">
+            <TimelineCard timelineData={timelineData} />
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
+          </Route>
+          <Route path="/login">
+            <Login loginUser={loginUser} />
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
+          </Route>
+          <Route path="/register">
+            <Register registerUser={registerUser} />
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
+          </Route>
+        </Switch>
+      </Router>
+    </main>
+  );
+};
 
 export default App;
