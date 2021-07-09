@@ -56,10 +56,8 @@ const getTimelineByNameForUser = (name, user_id) => {
   WHERE name = $1
   AND user_id = $2;
   `;
-  return db
-  .query(stringQuery, [name, user_id])
-  .then((data)=> data.rows[0])
-}
+  return db.query(stringQuery, [name, user_id]).then((data) => data.rows[0]);
+};
 
 const createTimeline = (timeline) => {
   const { user_id, name, start_month, end_month } = timeline;
@@ -70,6 +68,16 @@ const createTimeline = (timeline) => {
   return db
     .query(stringQuery, [user_id, name, start_month, end_month])
     .then(() => getTimelineByNameForUser(name, user_id))
+    .catch((err) => err.message);
+};
+
+const deleteTimeline = (timeline) => {
+  const stringQuery = `
+  DELETE FROM timelines WHERE id = $1;
+  `;
+  return db
+    .query(stringQuery, [timeline])
+    .then((data) => data.rows)
     .catch((err) => err.message);
 };
 //----------------------------------------
@@ -112,6 +120,17 @@ const createInstance = (newInstance) => {
     .then((data) => getInstanceByName(name))
     .catch((err) => err.message);
 };
+
+const deleteInstance = (instance) => {
+  const stringQuery = `
+    DELETE FROM instances WHERE id = $1;
+  `;
+  return db
+    .query(stringQuery, [instance])
+    .then((data) => data.rows)
+    .catch((err) => err.message);
+};
+
 //----------------------------------------
 
 const getColoursForInstances = (id) => {
@@ -134,4 +153,6 @@ module.exports = {
   getInstanceByName,
   createTimeline,
   getTimelineByNameForUser,
+  deleteTimeline,
+  deleteInstance,
 };

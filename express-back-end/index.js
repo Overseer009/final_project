@@ -17,6 +17,8 @@ const {
   createInstance,
   createTimeline,
   getTimelineByNameForUser,
+  deleteTimeline,
+  deleteInstance,
 } = require("./lib/dbHelpers");
 
 //Express Configuration
@@ -80,6 +82,13 @@ app.post("/api/timelines", (req, res) => {
   );
 });
 
+app.post("/api/timelines/delete", (req, res) => {
+  deleteTimeline(req.body.id)
+    .then(res.status(200))
+    .catch((err) => err.message);
+});
+
+// INSTANCES
 app.get("/api/instances/:id", (req, res) => {
   getInstancesForTimelines(req.params.id).then((response) => {
     res.status(200).json(response);
@@ -91,6 +100,12 @@ app.post("/api/instances/new", (req, res) => {
     .then((newInstance) => {
       res.status(200).json(newInstance);
     })
+    .catch((err) => err.message);
+});
+
+app.post("/api/instances/delete", (req, res) => {
+  deleteInstance(req.body.id)
+    .then(res.status(200))
     .catch((err) => err.message);
 });
 
