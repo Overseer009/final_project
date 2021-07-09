@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from "react";
+import React, { Component, useEffect, useState } from "react";
 import "./Timeline.css";
 import TimelineItem from "./TimelineItem.jsx";
 
@@ -46,34 +46,29 @@ const Timeline = function (props) {
     localCurrentTimeline.end_month
   );
   // console.log(newTimeline);
-  
-    const [currentInstances, setCurrentInstances] = useState([])
+
+  const [currentInstances, setCurrentInstances] = useState([]);
 
   useEffect(() => {
     props.getInstances(localCurrentTimeline).then((res) => {
-      setCurrentInstances(res)
-    })
-  }, [])
-
-
-//  componentDidMount(); {
-//   props.getInstances(localCurrentTimeline)
-//     .then(res => console.log(res));
-// }
-
-
-
+      setCurrentInstances(res);
+    });
+  }, []);
 
   return (
-     <div className="timeline-container">
-      <span>{localCurrentTimeline.name}</span>
-      {currentInstances.map((obj) => {
-        return <div>{obj.id}</div>
-      })}
+    <div className="timeline-container">
+      <br></br>
+      <div></div>
       {newTimeline.map((month) => {
-        return <TimelineItem key={month} month={month} currentInstances={currentInstances} />;
+        return (
+          <TimelineItem
+            key={month}
+            month={month}
+            currentIn={currentInstances}
+            setSelectedInstance={props.setSelectedInstance}
+          />
+        );
       })}
-      ;
     </div>
   );
 };

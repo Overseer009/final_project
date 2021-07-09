@@ -79,10 +79,8 @@ const useApplicationData = () => {
   const getInstances = (timeline) => {
     return axios.get(`/api/instances/${timeline.id}`).then((res) => {
       return res.data;
-    })
+    });
   };
-
-  
 
   const timelineData = (timelineObj) => {
     axios
@@ -97,10 +95,7 @@ const useApplicationData = () => {
             start_month: res.data.start_month,
             end_month: res.data.end_month,
           });
-          localStorage.setItem(
-            "currentTimeline",
-            JSON.stringify(res.data)
-          );
+          localStorage.setItem("currentTimeline", JSON.stringify(res.data));
           history.push("/timeline");
         } else console.log("something went wrong");
       })

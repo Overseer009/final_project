@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch, Redirect, Link } from "react-router-dom";
 
 //Components
 import Login from "./components/logister/Login";
@@ -34,14 +34,9 @@ function App() {
   return (
     <main className="App">
       <Router history={history}>
-        {/* <InstanceCard/> */}
         <Switch>
           {currentUser ? (
             <Route path="/timeline">
-              {/* <Sidebar
-                createInstance={createInstance}
-                currentTimeline={localCurrentTimeline}
-              /> */}
               <Timeline
                 getInstances={getInstances}
                 currentTimeline={localCurrentTimeline}
@@ -93,6 +88,14 @@ function App() {
               logout={logout}
               getUserTimelines={getUserTimelines}
             />
+          </Route>
+          <Route path="/instancecard">
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
+            <InstanceCard />
           </Route>
         </Switch>
       </Router>

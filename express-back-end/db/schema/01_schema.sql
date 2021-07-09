@@ -30,6 +30,7 @@ CREATE TABLE instances (
   name VARCHAR(255) NOT NULL,
   description VARCHAR(255) NOT NULL,
   month VARCHAR(255) NOT NULL,
+  day INTEGER,
   image VARCHAR(255) 
 );
 
