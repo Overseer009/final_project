@@ -1,0 +1,28 @@
+.homepage {
+  background-color: blue;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome {
+  background-color: brown;
+  height: 20vh;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.intro {
+  background-color: chartreuse;
+  height: 15vh;
+  text-align: center;
+}
+
+.invitation {
+  background-color: chocolate;
+  height: 15vh;
+  text-align: center;
+}

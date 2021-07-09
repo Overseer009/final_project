@@ -12,6 +12,7 @@ import InstanceCard from "./components/Cards/InstanceCard";
 import Timeline from "./components/Timeline";
 import TimelineItem from "./components/TimelineItem";
 import MyTimelines from "./components/MyTimelines";
+import Home from "./components/Home";
 
 //Hooks
 import useApplicationData from "./hooks/useApplicationData";
@@ -35,6 +36,10 @@ function App() {
     <main className="App">
       <Router history={history}>
         <Switch>
+          <Route exact path="/">
+            <Nav logout={logout} getUserTimelines={getUserTimelines} />
+            <Home />
+          </Route>
           {currentUser ? (
             <Route path="/timeline">
               <Timeline

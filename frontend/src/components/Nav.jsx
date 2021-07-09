@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Nav.css";
 
 const Nav = function (props) {
-  
   let currentUser = localStorage.getItem("currentUser");
 
   currentUser = JSON.parse(currentUser);
@@ -36,7 +35,10 @@ const Nav = function (props) {
       <Link className="nav-item nav-link" to="/timelines/new">
         + New Timeline
       </Link>
-      <div className="nav-item nav-link" onClick={() => props.getUserTimelines(currentUser)}>
+      <div
+        className="nav-item nav-link"
+        onClick={() => props.getUserTimelines(currentUser)}
+      >
         MY TIMELINES
       </div>
     </div>
@@ -44,7 +46,9 @@ const Nav = function (props) {
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav">
-      <span style={{color: "white"}}>THE TIMELINE GANG</span>
+      <Link className="home" style={{ color: "white" }} to="/">
+        THE TIMELINE GANG
+      </Link>
       {/* <a className="navbar-brand" href="/">
         
       </a> */}
