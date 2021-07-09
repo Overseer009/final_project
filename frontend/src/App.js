@@ -12,6 +12,7 @@ import InstanceCard from "./components/Cards/InstanceCard";
 import Timeline from "./components/Timeline";
 import TimelineItem from "./components/TimelineItem";
 import MyTimelines from "./components/MyTimelines";
+import AddInstance from "./components/AddInstance";
 
 //Hooks
 import useApplicationData from "./hooks/useApplicationData";
@@ -96,6 +97,9 @@ function App() {
               getUserTimelines={getUserTimelines}
             />
             <InstanceCard />
+          </Route>
+          <Route path="/addinstance">
+            <AddInstance createInstance={createInstance} />
           </Route>
         </Switch>
       </Router>

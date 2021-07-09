@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Timeline.css";
 
 const description =
   "This is a very big description to take up a bit more space than just a single word can.";
 
 const TimelineItem = function (props) {
+  let history = useHistory();
   console.log(props);
   return (
     <div className="timeline-item">
@@ -34,7 +35,9 @@ const TimelineItem = function (props) {
           </ul>
         </div>
 
-        <button>PLUS event</button>
+        <button onClick={() => history.push("/addinstance")}>
+          Add Instance
+        </button>
 
         {/* <a>Link</a> */}
         <span className="circle"></span>
