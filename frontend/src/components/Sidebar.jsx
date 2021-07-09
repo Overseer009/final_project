@@ -12,10 +12,14 @@ const Sidebar = function (props) {
     image: "",
   });
 
+  let localCurrentTimeline = localStorage.getItem("currentTimeline");
+  localCurrentTimeline = JSON.parse(localCurrentTimeline);
+  console.log(localCurrentTimeline);
+
   return (
     <form className="createInstance" onSubmit={(e) => e.preventDefault()}>
       <div className="sidenav bg-dark">
-        <h3 className="theName">{props.currentTimeline.name}</h3>
+        <h3 className="theName">{localCurrentTimeline.name}</h3>
 
         <div className="enterName">
           <input
