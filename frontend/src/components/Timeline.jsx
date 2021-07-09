@@ -1,9 +1,8 @@
-import React from "react";
+import React, {Component, useEffect, useState} from "react";
 import "./Timeline.css";
 import TimelineItem from "./TimelineItem.jsx";
 
 const Timeline = function (props) {
-
   const timelineBuilder = (start, end) => {
     const months = {
       1: "January",
@@ -40,20 +39,39 @@ const Timeline = function (props) {
 
   let localCurrentTimeline = localStorage.getItem("currentTimeline");
   localCurrentTimeline = JSON.parse(localCurrentTimeline);
-  console.log(localCurrentTimeline);
+  console.log("local current timeline:------->", localCurrentTimeline);
 
   const newTimeline = timelineBuilder(
     localCurrentTimeline.start_month,
     localCurrentTimeline.end_month
   );
-  console.log(newTimeline);
+  // console.log(newTimeline);
+  
+    const [currentInstances, setCurrentInstances] = useState([])
+
+  useEffect(() => {
+    props.getInstances(localCurrentTimeline).then((res) => {
+      setCurrentInstances(res)
+    })
+  }, [])
+
+
+//  componentDidMount(); {
+//   props.getInstances(localCurrentTimeline)
+//     .then(res => console.log(res));
+// }
+
+
+
 
   return (
-    <div className="timeline-container">
+     <div className="timeline-container">
       <span>{localCurrentTimeline.name}</span>
-      {newTimeline.map((months) => {
-        console.log(months);
-        return <TimelineItem key={months} />;
+      {currentInstances.map((obj) => {
+        return <div>{obj.id}</div>
+      })}
+      {newTimeline.map((month) => {
+        return <TimelineItem key={month} month={month} currentInstances={currentInstances} />;
       })}
       ;
     </div>

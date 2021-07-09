@@ -39,7 +39,7 @@ const useApplicationData = () => {
 
   const registerUser = (registerData) => {
     axios.post("/api/users/new", registerData).then((res) => {
-      console.log("inside loginInfo", res);
+      // console.log("inside loginInfo", res);
       if (res.data) {
         localStorage.setItem("currentUser", JSON.stringify(res.data));
         history.push("/timelines/new");
@@ -48,7 +48,7 @@ const useApplicationData = () => {
   };
 
   const logout = () => {
-    console.log("inside logout");
+    // console.log("inside logout");
     localStorage.clear();
     history.push("/login");
   };
@@ -57,7 +57,7 @@ const useApplicationData = () => {
     axios
       .post("/api/users", loginData)
       .then((res) => {
-        console.log("inside loginInfo", res.data);
+        // console.log("inside loginInfo", res.data);
         if (res.data) {
           localStorage.setItem("currentUser", JSON.stringify(res.data));
           history.push("/timelines/new");
@@ -76,11 +76,19 @@ const useApplicationData = () => {
     });
   };
 
+  const getInstances = (timeline) => {
+    return axios.get(`/api/instances/${timeline.id}`).then((res) => {
+      return res.data;
+    })
+  };
+
+  
+
   const timelineData = (timelineObj) => {
     axios
       .post("/api/timelines", timelineObj)
       .then((res) => {
-        console.log("line 81:", res);
+        // console.log("line 81:", res);
         if (res.data) {
           setCurrentTimeline({
             ...currentTimeline,
@@ -111,6 +119,7 @@ const useApplicationData = () => {
     myTimelines,
     history,
     currentUser,
+    getInstances,
     // localCurrentTimeline,
   };
 };

@@ -1,4 +1,4 @@
-INSERT INTO users (name, email, password) VALUES ('Sascha', 'sascha@sascha.com', '123');
+INSERT INTO users (name, email, password) VALUES ('Sacha', 'sacha@sacha.com', '123');
 INSERT INTO users (name, email, password) VALUES ('Jesse', 'jesse@jesse.com', '123');
 INSERT INTO users (name, email, password) VALUES ('Mark', 'mark@mark.com', '123');
 INSERT INTO users (name, email, password) VALUES ('Elliot Dickinson', 'derrick_pollich@gmail.com', 'password');

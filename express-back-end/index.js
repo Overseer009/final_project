@@ -55,7 +55,7 @@ app.post("/api/users/new", (req, res) => {
 
 // TIMELINES
 app.get("/api/timelines:id", (req, res) => {
-  console.log("we are reaching the backend!")
+  console.log("we are reaching the backend!");
   console.log(req.params);
   getTimelinesForUser(req.params.id).then((response) => {
     res.status(200).json(response);
@@ -80,8 +80,8 @@ app.post("/api/timelines", (req, res) => {
   );
 });
 
-app.get("/api/instances", (req, res) => {
-  getInstancesForTimelines(2).then((response) => {
+app.get("/api/instances/:id", (req, res) => {
+  getInstancesForTimelines(req.params.id).then((response) => {
     res.status(200).json(response);
   });
 });

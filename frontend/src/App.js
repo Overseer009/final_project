@@ -23,6 +23,7 @@ function App() {
     logout,
     loginUser,
     createInstance,
+    getInstances,
     timelineData,
     setCurrentTimeline,
     localCurrentTimeline,
@@ -33,20 +34,18 @@ function App() {
   return (
     <main className="App">
       <Router history={history}>
-        {/* <Sidebar
-            // createInstance={createInstance}
-            // currentTimeline={localCurrentTimeline}
-          /> */}
-
-        {/* <InstanceCard /> */}
+        {/* <InstanceCard/> */}
         <Switch>
           {currentUser ? (
             <Route path="/timeline">
-              <Sidebar
+              {/* <Sidebar
                 createInstance={createInstance}
                 currentTimeline={localCurrentTimeline}
+              /> */}
+              <Timeline
+                getInstances={getInstances}
+                currentTimeline={localCurrentTimeline}
               />
-              <Timeline currentTimeline={localCurrentTimeline} />
 
               <Nav
                 user_id={true}
