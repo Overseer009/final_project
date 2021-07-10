@@ -3,6 +3,12 @@
   padding-left: 15px;
   font-family: "Marcellus SC", serif;
   font-size: 45px;
+  user-select: none;
+}
+
+.nav-appName:hover {
+  cursor: default;
+  
 }
 
 #nav {
@@ -18,6 +24,7 @@
 .navbar-brand {
   margin-left: 0.5em;
   margin-right: 0.5em;
+  user-select: none;
 }
 
 .navbar-nav {
@@ -29,7 +36,15 @@
   text-decoration: none;
 }
 
+.nav-item{
+  user-select: none;
+}
+
+.nav-item:hover {
+  cursor: pointer;
+}
+
 .collapse {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }

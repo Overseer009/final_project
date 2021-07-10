@@ -128,6 +128,11 @@ body {
   font-size: 14px;
 }
 
+.tag {
+  font-family: 'Marcellus SC', serif;
+  align-items: center;
+}
+
 .timeline-item-content .circle {
   display: flex;
   justify-content: center;
@@ -142,6 +147,7 @@ body {
   height: 20px;
   z-index: 100;
   transition: box-shadow 0.3s ease-in-out;
+  animation: pulse 2s infinite;
 }
 
 .circle:hover {
@@ -158,10 +164,9 @@ body {
 .add-new-event {
   border: none;
   border-radius: 50%;
-  
   color: white;
   font-size: 25px;
-  animation: pulse 2s infinite;
+  padding-top: 5px;
 }
 
 

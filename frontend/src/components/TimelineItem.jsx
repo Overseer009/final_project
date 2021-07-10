@@ -5,7 +5,6 @@ import "./Timeline.css";
 const description =
   "This is a very big description to take up a bit more space than just a single word can.";
 
-
 const TimelineItem = function (props) {
   console.log(props);
   return (
@@ -13,11 +12,10 @@ const TimelineItem = function (props) {
       <div className="timeline-item-content">
 
         
-          <span className="tag" style={{ background: "#018f69" }}>
+          <span className="tag">
             {props.month}
           </span>
           <div className="event-list">
-          {/* <time>{props.month}</time> */}
           <div className="eventList">
             <ul>
               {props.currentIn.map((element) => {
@@ -45,9 +43,6 @@ const TimelineItem = function (props) {
           </div>
           <div className="make-it">
             <span className="add-new-event"> <strong>+</strong></span>
-            <span class="material-icons-outlined">
-post_add
-</span>
           </div>
           
         </div>

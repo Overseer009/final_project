@@ -23,7 +23,7 @@ const MyTimelines = function (props) {
         <div className="list">
           {localUserTimelines.map((timeline) => {
             return (
-              <li onClick={() => handleClick(timeline)} key={timeline.id}>
+              <li className="items-of-list" onClick={() => handleClick(timeline)} key={timeline.id}>
                 {timeline.name}
               </li>
             );
