@@ -83,7 +83,7 @@ const EditInstance = function (props) {
           <input
             type="url"
             id="url"
-            value={instance.url}
+            value={instance.image}
             onChange={(event) =>
               setInstance({
                 ...instance,
