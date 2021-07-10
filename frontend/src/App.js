@@ -13,6 +13,7 @@ import Timeline from "./components/Timeline";
 import TimelineItem from "./components/TimelineItem";
 import MyTimelines from "./components/MyTimelines";
 import AddInstance from "./components/AddInstance";
+import EditInstance from "./components/EditInstance";
 
 //Hooks
 import useApplicationData from "./hooks/useApplicationData";
@@ -30,7 +31,11 @@ function App() {
     localCurrentTimeline,
     history,
     currentUser,
+    editInstance,
   } = useApplicationData();
+
+  let selectedInstance = localStorage.getItem("selectedInstance");
+  selectedInstance = JSON.parse(selectedInstance);
 
   return (
     <main className="App">
@@ -100,6 +105,12 @@ function App() {
           </Route>
           <Route path="/addinstance">
             <AddInstance createInstance={createInstance} />
+          </Route>
+          <Route path="/editinstance">
+            <EditInstance
+              instanceData={selectedInstance}
+              editInstance={editInstance}
+            />
           </Route>
         </Switch>
       </Router>

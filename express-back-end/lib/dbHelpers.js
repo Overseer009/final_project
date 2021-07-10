@@ -119,6 +119,29 @@ const createInstance = (newInstance) => {
     .catch((err) => err.message);
 };
 
+const editInstance = (instanceData) => {
+  console.log("inside dbHelpers");
+  const {
+    timeline_id,
+    instance_id,
+    instance_colour_id,
+    name,
+    description,
+    image,
+    month,
+    day,
+  } = instanceData;
+  const stringQuery = `
+    UPDATE instances 
+    SET name = $1, description = $2, month = $3, day = $4, image = $5 
+    WHERE id = $6
+  `;
+  return db
+    .query(stringQuery, [name, description, month, day, image, instance_id])
+    .then((data) => getInstanceByName(name))
+    .catch((err) => err.message);
+};
+
 //----------------------------------------
 
 const getColoursForInstances = (id) => {
@@ -141,4 +164,5 @@ module.exports = {
   getInstanceByName,
   createTimeline,
   getTimelineByNameForUser,
+  editInstance,
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useVisualMode from "../../hooks/useVisualMode"
+import useVisualMode from "../../hooks/useVisualMode";
 
 const InstanceCard = function (props) {
   let selectedInstance = localStorage.getItem("selectedInstance");
@@ -8,6 +8,7 @@ const InstanceCard = function (props) {
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const EDIT = "EDIT";
+  console.log("THIS IS THE SELECTED INSTANCE", selectedInstance);
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -29,7 +30,9 @@ const InstanceCard = function (props) {
           <span>{selectedInstance.description}</span>
         </div>
         <div className="button">
-          <button className="btn btn-secondary">Edit</button>
+          <Link to="/editinstance">
+            <button className="btn btn-secondary">Edit</button>
+          </Link>
           <button className="btn btn-danger">Delete</button>
         </div>
       </div>

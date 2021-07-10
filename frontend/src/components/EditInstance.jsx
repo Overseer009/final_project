@@ -1,22 +1,30 @@
 import React, { useState } from "react";
-import "./AddInstance.css";
 
-const AddInstance = function (props) {
+const EditInstance = function (props) {
   let currentTimeline = localStorage.getItem("currentTimeline");
   currentTimeline = JSON.parse(currentTimeline);
+  console.log(props);
+  const {
+    day,
+    description,
+    id,
+    image,
+    instance_colour_id,
+    month,
+    name,
+    timeline_id,
+  } = props.instanceData;
 
   const [date, setDate] = useState();
-  const [name, setName] = useState();
-  const [description, setDescription] = useState();
-  const [url, setUrl] = useState();
-  const [newInstance, setInstance] = useState({
-    timeline_id: currentTimeline.id,
-    instance_colour_id: 1,
-    name: "",
-    description: "",
-    image: "",
-    month: "",
-    day: null,
+  const [instance, setInstance] = useState({
+    timeline_id: currentTimeline.timeline_id,
+    instance_id: id,
+    instance_colour_id: instance_colour_id,
+    name: name,
+    description: description,
+    image: image,
+    month: month,
+    day: day,
   });
 
   const monthNames = [
@@ -42,10 +50,10 @@ const AddInstance = function (props) {
           <input
             type="text"
             id="name"
-            value={name}
+            value={instance.name}
             onChange={(event) =>
               setInstance({
-                ...newInstance,
+                ...instance,
                 name: event.target.value,
               })
             }
@@ -54,10 +62,10 @@ const AddInstance = function (props) {
           <input
             type="text"
             id="description"
-            value={description}
+            value={instance.description}
             onChange={(event) =>
               setInstance({
-                ...newInstance,
+                ...instance,
                 description: event.target.value,
               })
             }
@@ -66,27 +74,26 @@ const AddInstance = function (props) {
           <input
             type="url"
             id="url"
-            value={url}
+            value={instance.url}
             onChange={(event) =>
               setInstance({
-                ...newInstance,
+                ...instance,
                 image: event.target.value,
               })
             }
           ></input>
-          <label for="start">Start date:</label>
+          <label>Start date:</label>
 
           <input
             type="date"
             id="date-picker"
             value={date}
             onChange={(event) => {
-              console.log(event.target.value);
               const dateNum = new Date(event.target.value);
               const monthString = monthNames[dateNum.getMonth()];
               const dayNum = dateNum.getUTCDate();
               setInstance({
-                ...newInstance,
+                ...instance,
                 month: monthString,
                 day: dayNum,
               });
@@ -94,7 +101,7 @@ const AddInstance = function (props) {
             min={`2021-${currentTimeline.start_month}-01`}
             max={`2021-${currentTimeline.end_month}-31`}
           ></input>
-          <button onClick={() => props.createInstance(newInstance)}>
+          <button onClick={() => props.editInstance(instance)}>
             Save Instance
           </button>
         </form>
@@ -105,4 +112,4 @@ const AddInstance = function (props) {
   );
 };
 
-export default AddInstance;
+export default EditInstance;

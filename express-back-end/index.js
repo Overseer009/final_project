@@ -17,6 +17,7 @@ const {
   createInstance,
   createTimeline,
   getTimelineByNameForUser,
+  editInstance,
 } = require("./lib/dbHelpers");
 
 //Express Configuration
@@ -90,6 +91,14 @@ app.post("/api/instances/new", (req, res) => {
   createInstance(req.body)
     .then((newInstance) => {
       res.status(200).json(newInstance);
+    })
+    .catch((err) => err.message);
+});
+
+app.post("/api/instances/edit", (req, res) => {
+  editInstance(req.body)
+    .then((updatedInstance) => {
+      res.status(200).json(updatedInstance);
     })
     .catch((err) => err.message);
 });

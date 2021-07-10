@@ -7,7 +7,6 @@ const description =
 
 const TimelineItem = function (props) {
   let history = useHistory();
-  console.log(props);
   return (
     <div className="timeline-item">
       <div className="timeline-item-content">
