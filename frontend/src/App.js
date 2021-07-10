@@ -33,6 +33,13 @@ function App() {
     history,
     currentUser,
     editInstance,
+    prependZero,
+    getMonthFromString,
+    formatDay,
+    deleteInstance,
+    deleteTimeline,
+    myTimelines,
+    setMyTimelines,
   } = useApplicationData();
 
   return (
@@ -62,7 +69,13 @@ function App() {
             ;
             {currentUser ? (
               <Route exact path="/mytimelines">
-                <MyTimelines setCurrentTimeline={setCurrentTimeline} />
+                <MyTimelines
+                  myTimelines={myTimelines}
+                  setMyTimelines={setMyTimelines}
+                  getUserTimelines={getUserTimelines}
+                  deleteTimeline={deleteTimeline}
+                  setCurrentTimeline={setCurrentTimeline}
+                />
                 <Nav
                   user_id={true}
                   logout={logout}
@@ -103,7 +116,7 @@ function App() {
                 logout={logout}
                 getUserTimelines={getUserTimelines}
               />
-              <InstanceCard />
+              <InstanceCard deleteInstance={deleteInstance} />
             </Route>
             <Route path="/addinstance">
               <Nav
@@ -111,10 +124,19 @@ function App() {
                 logout={logout}
                 getUserTimelines={getUserTimelines}
               />
-              <AddInstance createInstance={createInstance} />
+              <AddInstance
+                createInstance={createInstance}
+                prependZero={prependZero}
+                getMonthFromString={getMonthFromString}
+              />
             </Route>
             <Route path="/editinstance">
-              <EditInstance editInstance={editInstance} />
+              <EditInstance
+                editInstance={editInstance}
+                prependZero={prependZero}
+                getMonthFromString={getMonthFromString}
+                formatDay={formatDay}
+              />
             </Route>
           </Switch>
         </Router>
@@ -124,3 +146,4 @@ function App() {
 }
 
 export default App;
+  

@@ -30,7 +30,6 @@ const TimelineItem = function (props) {
                         <span
                           onClick={() => handleClick(element)}
                           key={element.name}
-                          to="/instancecard"
                         >
                           {element.name}
                         </span>

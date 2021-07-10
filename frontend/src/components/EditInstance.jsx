@@ -19,7 +19,15 @@ const EditInstance = function (props) {
     timeline_id,
   } = selectedInstance;
 
-  const [date, setDate] = useState();
+  const currentMonthAsNumber = props.getMonthFromString(selectedInstance.month);
+
+  const formattedMonth = props.prependZero(currentMonthAsNumber);
+
+  const formattedDay = props.formatDay(selectedInstance.day);
+  console.log(formattedDay);
+
+  const [date, setDate] = useState(`2021-${formattedMonth}-${formattedDay}`);
+  console.log(date);
   const [instance, setInstance] = useState({
     timeline_id: currentTimeline.timeline_id,
     instance_id: id,
@@ -101,6 +109,7 @@ const EditInstance = function (props) {
               const dateNum = new Date(event.target.value);
               const monthString = monthNames[dateNum.getMonth()];
               const dayNum = dateNum.getUTCDate();
+              setDate(event.target.value);
               setInstance({
                 ...instance,
                 month: monthString,
@@ -112,8 +121,9 @@ const EditInstance = function (props) {
           ></input>
           <button onClick={() => handleClick(instance)}>Save Instance</button>
         </form>
-
-        <div className="eventList">add a bunch of information in here</div>
+        <button className="back-button" onClick={history.goBack}>
+          Back(maybe somesort of icon)
+        </button>
       </div>
     </div>
   );

@@ -1,29 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useVisualMode from "../../hooks/useVisualMode";
+import { useHistory } from "react-router-dom";
 
 const InstanceCard = function (props) {
   let selectedInstance = localStorage.getItem("selectedInstance");
   selectedInstance = JSON.parse(selectedInstance);
-  const EMPTY = "EMPTY";
-  const SHOW = "SHOW";
-  const EDIT = "EDIT";
   console.log("THIS IS THE SELECTED INSTANCE", selectedInstance);
+  let history = useHistory();
 
-  const { mode, transition, back } = useVisualMode(
-    props.interview ? SHOW : EMPTY
-  );
+  const handleClick = (id) => {
+    console.log("inside handleClick", id);
+    props.deleteInstance(id);
+    history.push("/timeline");
+  };
 
   return (
     <section className="card">
       <div className="content">
         <div className="instDisplays">
           <span id="image">
-            <img src="https://unsplash.com/photos/sQoIRY84a2E" />
+            {/* <img src="https://unsplash.com/photos/sQoIRY84a2E" /> */}
           </span>
           <div className="info">
             <span id="title">{selectedInstance.name}</span>
-            <span id="instDates">{selectedInstance.month} 14th</span>
+            <span id="instDates">
+              {selectedInstance.month} {selectedInstance.day}
+            </span>
           </div>
         </div>
         <div className="instDescription">
@@ -33,7 +35,12 @@ const InstanceCard = function (props) {
           <Link to="/editinstance">
             <button className="btn btn-secondary">Edit</button>
           </Link>
-          <button className="btn btn-danger">Delete</button>
+          <button
+            onClick={() => handleClick(selectedInstance.id)}
+            className="btn btn-danger"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </section>

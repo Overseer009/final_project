@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const request = require("request");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const PORT = 3002;
 
@@ -23,6 +24,7 @@ const {
 } = require("./lib/dbHelpers");
 
 //Express Configuration
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
@@ -84,8 +86,12 @@ app.post("/api/timelines", (req, res) => {
 });
 
 app.post("/api/timelines/delete", (req, res) => {
+  console.log("index post /timelines/delete", req.body);
   deleteTimeline(req.body.id)
-    .then(res.status(200))
+    .then(() => {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.status(200);
+    })
     .catch((err) => err.message);
 });
 

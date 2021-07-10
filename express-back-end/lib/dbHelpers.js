@@ -71,12 +71,12 @@ const createTimeline = (timeline) => {
     .catch((err) => err.message);
 };
 
-const deleteTimeline = (timeline) => {
+const deleteTimeline = (timelineId) => {
   const stringQuery = `
   DELETE FROM timelines WHERE id = $1;
   `;
   return db
-    .query(stringQuery, [timeline])
+    .query(stringQuery, [timelineId])
     .then((data) => data.rows)
     .catch((err) => err.message);
 };
@@ -129,15 +129,17 @@ const createInstance = (newInstance) => {
     .catch((err) => err.message);
 };
 
-const deleteInstance = (instance) => {
+const deleteInstance = (instanceId) => {
+  console.log(instanceId);
   const stringQuery = `
     DELETE FROM instances WHERE id = $1;
   `;
   return db
-    .query(stringQuery, [instance])
+    .query(stringQuery, [instanceId])
     .then((data) => data.rows)
     .catch((err) => err.message);
 };
+
 const editInstance = (instanceData) => {
   console.log("inside dbHelpers");
   const {

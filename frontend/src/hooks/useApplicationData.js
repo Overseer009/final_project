@@ -18,6 +18,7 @@ const useApplicationData = () => {
 
   const getUserTimelines = (user) => {
     axios.get(`/api/timelines${user.id}`).then((res) => {
+      console.log(res.data);
       setMyTimelines(res.data);
       localStorage.setItem("userTimelines", JSON.stringify(res.data));
       history.push("/mytimelines");
@@ -56,7 +57,7 @@ const useApplicationData = () => {
     axios.post("/api/instances/new", instanceData).then((res) => {
       console.log("Inside new Instance POST request -------- ", res.data);
 
-      history.push("/timelines/new");
+      history.push("/timeline");
     });
   };
 
@@ -71,6 +72,17 @@ const useApplicationData = () => {
       .post("/api/instances/edit", instanceData)
       .then((res) => {
         return res.data;
+      })
+      .catch((err) => err.message);
+  };
+
+  const deleteInstance = (instanceId) => {
+    console.log("inside deleteInstance", instanceId);
+    const reqPackage = { id: instanceId };
+    axios
+      .post("/api/instances/delete", reqPackage)
+      .then((res) => {
+        return res.rows;
       })
       .catch((err) => err.message);
   };
@@ -94,6 +106,38 @@ const useApplicationData = () => {
       .catch((err) => console.log("nothing here---------->", err));
   };
 
+  function prependZero(month) {
+    if (month < 10) {
+      return `0${month}`;
+    } else {
+      return month;
+    }
+  }
+
+  function getMonthFromString(mon) {
+    return new Date(Date.parse(mon + " 1, 2012")).getMonth() + 1;
+  }
+
+  const formatDay = (day) => {
+    if (day < 10) {
+      day = "0" + day;
+      return day;
+    }
+  };
+  const deleteTimeline = (timelineId) => {
+    console.log("inside deleteTimeline", timelineId);
+    const reqPackage = {
+      id: timelineId,
+    };
+    axios
+      .post("http://localhost:3002/api/timelines/delete", reqPackage)
+      .then((res) => {
+        const newTimeID = myTimelines.filter((t) => t.id !== timelineId);
+        setMyTimelines(newTimeID);
+      })
+      .catch((err) => err.message);
+  };
+
   return {
     getUserTimelines,
     registerUser,
@@ -104,10 +148,16 @@ const useApplicationData = () => {
     setCurrentTimeline,
     currentTimeline,
     myTimelines,
+    setMyTimelines,
     history,
     currentUser,
     getInstances,
     editInstance,
+    prependZero,
+    getMonthFromString,
+    formatDay,
+    deleteInstance,
+    deleteTimeline,
   };
 };
 
