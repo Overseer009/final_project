@@ -34,6 +34,9 @@ function App() {
     currentUser,
     editInstance,
     deleteInstance,
+    deleteTimeline,
+    myTimelines,
+    setMyTimelines,
   } = useApplicationData();
 
   return (
@@ -63,7 +66,13 @@ function App() {
           ;
           {currentUser ? (
             <Route exact path="/mytimelines">
-              <MyTimelines setCurrentTimeline={setCurrentTimeline} />
+              <MyTimelines
+                myTimelines={myTimelines}
+                setMyTimelines={setMyTimelines}
+                getUserTimelines={getUserTimelines}
+                deleteTimeline={deleteTimeline}
+                setCurrentTimeline={setCurrentTimeline}
+              />
               <Nav
                 user_id={true}
                 logout={logout}
