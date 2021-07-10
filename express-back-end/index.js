@@ -105,6 +105,7 @@ app.post("/api/instances/new", (req, res) => {
 });
 
 app.post("/api/instances/delete", (req, res) => {
+  console.log("index post delete", req.body);
   deleteInstance(req.body.id)
     .then(res.status(200))
     .catch((err) => err.message);
