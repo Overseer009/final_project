@@ -13,6 +13,8 @@ import Timeline from "./components/Timeline";
 import TimelineItem from "./components/TimelineItem";
 import MyTimelines from "./components/MyTimelines";
 import Home from "./components/Home";
+import AddInstance from "./components/AddInstance";
+import EditInstance from "./components/EditInstance";
 
 //Hooks
 import useApplicationData from "./hooks/useApplicationData";
@@ -30,6 +32,7 @@ function App() {
     localCurrentTimeline,
     history,
     currentUser,
+    editInstance,
   } = useApplicationData();
 
   return (
@@ -101,6 +104,17 @@ function App() {
               getUserTimelines={getUserTimelines}
             />
             <InstanceCard />
+          </Route>
+          <Route path="/addinstance">
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
+            <AddInstance createInstance={createInstance} />
+          </Route>
+          <Route path="/editinstance">
+            <EditInstance editInstance={editInstance} />
           </Route>
         </Switch>
       </Router>

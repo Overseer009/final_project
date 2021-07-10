@@ -1,12 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Timeline.css";
 
 const description =
   "This is a very big description to take up a bit more space than just a single word can.";
 
 const TimelineItem = function (props) {
-  console.log(props);
+  let history = useHistory();
+
+  const handleClick = () => {
+    history.push("/addinstance");
+    localStorage.setItem("currentMonth", JSON.stringify(props.month));
+  };
   return (
     <div className="timeline-item">
       <div className="timeline-item-content">
@@ -24,9 +29,13 @@ const TimelineItem = function (props) {
                 );
                 return (
                   <li>
-                    <Link key={element.name} to="/instancecard">
+                    <span
+                      onClick={() => handleClick(element)}
+                      key={element.name}
+                      to="/instancecard"
+                    >
                       {element.name}
-                    </Link>
+                    </span>
                   </li>
                 );
               }
@@ -34,7 +43,7 @@ const TimelineItem = function (props) {
           </ul>
         </div>
 
-        <button>PLUS event</button>
+        <button onClick={handleClick}>Add Instance</button>
 
         {/* <a>Link</a> */}
         <span className="circle"></span>

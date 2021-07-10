@@ -19,6 +19,7 @@ const {
   getTimelineByNameForUser,
   deleteTimeline,
   deleteInstance,
+  editInstance,
 } = require("./lib/dbHelpers");
 
 //Express Configuration
@@ -106,6 +107,14 @@ app.post("/api/instances/new", (req, res) => {
 app.post("/api/instances/delete", (req, res) => {
   deleteInstance(req.body.id)
     .then(res.status(200))
+    .catch((err) => err.message);
+});
+
+app.post("/api/instances/edit", (req, res) => {
+  editInstance(req.body)
+    .then((updatedInstance) => {
+      res.status(200).json(updatedInstance);
+    })
     .catch((err) => err.message);
 });
 
