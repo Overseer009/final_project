@@ -23,7 +23,9 @@ const InstanceCard = function (props) {
           </span>
           <div className="info">
             <span id="title">{selectedInstance.name}</span>
-            <span id="instDates">{selectedInstance.month} 14th</span>
+            <span id="instDates">
+              {selectedInstance.month} {selectedInstance.day}
+            </span>
           </div>
         </div>
         <div className="instDescription">

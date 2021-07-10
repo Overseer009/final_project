@@ -33,6 +33,9 @@ function App() {
     history,
     currentUser,
     editInstance,
+    prependZero,
+    getMonthFromString,
+    formatDay,
   } = useApplicationData();
 
   return (
@@ -111,10 +114,19 @@ function App() {
               logout={logout}
               getUserTimelines={getUserTimelines}
             />
-            <AddInstance createInstance={createInstance} />
+            <AddInstance
+              createInstance={createInstance}
+              prependZero={prependZero}
+              getMonthFromString={getMonthFromString}
+            />
           </Route>
           <Route path="/editinstance">
-            <EditInstance editInstance={editInstance} />
+            <EditInstance
+              editInstance={editInstance}
+              prependZero={prependZero}
+              getMonthFromString={getMonthFromString}
+              formatDay={formatDay}
+            />
           </Route>
         </Switch>
       </Router>

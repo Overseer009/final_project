@@ -8,6 +8,9 @@ const Nav = function (props) {
   currentUser = JSON.parse(currentUser);
   // console.log(currentUser.id)
 
+  let currentTimeline = localStorage.getItem("currentTimeline");
+  currentTimeline = JSON.parse(currentTimeline);
+
   const noUser = (
     <div className="navbar-nav">
       <Link className="nav-item nav-link" to="/login">
@@ -41,6 +44,17 @@ const Nav = function (props) {
       >
         MY TIMELINES
       </div>
+
+      {!currentTimeline ? (
+        <div></div>
+      ) : (
+        <div>
+          <span className="nav-item nav-link">Current Timeline</span>
+          <Link className="nav-item nav-link" to="/timeline">
+            {currentTimeline.name}
+          </Link>
+        </div>
+      )}
     </div>
   );
 

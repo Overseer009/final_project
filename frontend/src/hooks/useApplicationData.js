@@ -94,6 +94,25 @@ const useApplicationData = () => {
       .catch((err) => console.log("nothing here---------->", err));
   };
 
+  function prependZero(month) {
+    if (month < 10) {
+      return `0${month}`;
+    } else {
+      return month;
+    }
+  }
+
+  function getMonthFromString(mon) {
+    return new Date(Date.parse(mon + " 1, 2012")).getMonth() + 1;
+  }
+
+  const formatDay = (day) => {
+    if (day < 10) {
+      day = "0" + day;
+      return day;
+    }
+  };
+
   return {
     getUserTimelines,
     registerUser,
@@ -108,6 +127,9 @@ const useApplicationData = () => {
     currentUser,
     getInstances,
     editInstance,
+    prependZero,
+    getMonthFromString,
+    formatDay,
   };
 };
 

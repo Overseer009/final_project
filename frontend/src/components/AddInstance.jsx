@@ -8,25 +8,12 @@ const AddInstance = function (props) {
   let currentMonth = localStorage.getItem("currentMonth");
   currentMonth = JSON.parse(currentMonth);
 
-  function getMonthFromString(mon) {
-    return new Date(Date.parse(mon + " 1, 2012")).getMonth() + 1;
-  }
+  const currentMonthAsNumber = props.getMonthFromString(currentMonth);
 
-  const currentMonthAsNumber = getMonthFromString(currentMonth);
-  function prependZero(month) {
-    if (month < 10) {
-      return `0${month}`;
-    } else {
-      return month;
-    }
-  }
-  const formattedMonth = prependZero(currentMonthAsNumber);
+  const formattedMonth = props.prependZero(currentMonthAsNumber);
   const startDate = `2021-${formattedMonth}-01`;
 
   const [date, setDate] = useState(startDate);
-  const [name, setName] = useState();
-  const [description, setDescription] = useState();
-  const [url, setUrl] = useState();
   const [newInstance, setInstance] = useState({
     timeline_id: currentTimeline.id,
     instance_colour_id: 1,
