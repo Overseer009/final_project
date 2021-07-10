@@ -20,8 +20,8 @@ const AddInstance = function (props) {
     name: "",
     description: "",
     image: "",
-    month: "",
-    day: null,
+    month: currentMonth,
+    day: 1,
   });
 
   const monthNames = [
