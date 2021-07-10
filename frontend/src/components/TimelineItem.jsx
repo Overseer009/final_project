@@ -13,9 +13,9 @@ const TimelineItem = function (props) {
     localStorage.setItem("currentMonth", JSON.stringify(props.month));
   };
 
-  const handleClick = () => {
+  const handleClick = (element) => {
     history.push("/instancecard");
-    localStorage.setItem("currentMonth", JSON.stringify(props.month));
+    localStorage.setItem("selectedInstance", JSON.stringify(element));
   };
   return (
     <div className="timeline-item">
@@ -28,16 +28,11 @@ const TimelineItem = function (props) {
           <ul>
             {props.currentIn.map((element) => {
               if (element.month === props.month) {
-                localStorage.setItem(
-                  "selectedInstance",
-                  JSON.stringify(element)
-                );
                 return (
                   <li>
                     <span
                       onClick={() => handleClick(element)}
                       key={element.name}
-                      to="/instancecard"
                     >
                       {element.name}
                     </span>

@@ -75,6 +75,17 @@ const useApplicationData = () => {
       .catch((err) => err.message);
   };
 
+  const deleteInstance = (instanceId) => {
+    console.log("inside deleteInstance", instanceId);
+    const reqPackage = { id: instanceId };
+    axios
+      .post("/api/instances/delete", reqPackage)
+      .then((res) => {
+        return res.rows;
+      })
+      .catch((err) => err.message);
+  };
+
   const timelineData = (timelineObj) => {
     axios
       .post("/api/timelines", timelineObj)
@@ -108,6 +119,7 @@ const useApplicationData = () => {
     currentUser,
     getInstances,
     editInstance,
+    deleteInstance,
   };
 };
 

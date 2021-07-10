@@ -103,6 +103,7 @@ const AddInstance = function (props) {
               const dateNum = new Date(event.target.value);
               const monthString = monthNames[dateNum.getMonth()];
               const dayNum = dateNum.getUTCDate();
+              setDate(event.target.value);
               setInstance({
                 ...newInstance,
                 month: monthString,
