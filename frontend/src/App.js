@@ -33,6 +33,7 @@ function App() {
     history,
     currentUser,
     editInstance,
+    deleteInstance,
   } = useApplicationData();
 
   return (
@@ -103,7 +104,7 @@ function App() {
               logout={logout}
               getUserTimelines={getUserTimelines}
             />
-            <InstanceCard />
+            <InstanceCard deleteInstance={deleteInstance} />
           </Route>
           <Route path="/addinstance">
             <Nav
