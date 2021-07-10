@@ -34,9 +34,6 @@ function App() {
     editInstance,
   } = useApplicationData();
 
-  let selectedInstance = localStorage.getItem("selectedInstance");
-  selectedInstance = JSON.parse(selectedInstance);
-
   return (
     <main className="App">
       <Router history={history}>
@@ -107,10 +104,7 @@ function App() {
             <AddInstance createInstance={createInstance} />
           </Route>
           <Route path="/editinstance">
-            <EditInstance
-              instanceData={selectedInstance}
-              editInstance={editInstance}
-            />
+            <EditInstance editInstance={editInstance} />
           </Route>
         </Switch>
       </Router>

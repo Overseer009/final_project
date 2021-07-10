@@ -7,6 +7,12 @@ const description =
 
 const TimelineItem = function (props) {
   let history = useHistory();
+
+  const handleClick = (element) => {
+    localStorage.setItem("selectedInstance", JSON.stringify(element));
+    history.push("/instancecard");
+  };
+
   return (
     <div className="timeline-item">
       <div className="timeline-item-content">
@@ -24,9 +30,13 @@ const TimelineItem = function (props) {
                 );
                 return (
                   <li>
-                    <Link key={element.name} to="/instancecard">
+                    <span
+                      onClick={() => handleClick(element)}
+                      key={element.name}
+                      to="/instancecard"
+                    >
                       {element.name}
-                    </Link>
+                    </span>
                   </li>
                 );
               }

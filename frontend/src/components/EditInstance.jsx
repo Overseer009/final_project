@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const EditInstance = function (props) {
   let currentTimeline = localStorage.getItem("currentTimeline");
   currentTimeline = JSON.parse(currentTimeline);
-  console.log(props);
+  let history = useHistory();
+
+  let selectedInstance = localStorage.getItem("selectedInstance");
+  selectedInstance = JSON.parse(selectedInstance);
   const {
     day,
     description,
@@ -13,7 +17,7 @@ const EditInstance = function (props) {
     month,
     name,
     timeline_id,
-  } = props.instanceData;
+  } = selectedInstance;
 
   const [date, setDate] = useState();
   const [instance, setInstance] = useState({
@@ -26,6 +30,11 @@ const EditInstance = function (props) {
     month: month,
     day: day,
   });
+
+  const handleClick = (instance) => {
+    props.editInstance(instance);
+    history.push("/timeline");
+  };
 
   const monthNames = [
     "January",
@@ -45,7 +54,7 @@ const EditInstance = function (props) {
     <div className="timeline-item">
       <div className="timeline-item-content">
         <span className="tag" style={{ background: "#018f69" }}></span>
-        <form className="addInstance">
+        <form onSubmit={(e) => e.preventDefault()} className="addInstance">
           <label className="name">Name</label>
           <input
             type="text"
@@ -101,9 +110,7 @@ const EditInstance = function (props) {
             min={`2021-${currentTimeline.start_month}-01`}
             max={`2021-${currentTimeline.end_month}-31`}
           ></input>
-          <button onClick={() => props.editInstance(instance)}>
-            Save Instance
-          </button>
+          <button onClick={() => handleClick(instance)}>Save Instance</button>
         </form>
 
         <div className="eventList">add a bunch of information in here</div>
