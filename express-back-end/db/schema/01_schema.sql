@@ -41,7 +41,7 @@ GRANT SELECT ON instance_colours TO PUBLIC;
 GRANT SELECT ON instances TO PUBLIC;
 GRANT DELETE ON ALL TABLES IN SCHEMA public TO PUBLIC;
 
-GRANT ALL ON users_id_seq to markwhite
-GRANT ALL ON timelines_id_seq to markwhite;
-GRANT ALL ON instance_colours_id_seq to markwhite;
-GRANT ALL ON instances_id_seq to markwhite;
+GRANT ALL ON users_id_seq to development;
+GRANT ALL ON timelines_id_seq to development;
+GRANT ALL ON instance_colours_id_seq to development;
+GRANT ALL ON instances_id_seq to development;
