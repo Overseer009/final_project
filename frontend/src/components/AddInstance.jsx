@@ -13,8 +13,15 @@ const AddInstance = function (props) {
   }
 
   const currentMonthAsNumber = getMonthFromString(currentMonth);
-
-  const startDate = `2021-0${currentMonthAsNumber}-01`;
+  function prependZero(month) {
+    if (month < 10) {
+      return `0${month}`;
+    } else {
+      return month;
+    }
+  }
+  const formattedMonth = prependZero(currentMonthAsNumber);
+  const startDate = `2021-${formattedMonth}-01`;
 
   const [date, setDate] = useState(startDate);
   const [name, setName] = useState();
@@ -85,7 +92,7 @@ const AddInstance = function (props) {
               })
             }
           ></input>
-          <label for="start">Date:</label>
+          <label>Date:</label>
 
           <input
             type="date"
