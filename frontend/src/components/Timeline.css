@@ -8,9 +8,8 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
+  width: 100%;
   min-height: 100vh;
-  margin: 0;
 }
 
 #root {
@@ -18,15 +17,14 @@ body {
 }
 
 .timeline-container {
-  background-color: #fff1ff;
   display: flex;
   flex-direction: column;
   position: relative;
-  margin: 40px;
+  margin-top: 83px;
 }
 
 .timeline-container::after {
-  background-color: goldenrod;
+  background-color: steelblue;
   content: " ";
   position: absolute;
   left: calc(50% - 2px);
@@ -50,22 +48,22 @@ body {
 }
 
 .timeline-item-content {
-  background-color: #fff;
+  background-color: #333;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   padding: 15px;
-  max-width: 70%;
-  width: 60%;
+  width: 500px;
   text-align: right;
   position: relative;
 }
 
+
 .timeline-item-content::after {
   content: " ";
-  background-color: #fff;
+  background-color: #333;
   box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
   position: absolute;
   transform: rotate(45deg);
@@ -88,6 +86,7 @@ body {
 
 .timeline-item-content .tag {
   color: #fff;
+  border-radius: 5px;
   font-size: 12px;
   font-weight: bold;
   padding: 5px;
@@ -96,6 +95,14 @@ body {
   top: 5px;
   left: 5px;
   text-transform: uppercase;
+}
+
+.list-items {
+  color: white;
+}
+
+.event-list {
+  margin-top: 30px;
 }
 
 .timeline-item:nth-child(odd) .timeline-item-content .tag {
@@ -122,8 +129,11 @@ body {
 }
 
 .timeline-item-content .circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #fff;
-  border: 3px solid goldenrod;
+  border: 3px solid steelblue;
   border-radius: 50%;
   position: absolute;
   top: calc(50% - 10px);
@@ -131,12 +141,29 @@ body {
   width: 20px;
   height: 20px;
   z-index: 100;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.circle:hover {
+  box-shadow: 0px 0px 10px steelblue;
+  transition: box-shadow 0.3s ease-in-out;
+  animation: none;
 }
 
 .timeline-item:nth-child(odd) .timeline-item-content .circle {
   right: auto;
   left: -40px;
 }
+
+.add-new-event {
+  border: none;
+  border-radius: 50%;
+  
+  color: white;
+  font-size: 25px;
+  animation: pulse 2s infinite;
+}
+
 
 @media screen and (min-width: 1600px) {
   .timeline-item:nth-child(even) .timeline-item-content {
@@ -153,5 +180,14 @@ body {
 @media screen and (min-width: 1920px) {
   .timeline-item:nth-child(even) .timeline-item-content {
     margin-left: 60%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 steelblue;
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
   }
 }

@@ -12,10 +12,10 @@ const Nav = function (props) {
   const noUser = (
     <div className="navbar-nav">
       <Link className="nav-item nav-link" to="/login">
-        Login
+        Sign In |
       </Link>
       <Link className="nav-item nav-link" to="/register">
-        Register
+        | Register
       </Link>
     </div>
   );
@@ -25,9 +25,9 @@ const Nav = function (props) {
       <a className="navbar-brand user-display">
         {currentUser ? `Welcome, ${currentUser.name}` : ""}
       </a>
-      <button className="nav-item nav-link" onClick={(event) => props.logout()}>
+      <span className="nav-item nav-link" onClick={(event) => props.logout()}>
         Log out
-      </button>
+      </span>
     </div>
   );
 
@@ -44,7 +44,7 @@ const Nav = function (props) {
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav">
-      <span style={{color: "white"}}>THE TIMELINE GANG</span>
+      <span className="nav-appName">Timeliner</span>
       {/* <a className="navbar-brand" href="/">
         
       </a> */}

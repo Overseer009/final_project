@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin+Sketch:wght@700&family=Marcellus+SC&family=Satisfy&display=swap');
+
+.App-Body {
+  background-color: rgba(70, 143, 70, 0.297)
+}
+
+
 /* .App {
-  text-align: center;
+  text-align: center; 
 }
 
 .App-logo {

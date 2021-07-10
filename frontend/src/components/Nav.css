@@ -1,6 +1,8 @@
-nav {
-  position: fixed;
-  top: 0;
+.nav-appName {
+  color: white;
+  padding-left: 15px;
+  font-family: "Marcellus SC", serif;
+  font-size: 45px;
 }
 
 #nav {
@@ -10,7 +12,6 @@ nav {
   right: 0;
   z-index: 9999;
   width: 100%; /* Full width */
-  overflow: hidden;
   background-color: #333;
 }
 
@@ -26,4 +27,9 @@ nav {
 
 .navbar .logo {
   text-decoration: none;
+}
+
+.collapse {
+  display: flex;
+  justify-content: space-evenly;
 }
