@@ -5,7 +5,6 @@ const AddInstance = function (props) {
   let currentTimeline = localStorage.getItem("currentTimeline");
   currentTimeline = JSON.parse(currentTimeline);
 
-  const [date, setDate] = useState();
   let currentMonth = localStorage.getItem("currentMonth");
   currentMonth = JSON.parse(currentMonth);
 
