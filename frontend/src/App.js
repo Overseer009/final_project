@@ -99,6 +99,11 @@ function App() {
             <InstanceCard />
           </Route>
           <Route path="/addinstance">
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
             <AddInstance createInstance={createInstance} />
           </Route>
         </Switch>

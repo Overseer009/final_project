@@ -7,7 +7,11 @@ const description =
 
 const TimelineItem = function (props) {
   let history = useHistory();
-  console.log(props);
+
+  const handleClick = () => {
+    history.push("/addinstance");
+    localStorage.setItem("currentMonth", JSON.stringify(props.month));
+  };
   return (
     <div className="timeline-item">
       <div className="timeline-item-content">
@@ -35,9 +39,7 @@ const TimelineItem = function (props) {
           </ul>
         </div>
 
-        <button onClick={() => history.push("/addinstance")}>
-          Add Instance
-        </button>
+        <button onClick={handleClick}>Add Instance</button>
 
         {/* <a>Link</a> */}
         <span className="circle"></span>

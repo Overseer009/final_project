@@ -5,9 +5,18 @@ const AddInstance = function (props) {
   let currentTimeline = localStorage.getItem("currentTimeline");
   currentTimeline = JSON.parse(currentTimeline);
 
-  console.log(currentTimeline);
+  let currentMonth = localStorage.getItem("currentMonth");
+  currentMonth = JSON.parse(currentMonth);
 
-  const [date, setDate] = useState();
+  function getMonthFromString(mon) {
+    return new Date(Date.parse(mon + " 1, 2012")).getMonth() + 1;
+  }
+
+  const currentMonthAsNumber = getMonthFromString(currentMonth);
+
+  const startDate = `2021-0${currentMonthAsNumber}-01`;
+
+  const [date, setDate] = useState(startDate);
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [url, setUrl] = useState();
@@ -35,17 +44,16 @@ const AddInstance = function (props) {
     "November",
     "December",
   ];
-  console.log(newInstance);
   return (
-    <div className="timeline-item">
-      <div className="timeline-item-content">
+    <div className="new-instance-item">
+      <div className="new-instance-item-content">
         <span className="tag" style={{ background: "#018f69" }}></span>
-        <form className="addInstance">
+        <form id="addInstance">
           <label className="name">Name</label>
           <input
             type="text"
             id="name"
-            value={name}
+            value={newInstance.name}
             onChange={(event) =>
               setInstance({
                 ...newInstance,
@@ -57,7 +65,7 @@ const AddInstance = function (props) {
           <input
             type="text"
             id="description"
-            value={description}
+            value={newInstance.description}
             onChange={(event) =>
               setInstance({
                 ...newInstance,
@@ -69,7 +77,7 @@ const AddInstance = function (props) {
           <input
             type="url"
             id="url"
-            value={url}
+            value={newInstance.url}
             onChange={(event) =>
               setInstance({
                 ...newInstance,
@@ -77,7 +85,7 @@ const AddInstance = function (props) {
               })
             }
           ></input>
-          <label for="start">Start date:</label>
+          <label for="start">Date:</label>
 
           <input
             type="date"
@@ -102,7 +110,7 @@ const AddInstance = function (props) {
           </button>
         </form>
 
-        <div className="eventList">add a bunch of information in here</div>
+        {/* <div className="eventList">add a bunch of information in here</div> */}
       </div>
     </div>
   );
