@@ -30,6 +30,7 @@ body {
   left: calc(50% - 2px);
   width: 4px;
   height: 100%;
+  margin-top: 0;
 }
 
 .timeline-item {
@@ -59,7 +60,6 @@ body {
   text-align: right;
   position: relative;
 }
-
 
 .timeline-item-content::after {
   content: " ";
@@ -129,7 +129,7 @@ body {
 }
 
 .tag {
-  font-family: 'Marcellus SC', serif;
+  font-family: "Marcellus SC", serif;
   align-items: center;
 }
 
@@ -169,6 +169,17 @@ body {
   padding-top: 5px;
 }
 
+.background-line {
+  background-color: steelblue;
+  content: " ";
+  position: absolute;
+  left: calc(50% - 2px);
+  width: 4px;
+  z-index: 0;
+  height: 100%;
+  margin-top: 0;
+  top: 0;
+}
 
 @media screen and (min-width: 1600px) {
   .timeline-item:nth-child(even) .timeline-item-content {

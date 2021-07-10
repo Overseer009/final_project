@@ -54,20 +54,22 @@ const Timeline = function (props) {
   }, []);
 
   return (
-    <div className="timeline-container">
-      <br></br>
-      <div></div>
-      {newTimeline.map((month) => {
-        return (
-          <TimelineItem
-            key={month}
-            month={month}
-            currentIn={currentInstances}
-            setSelectedInstance={props.setSelectedInstance}
-          />
-        );
-      })}
-    </div>
+    <>
+      <div className="background-line"></div>
+      <div className="timeline-container">
+        <br></br>
+        {newTimeline.map((month) => {
+          return (
+            <TimelineItem
+              key={month}
+              month={month}
+              currentIn={currentInstances}
+              setSelectedInstance={props.setSelectedInstance}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 };
 
