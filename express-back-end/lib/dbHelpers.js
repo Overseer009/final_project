@@ -71,12 +71,12 @@ const createTimeline = (timeline) => {
     .catch((err) => err.message);
 };
 
-const deleteTimeline = (timeline) => {
+const deleteTimeline = (timelineId) => {
   const stringQuery = `
   DELETE FROM timelines WHERE id = $1;
   `;
   return db
-    .query(stringQuery, [timeline])
+    .query(stringQuery, [timelineId])
     .then((data) => data.rows)
     .catch((err) => err.message);
 };

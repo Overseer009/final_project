@@ -18,6 +18,7 @@ const useApplicationData = () => {
 
   const getUserTimelines = (user) => {
     axios.get(`/api/timelines${user.id}`).then((res) => {
+      console.log(res.data);
       setMyTimelines(res.data);
       localStorage.setItem("userTimelines", JSON.stringify(res.data));
       history.push("/mytimelines");
@@ -123,6 +124,16 @@ const useApplicationData = () => {
       return day;
     }
   };
+  const deleteTimeline = (timelineId) => {
+    console.log("inside deleteTimeline", timelineId);
+    const reqPackage = {
+      id: timelineId,
+    };
+    axios
+      .post("/api/timelines/delete", reqPackage)
+      .then((res) => getUserTimelines(currentUser))
+      .catch((err) => err.message);
+  };
 
   return {
     getUserTimelines,
@@ -134,6 +145,7 @@ const useApplicationData = () => {
     setCurrentTimeline,
     currentTimeline,
     myTimelines,
+    setMyTimelines,
     history,
     currentUser,
     getInstances,
@@ -142,6 +154,7 @@ const useApplicationData = () => {
     getMonthFromString,
     formatDay,
     deleteInstance,
+    deleteTimeline,
   };
 };
 

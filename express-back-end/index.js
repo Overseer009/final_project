@@ -84,6 +84,7 @@ app.post("/api/timelines", (req, res) => {
 });
 
 app.post("/api/timelines/delete", (req, res) => {
+  console.log("index post /timelines/delete", req.body);
   deleteTimeline(req.body.id)
     .then(res.status(200))
     .catch((err) => err.message);
@@ -105,7 +106,6 @@ app.post("/api/instances/new", (req, res) => {
 });
 
 app.post("/api/instances/delete", (req, res) => {
-  console.log("index post delete", req.body);
   deleteInstance(req.body.id)
     .then(res.status(200))
     .catch((err) => err.message);
