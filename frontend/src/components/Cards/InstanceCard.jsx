@@ -19,7 +19,7 @@ const InstanceCard = function (props) {
       <div className="content">
         <div className="instDisplays">
           <span id="image">
-            {/* <img src="https://unsplash.com/photos/sQoIRY84a2E" /> */}
+            <img className="instanceImage" src={selectedInstance.image} />
           </span>
           <div className="info">
             <span id="title">{selectedInstance.name}</span>

@@ -17,7 +17,7 @@
 .time-card:hover {
   border-radius: 25px;
   box-shadow: 2px 2px 30px black;
-  transition: box-shadow 0.3s ease-in-out
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .title {
@@ -28,7 +28,7 @@
 }
 
 #title {
-  font-family: 'Marcellus SC', serif;
+  font-family: "Marcellus SC", serif;
   font-size: 30px;
 }
 
@@ -67,7 +67,7 @@
   flex-direction: column;
   align-items: center;
   color: white;
-  width: 45%
+  width: 45%;
 }
 
 .months {
@@ -88,11 +88,20 @@
 }
 
 @keyframes fade {
-  0% { opacity: 0 }
-  50% { opacity: 1 }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /* --------Instance Card-------- */
+
+.instanceImage {
+  max-height: 100px;
+  max-width: 100px;
+}
 
 /* .instDisplays {
   display: flex;
