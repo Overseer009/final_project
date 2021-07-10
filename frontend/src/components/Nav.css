@@ -1,6 +1,14 @@
-nav {
-  position: fixed;
-  top: 0;
+.nav-appName {
+  color: white;
+  padding-left: 15px;
+  font-family: "Marcellus SC", serif;
+  font-size: 45px;
+  user-select: none;
+}
+
+.nav-appName:hover {
+  cursor: default;
+  
 }
 
 #nav {
@@ -10,13 +18,13 @@ nav {
   right: 0;
   z-index: 9999;
   width: 100%; /* Full width */
-  overflow: hidden;
   background-color: #333;
 }
 
 .navbar-brand {
   margin-left: 0.5em;
   margin-right: 0.5em;
+  user-select: none;
 }
 
 .navbar-nav {
@@ -26,6 +34,19 @@ nav {
 
 .navbar .logo {
   text-decoration: none;
+}
+
+.nav-item{
+  user-select: none;
+}
+
+.nav-item:hover {
+  cursor: pointer;
+}
+
+.collapse {
+  display: flex;
+  justify-content: center;
 }
 
 .home {

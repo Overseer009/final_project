@@ -37,102 +37,113 @@ function App() {
     getMonthFromString,
     formatDay,
     deleteInstance,
+    deleteTimeline,
+    myTimelines,
+    setMyTimelines,
   } = useApplicationData();
 
   return (
-    <main className="App">
-      <Router history={history}>
-        <Switch>
-          <Route exact path="/">
-            <Nav logout={logout} getUserTimelines={getUserTimelines} />
-            <Home />
-          </Route>
-          {currentUser ? (
-            <Route path="/timeline">
-              <Timeline
-                getInstances={getInstances}
-                currentTimeline={localCurrentTimeline}
-              />
-
+    <body className="App-Body">
+      <main className="App">
+        <Router history={history}>
+          <Switch>
+            <Route exact path="/">
+              <Nav logout={logout} getUserTimelines={getUserTimelines} />
+              <Home />
+            </Route>
+            {currentUser ? (
+              <Route path="/timeline">
+                <Timeline
+                  getInstances={getInstances}
+                  currentTimeline={localCurrentTimeline}
+                />
+                <Nav
+                  user_id={true}
+                  logout={logout}
+                  getUserTimelines={getUserTimelines}
+                />
+              </Route>
+            ) : (
+              history.push("/login")
+            )}
+            ;
+            {currentUser ? (
+              <Route exact path="/mytimelines">
+                <MyTimelines
+                  myTimelines={myTimelines}
+                  setMyTimelines={setMyTimelines}
+                  getUserTimelines={getUserTimelines}
+                  deleteTimeline={deleteTimeline}
+                  setCurrentTimeline={setCurrentTimeline}
+                />
+                <Nav
+                  user_id={true}
+                  logout={logout}
+                  getUserTimelines={getUserTimelines}
+                />
+              </Route>
+            ) : (
+              history.push("/login")
+            )}
+            ;
+            <Route path="/timelines/new">
+              <TimelineCard timelineData={timelineData} />
               <Nav
                 user_id={true}
                 logout={logout}
                 getUserTimelines={getUserTimelines}
               />
             </Route>
-          ) : (
-            history.push("/login")
-          )}
-          ;
-          {currentUser ? (
-            <Route exact path="/mytimelines">
-              <MyTimelines setCurrentTimeline={setCurrentTimeline} />
+            <Route exact path="/login">
+              <Login loginUser={loginUser} />
               <Nav
                 user_id={true}
                 logout={logout}
                 getUserTimelines={getUserTimelines}
               />
             </Route>
-          ) : (
-            history.push("/login")
-          )}
-          ;
-          <Route path="/timelines/new">
-            <TimelineCard timelineData={timelineData} />
-            <Nav
-              user_id={true}
-              logout={logout}
-              getUserTimelines={getUserTimelines}
-            />
-          </Route>
-          <Route exact path="/login">
-            <Login loginUser={loginUser} />
-            <Nav
-              user_id={true}
-              logout={logout}
-              getUserTimelines={getUserTimelines}
-            />
-          </Route>
-          <Route path="/register">
-            <Register registerUser={registerUser} />
-            <Nav
-              user_id={true}
-              logout={logout}
-              getUserTimelines={getUserTimelines}
-            />
-          </Route>
-          <Route path="/instancecard">
-            <Nav
-              user_id={true}
-              logout={logout}
-              getUserTimelines={getUserTimelines}
-            />
-            <InstanceCard deleteInstance={deleteInstance} />
-          </Route>
-          <Route path="/addinstance">
-            <Nav
-              user_id={true}
-              logout={logout}
-              getUserTimelines={getUserTimelines}
-            />
-            <AddInstance
-              createInstance={createInstance}
-              prependZero={prependZero}
-              getMonthFromString={getMonthFromString}
-            />
-          </Route>
-          <Route path="/editinstance">
-            <EditInstance
-              editInstance={editInstance}
-              prependZero={prependZero}
-              getMonthFromString={getMonthFromString}
-              formatDay={formatDay}
-            />
-          </Route>
-        </Switch>
-      </Router>
-    </main>
+            <Route path="/register">
+              <Register registerUser={registerUser} />
+              <Nav
+                user_id={true}
+                logout={logout}
+                getUserTimelines={getUserTimelines}
+              />
+            </Route>
+            <Route path="/instancecard">
+              <Nav
+                user_id={true}
+                logout={logout}
+                getUserTimelines={getUserTimelines}
+              />
+              <InstanceCard deleteInstance={deleteInstance} />
+            </Route>
+            <Route path="/addinstance">
+              <Nav
+                user_id={true}
+                logout={logout}
+                getUserTimelines={getUserTimelines}
+              />
+              <AddInstance
+                createInstance={createInstance}
+                prependZero={prependZero}
+                getMonthFromString={getMonthFromString}
+              />
+            </Route>
+            <Route path="/editinstance">
+              <EditInstance
+                editInstance={editInstance}
+                prependZero={prependZero}
+                getMonthFromString={getMonthFromString}
+                formatDay={formatDay}
+              />
+            </Route>
+          </Switch>
+        </Router>
+      </main>
+    </body>
   );
 }
 
 export default App;
+  

@@ -1,41 +1,56 @@
-.card {
+.container-newTimeline {
   display: flex;
-  flex-direction: column;
-  margin-top: 55px;
-  margin-left: 25%;
-  border: solid black 3px !important;
-  border-radius: 25px !important;
-  width: 50%;
-  background-color: turquoise !important;
+  justify-content: center;
+  border-radius: 25px;
+  overflow: hidden;
+  width: 500px;
+  margin-top: 10%;
+  background-color: #333;
+}
+
+.time-card {
+  border-radius: 25px;
+  background-color: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.time-card:hover {
+  border-radius: 25px;
+  box-shadow: 2px 2px 30px black;
+  transition: box-shadow 0.3s ease-in-out
 }
 
 .title {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
+  color: white;
 }
 
 #title {
+  font-family: 'Marcellus SC', serif;
   font-size: 30px;
 }
 
 .content {
+  opacity: 1;
+  animation: fade 1s ease-in;
   padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .enterName {
-  display: flex;
-  justify-content: center;
   padding-bottom: 20px;
 }
 
 .name {
   border: transparent;
   background-color: inherit;
-  border-bottom: solid black 2px;
-}
-
-input {
-  text-align: center;
+  border-bottom: solid white 2px;
+  color: white;
 }
 
 .name:focus {
@@ -43,20 +58,24 @@ input {
 }
 
 .note {
-  text-align: center;
   margin-bottom: 10px;
   color: rgb(255, 255, 255);
 }
 
 .scale {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  width: 45%
 }
 
 .months {
   border: none;
   background-color: inherit;
-  border-bottom: solid black 3px;
+  border-bottom: solid white 3px;
+  color: white;
+  padding-top: 10px;
 }
 
 .months:focus {
@@ -66,13 +85,16 @@ input {
 .button {
   margin-top: 40px;
   margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
+}
+
+@keyframes fade {
+  0% { opacity: 0 }
+  50% { opacity: 1 }
 }
 
 /* --------Instance Card-------- */
 
-.instDisplays {
+/* .instDisplays {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -93,4 +115,4 @@ input {
 
 .instDescription {
   margin: 15px;
-}
+} */
