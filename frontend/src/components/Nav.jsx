@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Nav.css";
 
 const Nav = function (props) {
-  
   let currentUser = localStorage.getItem("currentUser");
 
   currentUser = JSON.parse(currentUser);
@@ -36,7 +35,10 @@ const Nav = function (props) {
       <Link className="nav-item nav-link" to="/timelines/new">
         + New Timeline
       </Link>
-      <div className="nav-item nav-link" onClick={() => props.getUserTimelines(currentUser)}>
+      <div
+        className="nav-item nav-link"
+        onClick={() => props.getUserTimelines(currentUser)}
+      >
         MY TIMELINES
       </div>
     </div>

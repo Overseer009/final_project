@@ -39,13 +39,11 @@ const Timeline = function (props) {
 
   let localCurrentTimeline = localStorage.getItem("currentTimeline");
   localCurrentTimeline = JSON.parse(localCurrentTimeline);
-  console.log("local current timeline:------->", localCurrentTimeline);
 
   const newTimeline = timelineBuilder(
     localCurrentTimeline.start_month,
     localCurrentTimeline.end_month
   );
-  // console.log(newTimeline);
 
   const [currentInstances, setCurrentInstances] = useState([]);
 

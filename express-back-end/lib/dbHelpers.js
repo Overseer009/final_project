@@ -56,10 +56,8 @@ const getTimelineByNameForUser = (name, user_id) => {
   WHERE name = $1
   AND user_id = $2;
   `;
-  return db
-  .query(stringQuery, [name, user_id])
-  .then((data)=> data.rows[0])
-}
+  return db.query(stringQuery, [name, user_id]).then((data) => data.rows[0]);
+};
 
 const createTimeline = (timeline) => {
   const { user_id, name, start_month, end_month } = timeline;
@@ -70,6 +68,16 @@ const createTimeline = (timeline) => {
   return db
     .query(stringQuery, [user_id, name, start_month, end_month])
     .then(() => getTimelineByNameForUser(name, user_id))
+    .catch((err) => err.message);
+};
+
+const deleteTimeline = (timeline) => {
+  const stringQuery = `
+  DELETE FROM timelines WHERE id = $1;
+  `;
+  return db
+    .query(stringQuery, [timeline])
+    .then((data) => data.rows)
     .catch((err) => err.message);
 };
 //----------------------------------------
@@ -93,12 +101,19 @@ const getInstanceByName = (name) => {
 };
 
 const createInstance = (newInstance) => {
-  const { timeline_id, name, instance_colour_id, description, date, image } =
-    newInstance;
+  const {
+    timeline_id,
+    name,
+    instance_colour_id,
+    description,
+    month,
+    day,
+    image,
+  } = newInstance;
 
   const stringQuery = `
-    INSERT INTO instances (timeline_id, instance_colour_id, name, description, date, image)
-    VALUES ($1, $2, $3, $4, $5, $6);d
+    INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day, image)
+    VALUES ($1, $2, $3, $4, $5, $6, $7);
     `;
   return db
     .query(stringQuery, [
@@ -106,12 +121,46 @@ const createInstance = (newInstance) => {
       instance_colour_id,
       name,
       description,
-      date,
+      month,
+      day,
       image,
     ])
     .then((data) => getInstanceByName(name))
     .catch((err) => err.message);
 };
+
+const deleteInstance = (instance) => {
+  const stringQuery = `
+    DELETE FROM instances WHERE id = $1;
+  `;
+  return db
+    .query(stringQuery, [instance])
+    .then((data) => data.rows)
+    .catch((err) => err.message);
+};
+const editInstance = (instanceData) => {
+  console.log("inside dbHelpers");
+  const {
+    timeline_id,
+    instance_id,
+    instance_colour_id,
+    name,
+    description,
+    image,
+    month,
+    day,
+  } = instanceData;
+  const stringQuery = `
+    UPDATE instances 
+    SET name = $1, description = $2, month = $3, day = $4, image = $5 
+    WHERE id = $6
+  `;
+  return db
+    .query(stringQuery, [name, description, month, day, image, instance_id])
+    .then((data) => getInstanceByName(name))
+    .catch((err) => err.message);
+};
+
 //----------------------------------------
 
 const getColoursForInstances = (id) => {
@@ -134,4 +183,7 @@ module.exports = {
   getInstanceByName,
   createTimeline,
   getTimelineByNameForUser,
+  deleteTimeline,
+  deleteInstance,
+  editInstance,
 };

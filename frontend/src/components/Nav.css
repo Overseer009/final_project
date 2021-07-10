@@ -48,3 +48,7 @@
   display: flex;
   justify-content: center;
 }
+
+.home {
+  text-decoration: none;
+}

@@ -1,17 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { createBrowserHistory } from "history";
 const history = createBrowserHistory();
 
 const useApplicationData = () => {
-  // const [state, setState] = useState({
-  //   currentUser: {},
-  //   users: [],
-  //   currentTimeline: {},
-  //   timelines: [],
-  //   instances: [],
-  // });
-
   const [currentTimeline, setCurrentTimeline] = useState({
     user_id: null,
     name: null,
@@ -19,12 +11,7 @@ const useApplicationData = () => {
     end_month: null,
   });
 
-  // let localCurrentTimeline = localStorage.getItem("currentTimeline");
-  // localCurrentTimeline = JSON.parse(localCurrentTimeline);
-
   const [myTimelines, setMyTimelines] = useState();
-
-  // localStorage.setItem("userTimelines", JSON.stringify(myTimelines));
 
   let currentUser = localStorage.getItem("currentUser");
   currentUser = JSON.parse(currentUser);
@@ -39,7 +26,6 @@ const useApplicationData = () => {
 
   const registerUser = (registerData) => {
     axios.post("/api/users/new", registerData).then((res) => {
-      // console.log("inside loginInfo", res);
       if (res.data) {
         localStorage.setItem("currentUser", JSON.stringify(res.data));
         history.push("/timelines/new");
@@ -48,7 +34,6 @@ const useApplicationData = () => {
   };
 
   const logout = () => {
-    // console.log("inside logout");
     localStorage.clear();
     history.push("/login");
   };
@@ -57,7 +42,6 @@ const useApplicationData = () => {
     axios
       .post("/api/users", loginData)
       .then((res) => {
-        // console.log("inside loginInfo", res.data);
         if (res.data) {
           localStorage.setItem("currentUser", JSON.stringify(res.data));
           history.push("/timelines/new");
@@ -82,11 +66,19 @@ const useApplicationData = () => {
     });
   };
 
+  const editInstance = (instanceData) => {
+    axios
+      .post("/api/instances/edit", instanceData)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => err.message);
+  };
+
   const timelineData = (timelineObj) => {
     axios
       .post("/api/timelines", timelineObj)
       .then((res) => {
-        // console.log("line 81:", res);
         if (res.data) {
           setCurrentTimeline({
             ...currentTimeline,
@@ -115,7 +107,7 @@ const useApplicationData = () => {
     history,
     currentUser,
     getInstances,
-    // localCurrentTimeline,
+    editInstance,
   };
 };
 

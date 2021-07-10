@@ -12,6 +12,9 @@ import InstanceCard from "./components/Cards/InstanceCard";
 import Timeline from "./components/Timeline";
 import TimelineItem from "./components/TimelineItem";
 import MyTimelines from "./components/MyTimelines";
+import Home from "./components/Home";
+import AddInstance from "./components/AddInstance";
+import EditInstance from "./components/EditInstance";
 
 //Hooks
 import useApplicationData from "./hooks/useApplicationData";
@@ -29,9 +32,11 @@ function App() {
     localCurrentTimeline,
     history,
     currentUser,
+    editInstance,
   } = useApplicationData();
 
   return (
+<<<<<<< HEAD
     <body className="App-Body">
       <main className="App">
         <Router history={history}>
@@ -42,6 +47,21 @@ function App() {
                   getInstances={getInstances}
                   currentTimeline={localCurrentTimeline}
                   />
+=======
+    <main className="App">
+      <Router history={history}>
+        <Switch>
+          <Route exact path="/">
+            <Nav logout={logout} getUserTimelines={getUserTimelines} />
+            <Home />
+          </Route>
+          {currentUser ? (
+            <Route path="/timeline">
+              <Timeline
+                getInstances={getInstances}
+                currentTimeline={localCurrentTimeline}
+              />
+>>>>>>> 1adb56ac8c34b16426509b8d645b9b711e441b21
 
                 <Nav
                   user_id={true}
@@ -82,6 +102,7 @@ function App() {
                 getUserTimelines={getUserTimelines}
                 />
             </Route>
+<<<<<<< HEAD
             <Route path="/register">
               <Register registerUser={registerUser} />
               <Nav
@@ -102,6 +123,58 @@ function App() {
         </Router>
       </main>
     </body>
+=======
+          ) : (
+            history.push("/login")
+          )}
+          ;
+          <Route path="/timelines/new">
+            <TimelineCard timelineData={timelineData} />
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
+          </Route>
+          <Route exact path="/login">
+            <Login loginUser={loginUser} />
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
+          </Route>
+          <Route path="/register">
+            <Register registerUser={registerUser} />
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
+          </Route>
+          <Route path="/instancecard">
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
+            <InstanceCard />
+          </Route>
+          <Route path="/addinstance">
+            <Nav
+              user_id={true}
+              logout={logout}
+              getUserTimelines={getUserTimelines}
+            />
+            <AddInstance createInstance={createInstance} />
+          </Route>
+          <Route path="/editinstance">
+            <EditInstance editInstance={editInstance} />
+          </Route>
+        </Switch>
+      </Router>
+    </main>
+>>>>>>> 1adb56ac8c34b16426509b8d645b9b711e441b21
   );
 }
 
