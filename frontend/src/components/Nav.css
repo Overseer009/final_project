@@ -8,7 +8,6 @@
 
 .nav-appName:hover {
   cursor: default;
-  
 }
 
 #nav {
@@ -36,7 +35,7 @@
   text-decoration: none;
 }
 
-.nav-item{
+.nav-item {
   user-select: none;
 }
 
