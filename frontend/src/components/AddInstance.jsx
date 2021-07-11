@@ -46,7 +46,7 @@ const AddInstance = function (props) {
             <span id="title">Create a New Instance</span>
           </div>
           <span className="tag" style={{ background: "#018f69" }}></span>
-          <form id="addInstance">
+          <form id="addInstance" autoComplete="off">
             <div className="note">
               <span>
                 <em>Name</em>

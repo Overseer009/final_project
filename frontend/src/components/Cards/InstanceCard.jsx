@@ -45,14 +45,11 @@ const InstanceCard = function (props) {
           </div>
           <div className="button">
             <Link to="/editinstance">
-              <button id="button" className="btn btn-secondary">
-                Edit
-              </button>
+              <button id="button">Edit</button>
             </Link>
             <button
               id="button"
               onClick={() => handleClick(selectedInstance.id)}
-              className="btn btn-danger"
             >
               Delete
             </button>
