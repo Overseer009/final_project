@@ -20,7 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-top: 83px;
+  padding-top: 5em;
 }
 
 .timeline-container::after {

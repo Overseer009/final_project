@@ -53,6 +53,17 @@
   color: white;
 }
 
+#buttonTimeline {
+  background-color: transparent;
+  border: solid white 2px;
+  color: white;
+  border-radius: 10px;
+  width: 6em;
+  height: 2.5em;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
 .name:focus {
   outline: none;
 }
@@ -82,9 +93,91 @@
   outline: none;
 }
 
-.button {
+.instDisplays {
+  padding: 10px;
+}
+
+#instanceCardDisplay {
+  /* background-color: red; */
+  width: 100%;
+}
+
+.instanceContent {
+  opacity: 1;
+  animation: fade 1s ease-in;
+  /* padding: 10px; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: inherit;
+  height: auto;
+}
+
+.instanceImage {
+  top: 0;
+}
+
+.container-instance {
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+  overflow: hidden;
+  width: 500px;
+  margin-top: 10%;
+  background-color: #333;
+}
+
+.firstLine {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+#instanceName {
+  padding-left: 1em;
+  margin-bottom: 0;
+}
+
+#instanceDate {
+  padding-left: 1em;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  margin-bottom: 0;
+}
+
+.date-name {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 0;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+#instanceTitle {
+  font-family: "Marcellus SC", serif;
+  font-size: 25px;
+}
+#instDates {
+  font-size: 13px;
+}
+
+#instanceDescription {
+  padding: 5px;
+  min-height: 100px;
+}
+
+#button {
   margin-top: 40px;
   margin-bottom: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#button:hover {
+  background-color: white;
+  color: #333;
 }
 
 @keyframes fade {
@@ -101,6 +194,12 @@
 .instanceImage {
   max-height: 100px;
   max-width: 100px;
+  border-radius: 10px;
+  display: flex;
+  /* padding: 10px; */
+  /* align-content: flex-start;
+  align-self: flex-start; */
+  /* flex-direction: row; */
 }
 
 /* .instDisplays {
