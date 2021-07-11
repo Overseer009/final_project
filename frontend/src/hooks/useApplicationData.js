@@ -121,19 +121,18 @@ const useApplicationData = () => {
   const formatDay = (day) => {
     if (day < 10) {
       day = "0" + day;
-      return day;
     }
+    return day;
   };
-  const deleteTimeline = (timelineId) => {
-    console.log("inside deleteTimeline", timelineId);
+  const deleteTimeline = (timelineId, user) => {
+    localStorage.removeItem("currentTimeline");
     const reqPackage = {
       id: timelineId,
     };
     axios
-      .post("http://localhost:3002/api/timelines/delete", reqPackage)
-      .then((res) => {
-        const newTimeID = myTimelines.filter((t) => t.id !== timelineId);
-        setMyTimelines(newTimeID);
+      .post("api/timelines/delete", reqPackage)
+      .then(() => {
+        getUserTimelines(user);
       })
       .catch((err) => err.message);
   };

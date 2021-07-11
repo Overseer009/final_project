@@ -78,7 +78,6 @@ app.post("/api/timelines", (req, res) => {
           res.status(200).json(newTimeline);
         });
       } else {
-        console.log("Sorry already exists!!!!!");
         res.status(401).send("----- Invalid Timeline name -----");
       }
     }
@@ -89,8 +88,7 @@ app.post("/api/timelines/delete", (req, res) => {
   console.log("index post /timelines/delete", req.body);
   deleteTimeline(req.body.id)
     .then(() => {
-      res.setHeader("Access-Control-Allow-Origin", "*");
-      res.status(200);
+      res.status(200).send("Timeline Removed)");
     })
     .catch((err) => err.message);
 });

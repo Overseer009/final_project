@@ -17,10 +17,7 @@ const MyTimelines = function (props) {
   };
 
   const handleClickDelete = (timelineId) => {
-
-    props.deleteTimeline(timelineId)
-    
-
+    props.deleteTimeline(timelineId, currentUser);
   };
 
   useEffect(() => {
@@ -36,13 +33,15 @@ const MyTimelines = function (props) {
             ? props.myTimelines.map((timeline) => {
                 return (
                   <>
-                    <li className="items-of-list" onClick={() => handleClick(timeline)} key={timeline.id}>
+                    <li
+                      className="items-of-list"
+                      onClick={() => handleClick(timeline)}
+                      key={timeline.id}
+                    >
                       {timeline.name}
                     </li>
                     <button
-                      onClick={() =>
-                        handleClickDelete(timeline.id)
-                      }
+                      onClick={() => handleClickDelete(timeline.id)}
                       className="btn btn-danger"
                     >
                       Delete
@@ -58,9 +57,7 @@ const MyTimelines = function (props) {
                       {timeline.name}
                     </li>
                     <button
-                      onClick={() =>
-                        handleClickDelete(timeline.id)
-                      }
+                      onClick={() => handleClickDelete(timeline.id)}
                       className="btn btn-danger"
                     >
                       Delete

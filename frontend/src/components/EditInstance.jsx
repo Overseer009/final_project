@@ -24,7 +24,7 @@ const EditInstance = function (props) {
   const formattedMonth = props.prependZero(currentMonthAsNumber);
 
   const formattedDay = props.formatDay(selectedInstance.day);
-  console.log(formattedDay);
+  console.log(selectedInstance.day);
 
   const [date, setDate] = useState(`2021-${formattedMonth}-${formattedDay}`);
   console.log(date);
