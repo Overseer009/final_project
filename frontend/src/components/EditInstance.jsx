@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import "./AddInstance.css";
 
 const EditInstance = function (props) {
   let currentTimeline = localStorage.getItem("currentTimeline");

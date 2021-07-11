@@ -20,7 +20,9 @@ const TimelineCard = function (props) {
             <span id="title">Create New Timeline</span>
           </div>
           <div className="note">
-            <span><em>Enter new Timeline name:</em></span>
+            <span>
+              <em>Enter new Timeline name:</em>
+            </span>
           </div>
           <div className="enterName">
             <input
@@ -34,18 +36,18 @@ const TimelineCard = function (props) {
                   name: event.target.value,
                 })
               }
-              />
+            />
           </div>
           <div className="note">
             <span>
               <em>
-              Enter the <strong>Start</strong> and <strong>End</strong> Month of your Timeline:
+                Enter the <strong>Start</strong> and <strong>End</strong> Month
+                of your Timeline:
               </em>
-
             </span>
           </div>
           <div className="scale">
-            <label htmlFor="start">Select Start Month:</label>
+            <em>Select Start Month:</em>
             <select
               className="months"
               name="start"
@@ -55,7 +57,7 @@ const TimelineCard = function (props) {
                   start_month: parseInt(event.target.value),
                 })
               }
-              >
+            >
               <option>Select</option>
               <option value="1">January</option>
               <option value="2">February</option>
@@ -80,7 +82,7 @@ const TimelineCard = function (props) {
                   end_month: parseInt(event.target.value),
                 })
               }
-              >
+            >
               <option>Select</option>
               <option value="1">January</option>
               <option value="2">February</option>
@@ -99,9 +101,9 @@ const TimelineCard = function (props) {
           <div className="button">
             <button
               type="button"
-              className="btn btn-success"
+              id="buttonTimeline"
               onClick={() => props.timelineData(timeline)}
-              >
+            >
               Create
             </button>
           </div>

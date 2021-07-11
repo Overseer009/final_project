@@ -53,6 +53,17 @@
   color: white;
 }
 
+#buttonTimeline {
+  background-color: transparent;
+  border: solid white 2px;
+  color: white;
+  border-radius: 10px;
+  width: 6em;
+  height: 2.5em;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
 .name:focus {
   outline: none;
 }
@@ -80,11 +91,6 @@
 
 .months:focus {
   outline: none;
-}
-
-.button {
-  margin-top: 40px;
-  margin-bottom: 20px;
 }
 
 @keyframes fade {
