@@ -25,11 +25,10 @@ const MyTimelines = function (props) {
   const handleClickCreateTimeline = () => {
     history.push("/timelines/new");
   };
-
+  console.log(props.myTimelines);
   useEffect(() => {
     props.setMyTimelines(localUserTimelines);
   }, []);
-  console.log(props.myTimelines);
   return (
     <div className="timeline-list">
       <div className="timeline-list-content">
@@ -38,11 +37,10 @@ const MyTimelines = function (props) {
           {props.myTimelines !== undefined && props.myTimelines.length > 0 ? (
             props.myTimelines.map((timeline) => {
               return (
-                <div className="my-timeline-list">
+                <div key={timeline.id} className="my-timeline-list">
                   <li
                     className="items-of-list"
                     onClick={() => handleClick(timeline)}
-                    key={timeline.id}
                   >
                     {timeline.name}
                   </li>
