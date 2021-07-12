@@ -115,28 +115,28 @@ const AddInstance = function (props) {
               <span>
                 <em>Date*</em>
               </span>
-              <div className="enterName">
-                <input
-                  required
-                  type="date"
-                  id="date-picker"
-                  value={date}
-                  onChange={(event) => {
-                    console.log(event.target.value);
-                    const dateNum = new Date(event.target.value);
-                    const monthString = monthNames[dateNum.getMonth()];
-                    const dayNum = dateNum.getUTCDate();
-                    setDate(event.target.value);
-                    setInstance({
-                      ...newInstance,
-                      month: monthString,
-                      day: dayNum,
-                    });
-                  }}
-                  min={`2021-${currentTimeline.start_month}-01`}
-                  max={`2021-${currentTimeline.end_month}-31`}
-                ></input>
-              </div>
+            </div>
+            <div className="enterName">
+              <input
+                required
+                type="date"
+                id="date-picker"
+                value={date}
+                onChange={(event) => {
+                  console.log(event.target.value);
+                  const dateNum = new Date(event.target.value);
+                  const monthString = monthNames[dateNum.getMonth()];
+                  const dayNum = dateNum.getUTCDate();
+                  setDate(event.target.value);
+                  setInstance({
+                    ...newInstance,
+                    month: monthString,
+                    day: dayNum,
+                  });
+                }}
+                min={`2021-${currentTimeline.start_month}-01`}
+                max={`2021-${currentTimeline.end_month}-31`}
+              ></input>
             </div>
             <div className="new-instance-button">
               <button
