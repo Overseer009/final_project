@@ -45,7 +45,7 @@
 }
 
 .name {
-  border: transparent;
+  border: none;
   background-color: inherit;
   border-bottom: solid white 2px;
   color: white;
@@ -161,6 +161,8 @@
 #instanceDescription {
   padding: 5px;
   min-height: 100px;
+  padding-top: 30px;
+  text-align:justify
 }
 
 #button {

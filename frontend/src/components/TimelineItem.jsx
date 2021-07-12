@@ -39,18 +39,16 @@ const TimelineItem = function (props) {
                   if (element.month === props.month) {
                     return (
                       <li className="instance-list" style={{ color: "#fff" }}>
-                        <div className="list-items">
-                          <div
+                          <div className="list-items"
                             onClick={() => handleClick(element)}
                             key={element.name}
                           >
                             <div id="instance-list-date">
                               <em>{element.month.substring(0, 3)}</em>
-                              <em> {element.day}</em>
+                              <em> {element.day}:&nbsp;&nbsp;</em>
                             </div>
                             <div id="instance-list-name">{element.name}</div>
                           </div>
-                        </div>
                       </li>
                     );
                   }
