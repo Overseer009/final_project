@@ -4,10 +4,12 @@
   font-family: "Marcellus SC", serif;
   font-size: 45px;
   user-select: none;
+  text-decoration: none
 }
 
 .nav-appName:hover {
-  cursor: default;
+  cursor: pointer;
+  color: white;
 }
 
 #nav {

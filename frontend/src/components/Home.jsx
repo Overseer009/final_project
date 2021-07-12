@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 const Home = function () {
   let currentUser = localStorage.getItem("currentUser");
@@ -12,7 +13,6 @@ const Home = function () {
         timelines. Researching a subject? Documenting an event? Or planning your
         next big trip? Our timelines are here to help you.
       </p>
-      <p className="invitation">Login to see what you're tracking.</p>
     </div>
   );
   const noUser = (
@@ -22,8 +22,7 @@ const Home = function () {
         timelines. Researching a subject? Documenting an event? Or planning your
         next big trip? Our timelines are here to help you.
       </p>
-      <p className="invitation">
-        New to timelines? Register with us to start organizing your events!
+      <p className="invitation"><Link to="/login">Login</Link> to see what you're tracking.
       </p>
     </div>
   );

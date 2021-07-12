@@ -35,7 +35,7 @@ const InstanceCard = function (props) {
                   </div>
                 </span>
                 <div id="instanceName" className="note">
-                  <em id="instanceTitle">{selectedInstance.name}</em>
+                  <span id="instanceTitle">{selectedInstance.name}</span>
                 </div>
               </div>
             </div>

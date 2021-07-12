@@ -1,10 +1,9 @@
 .homepage {
   background-color: inherit;
-  height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: column;   
   align-items: center;
+  justify-content: center;
 }
 
 .welcome {
@@ -12,30 +11,31 @@
   padding: 20px;
   color: white;
   border-radius: 25px;
-  height: 20vh;
-  width: 45%;
+  height: fit-content;
+  width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Marcellus SC", serif;
   font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .intro-container {
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  display: flex;
+  padding: 20px;
   align-items: center;
-}
-
-.intro {
+  text-align: center;
+  border-radius: 25px;
+  width: 60%;
   background-color: #333;
   color: white;
-  height: 15vh;
 }
 
 .invitation {
-  background-color: #333;
-  color: white;
-  height: 15vh;
-  text-align: center;
+  padding-bottom: none;
 }

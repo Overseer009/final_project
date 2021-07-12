@@ -59,7 +59,7 @@ const Nav = function (props) {
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav">
-      <span className="nav-appName">Timeliner</span>
+      <span ><Link className="nav-appName"  to="/">Timeliner</Link></span>
       {/* <a className="navbar-brand" href="/">
         
       </a> */}
