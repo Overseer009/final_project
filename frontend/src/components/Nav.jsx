@@ -49,7 +49,6 @@ const Nav = function (props) {
         <div></div>
       ) : (
         <div>
-          <span className="nav-item nav-link">Current Timeline</span>
           <Link className="nav-item nav-link" to="/timeline">
             {currentTimeline.name}
           </Link>

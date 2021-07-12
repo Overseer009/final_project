@@ -28,10 +28,10 @@ CREATE TABLE instances (
   timeline_id INTEGER REFERENCES timelines(id) ON DELETE CASCADE,
   instance_colour_id INTEGER REFERENCES instance_colours(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
-  description VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
   month VARCHAR(255) NOT NULL,
   day INTEGER,
-  image VARCHAR(255) 
+  image VARCHAR(500) 
 );
 
 

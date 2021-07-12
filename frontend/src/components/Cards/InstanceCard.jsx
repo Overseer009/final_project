@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import "./styles.css";
 
 const InstanceCard = function (props) {
   let selectedInstance = localStorage.getItem("selectedInstance");
@@ -15,32 +16,44 @@ const InstanceCard = function (props) {
   };
 
   return (
-    <section className="card">
-      <div className="content">
-        <div className="instDisplays">
-          <span id="image">
-            {/* <img src="https://unsplash.com/photos/sQoIRY84a2E" /> */}
-          </span>
-          <div className="info">
-            <span id="title">{selectedInstance.name}</span>
-            <span id="instDates">
-              {selectedInstance.month} {selectedInstance.day}
-            </span>
+    <section className="time-card">
+      <div className="container-instance">
+        <div className="instanceContent">
+          <div id="instanceCardDisplay" className="instDisplays">
+            <div className="firstLine">
+              <div id="image">
+                <img
+                  className="instanceImage"
+                  src={selectedInstance.image}
+                  alt="https://api.freelogodesign.org/files/4f9bfa98572c45a98f0fb5f55bb0b168/thumb/logo_200x200.png?v=637616367530000000"
+                />
+              </div>
+              <div className="date-name">
+                <span id="instanceDate" className="note">
+                  <div id="instDates">
+                    {selectedInstance.month} {selectedInstance.day}
+                  </div>
+                </span>
+                <div id="instanceName" className="note">
+                  <em id="instanceTitle">{selectedInstance.name}</em>
+                </div>
+              </div>
+            </div>
+            <div id="instanceDescription" className="note">
+              <span>{selectedInstance.description}</span>
+            </div>
           </div>
-        </div>
-        <div className="instDescription">
-          <span>{selectedInstance.description}</span>
-        </div>
-        <div className="button">
-          <Link to="/editinstance">
-            <button className="btn btn-secondary">Edit</button>
-          </Link>
-          <button
-            onClick={() => handleClick(selectedInstance.id)}
-            className="btn btn-danger"
-          >
-            Delete
-          </button>
+          <div className="button">
+            <Link to="/editinstance">
+              <button id="button">Edit</button>
+            </Link>
+            <button
+              id="button"
+              onClick={() => handleClick(selectedInstance.id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </section>

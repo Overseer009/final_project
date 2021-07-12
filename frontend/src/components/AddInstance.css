@@ -1,45 +1,130 @@
-.new-instance-item {
+.container-newTimeline {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+  width: 500px;
+  margin-top: 10%;
+  background-color: #333;
 }
 
-.new-instance-item-content {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+.time-card {
+  border-radius: 25px;
+  background-color: none;
+  transition: box-shadow 0.3s ease-in-out;
+  margin-top: 23%;
+}
+
+.time-card:hover {
+  border-radius: 25px;
+  box-shadow: 2px 2px 30px black;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+#title {
+  font-family: "Marcellus SC", serif;
+  font-size: 30px;
+}
+
+.content {
+  opacity: 1;
+  animation: fade 1s ease-in;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.enterName {
+  padding-bottom: 20px;
+}
+
+#name {
+  background-color: transparent;
+  border: none;
+  border-bottom: solid white 2px;
+  color: white;
+}
+
+#description {
+  background-color: transparent;
+  border: none;
+  border-bottom: solid white 2px;
+  color: white;
+  resize: none;
+}
+
+#url {
+  background-color: transparent;
+  border: none;
+  border-bottom: solid white 2px;
+  color: white;
+}
+
+#button {
+  background-color: transparent;
+  border: solid white 2px;
+  color: white;
+  border-radius: 10px;
+  width: 6em;
+  height: 2.5em;
+  margin-top: 0;
+  justify-content: center;
+  justify-self: center;
+}
+
+.name:focus {
+  outline: none;
+}
+
+.note {
+  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+}
+
+.scale {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: column;
-  padding: 15px;
-  max-width: 20%;
-  width: 60%;
-  text-align: center;
-}
-
-#addInstance {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  color: white;
+  width: 45%;
 }
 
-@media screen and (min-width: 1600px) {
-  .timeline-item:nth-child(even) .timeline-item-content {
-    margin-left: 50%;
+.months {
+  border: none;
+  background-color: inherit;
+  border-bottom: solid white 3px;
+  color: white;
+  padding-top: 10px;
+}
+
+.months:focus {
+  outline: none;
+}
+
+.new-instance-button {
+  display: flex;
+  justify-content: center;
+}
+
+/* .button {
+  margin-top: 40px;
+  margin-bottom: 20px;
+} */
+
+@keyframes fade {
+  0% {
+    opacity: 0;
   }
-}
-
-@media screen and (min-width: 1700px) {
-  .timeline-item:nth-child(even) .timeline-item-content {
-    margin-left: 55%;
-  }
-}
-
-@media screen and (min-width: 1920px) {
-  .timeline-item:nth-child(even) .timeline-item-content {
-    margin-left: 60%;
+  50% {
+    opacity: 1;
   }
 }

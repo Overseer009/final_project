@@ -1,4 +1,4 @@
-.container-logister{
+.container-logister {
   display: flex;
   justify-content: center;
 }
@@ -16,17 +16,16 @@
 
 .text {
   color: white;
-
 }
 
 .form-group {
   width: 85%;
 }
 
-.btn {
+/* .btn {
   width: 85%;
   margin: 25px;
-}
+} */
 
 .form-control {
   align-items: left;
@@ -40,5 +39,24 @@
 }
 
 .logister-title {
-  font-family: 'Marcellus SC', serif;
+  font-family: "Marcellus SC", serif;
+}
+
+.logister-button {
+  background-color: transparent;
+  border: solid white 2px;
+  color: white;
+  border-radius: 10px;
+  width: 6em;
+  height: 2.5em;
+  margin-top: 0;
+  justify-content: center;
+  justify-self: center;
+  /* width: 85%; */
+  margin: 25px;
+}
+
+.logister-button:hover {
+  background-color: white;
+  color: #333;
 }

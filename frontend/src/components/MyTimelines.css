@@ -1,4 +1,3 @@
-
 .timeline-list-content {
   opacity: 1;
   animation: fade 1s ease-in;
@@ -6,7 +5,6 @@
   flex-direction: column;
   border-radius: 25px;
   width: 500px;
-  
 }
 
 .timeline-list {
@@ -17,12 +15,13 @@
   transition: box-shadow 0.3s ease-in-out;
   padding-top: 20px;
   padding-bottom: 30px;
+  margin-top: 7em;
 }
 
 .timeline-list:hover {
   border-radius: 25px;
   box-shadow: 2px 2px 30px black;
-  transition: box-shadow 0.3s ease-in-out
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .timeline-list-title {
@@ -30,7 +29,7 @@
   justify-content: center;
   color: white;
   font-size: 30px;
-  font-family: 'Marcellus SC', serif;
+  font-family: "Marcellus SC", serif;
 }
 
 .list {
@@ -40,21 +39,53 @@
   color: white;
 }
 
-
 .items-of-list {
-  color: rgba(255,255,255,.55);
-  transition: margin-left .3s ease-in-out;
+  color: rgba(255, 255, 255, 0.55);
+  transition: margin-left 0.3s ease-in-out;
+  list-style: none;
+  align-self: flex-start;
 }
 
 .items-of-list:hover {
   cursor: pointer;
   margin-left: 10px;
   color: white;
-  
-  transition: margin-left .3s ease-in-out
+
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.my-timeline-button {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 1.7em;
+  background-color: transparent;
+  border: solid white 2px;
+  color: white;
+  border-radius: 10px;
+  width: 6em;
+  /* height: 2.5em; */
+  margin-top: 0;
+  justify-content: center;
+  justify-self: center;
+}
+.my-timeline-button:hover {
+  background-color: white;
+  color: #333;
+}
+
+.my-timeline-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 @keyframes fade {
-  0% { opacity: 0 }
-  50% { opacity: 1 }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }

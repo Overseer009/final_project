@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import "./AddInstance.css";
 
 const EditInstance = function (props) {
   let currentTimeline = localStorage.getItem("currentTimeline");
@@ -24,7 +25,7 @@ const EditInstance = function (props) {
   const formattedMonth = props.prependZero(currentMonthAsNumber);
 
   const formattedDay = props.formatDay(selectedInstance.day);
-  console.log(formattedDay);
+  console.log(selectedInstance.day);
 
   const [date, setDate] = useState(`2021-${formattedMonth}-${formattedDay}`);
   console.log(date);
