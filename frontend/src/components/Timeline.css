@@ -2,8 +2,8 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: grey;
+.App-Body {
+  background-color: rgba(70, 143, 70, 0.297);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,7 +148,6 @@ body {
   height: 20px;
   z-index: 100;
   transition: box-shadow 0.3s ease-in-out;
-  
 }
 
 .circle:hover {

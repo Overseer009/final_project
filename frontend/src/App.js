@@ -43,7 +43,7 @@ function App() {
   } = useApplicationData();
 
   return (
-    <body className="App-Body">
+    <section className="App-Body">
       <main className="App">
         <Router history={history}>
           <Switch>
@@ -146,7 +146,7 @@ function App() {
           </Switch>
         </Router>
       </main>
-    </body>
+    </section>
   );
 }
 
