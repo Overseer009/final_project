@@ -38,18 +38,18 @@ const MyTimelines = function (props) {
             props.myTimelines.map((timeline) => {
               return (
                 <div key={timeline.id} className="my-timeline-list">
-                  <li
-                    className="items-of-list"
-                    onClick={() => handleClick(timeline)}
-                  >
-                    {timeline.name}
-                  </li>
                   <div className="button">
                     <FontAwesomeIcon
                       icon={faTrash}
                       onClick={() => handleClickDelete(timeline.id)}
                     />
                   </div>
+                  <li
+                    className="items-of-list"
+                    onClick={() => handleClick(timeline)}
+                  >
+                    {timeline.name}
+                  </li>
                 </div>
               );
             })
