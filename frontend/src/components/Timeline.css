@@ -201,19 +201,7 @@ body {
 
 @media screen and (min-width: 1600px) {
   .timeline-item:nth-child(even) .timeline-item-content {
-    margin-left: 50%;
-  }
-}
-
-@media screen and (min-width: 1700px) {
-  .timeline-item:nth-child(even) .timeline-item-content {
-    margin-left: 55%;
-  }
-}
-
-@media screen and (min-width: 1920px) {
-  .timeline-item:nth-child(even) .timeline-item-content {
-    margin-left: 60%;
+    margin-left: 0;
   }
 }
 

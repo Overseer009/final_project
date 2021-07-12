@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./AddInstance.css";
+import { useHistory } from "react-router-dom";
 
 const AddInstance = function (props) {
   let currentTimeline = localStorage.getItem("currentTimeline");
   currentTimeline = JSON.parse(currentTimeline);
+  const history = useHistory();
 
   let currentMonth = localStorage.getItem("currentMonth");
   currentMonth = JSON.parse(currentMonth);
@@ -38,6 +40,12 @@ const AddInstance = function (props) {
     "November",
     "December",
   ];
+
+  const handleSubmit = (newInstance) => {
+    props.createInstance(newInstance);
+    history.push("/timeline");
+  };
+
   return (
     <section className="time-card">
       <div className="container-newTimeline">
@@ -46,7 +54,11 @@ const AddInstance = function (props) {
             <span id="title">Create a New Instance</span>
           </div>
           <span className="tag" style={{ background: "#018f69" }}></span>
-          <form id="addInstance" autoComplete="off">
+          <form
+            id="addInstance"
+            autoComplete="off"
+            onSubmit={() => handleSubmit(newInstance)}
+          >
             <div className="note">
               <span>
                 <em>Name</em>
@@ -54,6 +66,7 @@ const AddInstance = function (props) {
             </div>
             <div className="enterName">
               <input
+                required
                 type="text"
                 id="name"
                 value={newInstance.name}
@@ -72,6 +85,7 @@ const AddInstance = function (props) {
             </div>
             <div className="enterName">
               <textarea
+                required
                 type="text"
                 id="description"
                 value={newInstance.description}
@@ -107,6 +121,7 @@ const AddInstance = function (props) {
               </span>
               <div className="enterName">
                 <input
+                  required
                   type="date"
                   id="date-picker"
                   value={date}
@@ -129,9 +144,10 @@ const AddInstance = function (props) {
             </div>
             <div className="new-instance-button">
               <button
-                type="button"
+                form="addInstance"
+                type="submit"
                 id="button"
-                onClick={() => props.createInstance(newInstance)}
+                value="Submit"
               >
                 Create
               </button>
