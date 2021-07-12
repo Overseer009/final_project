@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import "./MyTimelines.css";
 import { useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const MyTimelines = function (props) {
   const history = useHistory();
@@ -45,12 +47,10 @@ const MyTimelines = function (props) {
                     {timeline.name}
                   </li>
                   <div className="button">
-                    <button
+                    <FontAwesomeIcon
+                      icon={faTrash}
                       onClick={() => handleClickDelete(timeline.id)}
-                      className="my-timeline-button"
-                    >
-                      Delete
-                    </button>
+                    />
                   </div>
                 </div>
               );

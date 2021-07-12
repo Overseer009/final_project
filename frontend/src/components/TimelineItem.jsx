@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./Timeline.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const TimelineItem = function (props) {
   let history = useHistory();
@@ -63,7 +65,7 @@ const TimelineItem = function (props) {
             </div>
             <div className="make-it">
               <span className="add-new-event" onClick={handleClickAdd}>
-                <strong>+</strong>
+                <FontAwesomeIcon icon={faPlus} />
               </span>
             </div>
           </div>
