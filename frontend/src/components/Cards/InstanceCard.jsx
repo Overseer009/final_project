@@ -24,8 +24,11 @@ const InstanceCard = function (props) {
               <div id="image">
                 <img
                   className="instanceImage"
-                  src={selectedInstance.image}
-                  alt="https://api.freelogodesign.org/files/4f9bfa98572c45a98f0fb5f55bb0b168/thumb/logo_200x200.png?v=637616367530000000"
+                  src={
+                    selectedInstance.image
+                      ? selectedInstance.image
+                      : "https://api.freelogodesign.org/files/4f9bfa98572c45a98f0fb5f55bb0b168/thumb/logo_200x200.png?v=637616367530000000"
+                  }
                 />
               </div>
               <div className="date-name">

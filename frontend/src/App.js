@@ -131,6 +131,11 @@ function App() {
               />
             </Route>
             <Route path="/editinstance">
+              <Nav
+                user_id={true}
+                logout={logout}
+                getUserTimelines={getUserTimelines}
+              />
               <EditInstance
                 editInstance={editInstance}
                 prependZero={prependZero}
@@ -146,4 +151,3 @@ function App() {
 }
 
 export default App;
-  
