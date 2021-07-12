@@ -24,7 +24,7 @@ const Nav = function (props) {
 
   const yesUser = (
     <div className="navbar-nav">
-      <a className="navbar-brand user-display">
+      <a id="user-display">
         {currentUser ? `Welcome, ${currentUser.name}` : ""}
       </a>
       <span className="nav-item nav-link" onClick={(event) => props.logout()}>
@@ -42,7 +42,7 @@ const Nav = function (props) {
         className="nav-item nav-link"
         onClick={() => props.getUserTimelines(currentUser)}
       >
-        MY TIMELINES
+        My Timelines
       </div>
 
       {!currentTimeline ? (
