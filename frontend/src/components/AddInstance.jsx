@@ -127,10 +127,9 @@ const AddInstance = function (props) {
                 ></input>
               </div>
             </div>
-            <div className="button">
+            <div className="new-instance-button">
               <button
                 type="button"
-                className="btn btn-success"
                 id="button"
                 onClick={() => props.createInstance(newInstance)}
               >

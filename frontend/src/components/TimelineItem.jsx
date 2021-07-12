@@ -22,6 +22,10 @@ const TimelineItem = function (props) {
     view ? setView(false) : setView(true);
   };
 
+  const sortedCurrentInstances = props.currentIn.sort(function (a, b) {
+    return a.day - b.day;
+  });
+
   return (
     <div className="timeline-item">
       {view ? (
@@ -29,18 +33,23 @@ const TimelineItem = function (props) {
           <span className="tag">{props.month}</span>
           <div className="event-list">
             <div className="eventList">
-              <ul>
-                {props.currentIn.map((element) => {
+              <ul className="ul-instance">
+                {sortedCurrentInstances.map((element) => {
+                  console.log(element);
                   if (element.month === props.month) {
                     return (
-                      <li style={{ color: "#fff" }}>
+                      <li className="instance-list" style={{ color: "#fff" }}>
                         <div className="list-items">
-                          <span
+                          <div
                             onClick={() => handleClick(element)}
                             key={element.name}
                           >
-                            {element.name}
-                          </span>
+                            <div id="instance-list-date">
+                              <em>{element.month.substring(0, 3)}</em>
+                              <em> {element.day}</em>
+                            </div>
+                            <div id="instance-list-name">{element.name}</div>
+                          </div>
                         </div>
                       </li>
                     );

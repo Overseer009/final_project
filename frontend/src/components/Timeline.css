@@ -187,6 +187,18 @@ body {
   top: 0;
 }
 
+.instance-list {
+  list-style: none;
+}
+
+#instance-list-date {
+  text-decoration: underline;
+}
+
+.ul-instance {
+  padding: 0;
+}
+
 @media screen and (min-width: 1600px) {
   .timeline-item:nth-child(even) .timeline-item-content {
     margin-left: 50%;

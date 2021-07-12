@@ -3,7 +3,6 @@ import "./styles.css";
 import { Link, useHistory } from "react-router-dom";
 
 const Register = function (props) {
-  
   let history = useHistory();
 
   let currentUser = localStorage.getItem("currentUser");
@@ -39,7 +38,7 @@ const Register = function (props) {
                 name: event.target.value,
               })
             }
-            />
+          />
         </div>
 
         <div className="form-group">
@@ -55,7 +54,7 @@ const Register = function (props) {
                 email: event.target.value,
               })
             }
-            />
+          />
         </div>
 
         <div className="form-group">
@@ -71,14 +70,14 @@ const Register = function (props) {
                 password: event.target.value,
               })
             }
-            />
+          />
         </div>
 
         <button
           type="submit"
-          className="btn btn-success btn-block"
+          className="logister-button"
           onClick={() => props.registerUser(user)}
-          >
+        >
           Submit
         </button>
         <p className="forgot-password text-right">

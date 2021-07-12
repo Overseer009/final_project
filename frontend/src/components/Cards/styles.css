@@ -64,6 +64,11 @@
   margin-bottom: 20px;
 }
 
+#buttonTimeline:hover {
+  background-color: white;
+  color: #333;
+}
+
 .name:focus {
   outline: none;
 }
@@ -94,7 +99,7 @@
 }
 
 .instDisplays {
-  padding: 10px;
+  padding: 20px;
 }
 
 #instanceCardDisplay {

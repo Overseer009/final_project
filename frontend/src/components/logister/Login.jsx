@@ -3,13 +3,12 @@ import "./styles.css";
 import { Link, useHistory } from "react-router-dom";
 
 const Login = function (props) {
-
   const history = useHistory();
 
   let currentUser = localStorage.getItem("currentUser");
 
   if (currentUser) {
-    history.push("/timelines/new")
+    history.push("/timelines/new");
   }
 
   currentUser = JSON.parse(currentUser);
@@ -24,7 +23,7 @@ const Login = function (props) {
   return (
     <>
       <div className="container-logister">
-        <form className="logister text" onSubmit={e => e.preventDefault()}>
+        <form className="logister text" onSubmit={(e) => e.preventDefault()}>
           <div className="logister-title">
             <h3>Sign In</h3>
           </div>
@@ -42,7 +41,7 @@ const Login = function (props) {
                   email: event.target.value,
                 })
               }
-              />
+            />
           </div>
 
           <div className="form-group">
@@ -55,13 +54,13 @@ const Login = function (props) {
               onChange={(event) =>
                 setUser({ ...user, password: event.target.value })
               }
-              />
+            />
           </div>
 
           <button
-            className="btn btn-success btn-block"
+            className="logister-button"
             onClick={() => props.loginUser(user)}
-            >
+          >
             Submit
           </button>
           <p className="forgot-password">

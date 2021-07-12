@@ -20,51 +20,52 @@ const MyTimelines = function (props) {
     props.deleteTimeline(timelineId, currentUser);
   };
 
+  const handleClickCreateTimeline = () => {
+    history.push("/timelines/new");
+  };
+
   useEffect(() => {
     props.setMyTimelines(localUserTimelines);
   }, []);
-
+  console.log(props.myTimelines);
   return (
     <div className="timeline-list">
       <div className="timeline-list-content">
         <span className="timeline-list-title">My Timelines</span>
         <div className="list">
-          {props.myTimelines
-            ? props.myTimelines.map((timeline) => {
-                return (
-                  <>
-                    <li
-                      className="items-of-list"
-                      onClick={() => handleClick(timeline)}
-                      key={timeline.id}
-                    >
-                      {timeline.name}
-                    </li>
+          {props.myTimelines !== undefined && props.myTimelines.length > 0 ? (
+            props.myTimelines.map((timeline) => {
+              return (
+                <div className="my-timeline-list">
+                  <li
+                    className="items-of-list"
+                    onClick={() => handleClick(timeline)}
+                    key={timeline.id}
+                  >
+                    {timeline.name}
+                  </li>
+                  <div className="button">
                     <button
                       onClick={() => handleClickDelete(timeline.id)}
-                      className="btn btn-danger"
+                      className="my-timeline-button"
                     >
                       Delete
                     </button>
-                  </>
-                );
-              })
-            : localUserTimelines.map((timeline) => {
-                console.log(timeline);
-                return (
-                  <>
-                    <li onClick={() => handleClick(timeline)} key={timeline.id}>
-                      {timeline.name}
-                    </li>
-                    <button
-                      onClick={() => handleClickDelete(timeline.id)}
-                      className="btn btn-danger"
-                    >
-                      Delete
-                    </button>
-                  </>
-                );
-              })}
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <div className="note">
+              <em>
+                Click{" "}
+                <strong onClick={() => handleClickCreateTimeline()}>
+                  Here
+                </strong>{" "}
+                to create a timeline.
+              </em>
+            </div>
+          )}
         </div>
       </div>
     </div>
