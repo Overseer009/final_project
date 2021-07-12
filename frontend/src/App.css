@@ -2,6 +2,8 @@
 
 .App-Body {
   background-color: rgba(70, 143, 70, 0.297);
+  padding-bottom: 80px;
+  padding-top: 90px;
 }
 
 /* .App {

@@ -148,14 +148,14 @@ body {
   height: 20px;
   z-index: 100;
   transition: box-shadow 0.3s ease-in-out;
-  animation: pulse 2s infinite;
+  
 }
 
 .circle:hover {
   box-shadow: 0px 0px 10px steelblue;
   transition: box-shadow 0.3s ease-in-out;
-  animation: none;
   cursor: pointer;
+  animation: pulse 2s infinite;
 }
 
 .timeline-item:nth-child(odd) .timeline-item-content .circle {
