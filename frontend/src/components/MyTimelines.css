@@ -15,6 +15,7 @@
   transition: box-shadow 0.3s ease-in-out;
   padding-top: 20px;
   padding-bottom: 30px;
+  padding-right: 20px;
   margin-top: 7em;
 }
 
@@ -35,7 +36,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  padding-left: 30%;
+  padding-left: 10%;
   color: white;
 }
 
@@ -53,31 +54,16 @@
   transition: margin-left 0.3s ease-in-out;
 }
 
-.my-timeline-button {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  margin-left: 5px;
-  margin-right: 5px;
-  height: 1.7em;
-  background-color: transparent;
-  border: solid white 2px;
-  color: white;
-  border-radius: 10px;
-  width: 6em;
-  /* height: 2.5em; */
-  margin-top: 0;
-  justify-content: center;
-  justify-self: center;
-}
-.my-timeline-button:hover {
-  background-color: white;
-  color: #333;
+
+
+.button:hover {
+  color: red;
 }
 
 .my-timeline-list {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 @keyframes fade {

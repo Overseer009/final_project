@@ -3,7 +3,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
 .App-Body {
-  background-color: rgba(70, 143, 70, 0.297);
+  background: url("./images/sand6.jpeg") no-repeat fixed center;
+  /* background-color: rgba(70, 143, 70, 0.297); */
   padding-bottom: 80px;
   padding-top: 25px;
 }

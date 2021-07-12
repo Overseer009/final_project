@@ -27,12 +27,12 @@
   margin-right: 0.5em;
   user-select: none;
   font-size: 32px;
-  font-family: "Lobster", cursive;
+  font-family: "Marcellus SC", serif;
 }
 
 #user-display {
-  font-size: 28px;
-  font-family: "Lobster", cursive;
+  font-size: 20px;
+  font-family: "Marcellus SC", serif;
   color: white;
   margin-right: 20px;
   margin-top: 5px;
@@ -56,14 +56,14 @@
 }
 
 .plus {
-  font-size: 15px;
+  font-size: 10px;
 }
 
 .nav-item {
   display: flex;
   user-select: none;
-  font-family: "Lobster", cursive;
-  font-size: 24px;
+  font-family: "Marcellus SC", serif;
+  font-size: 15px;
 }
 
 .nav-item:hover {

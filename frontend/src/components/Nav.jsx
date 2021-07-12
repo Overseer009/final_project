@@ -40,7 +40,7 @@ const Nav = function (props) {
       <Link className="nav-item nav-link" to="/timelines/new">
         <div className="new-timeline">
           <div className="plus"><FontAwesomeIcon icon={faPlus}/></div>
-          New Timeline 
+          &nbsp;New Timeline 
         </div>
 
       </Link>
