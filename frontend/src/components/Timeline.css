@@ -40,6 +40,9 @@
   margin: 10px 0;
   width: 50%;
 }
+.timeline-item:hover {
+  cursor: pointer;
+}
 
 .timeline-item:nth-child(odd) {
   align-self: flex-end;

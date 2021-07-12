@@ -9,26 +9,16 @@ const EditInstance = function (props) {
 
   let selectedInstance = localStorage.getItem("selectedInstance");
   selectedInstance = JSON.parse(selectedInstance);
-  const {
-    day,
-    description,
-    id,
-    image,
-    instance_colour_id,
-    month,
-    name,
-    timeline_id,
-  } = selectedInstance;
+  const { day, description, id, image, instance_colour_id, month, name } =
+    selectedInstance;
 
   const currentMonthAsNumber = props.getMonthFromString(selectedInstance.month);
 
   const formattedMonth = props.prependZero(currentMonthAsNumber);
 
   const formattedDay = props.formatDay(selectedInstance.day);
-  console.log(selectedInstance.day);
 
   const [date, setDate] = useState(`2021-${formattedMonth}-${formattedDay}`);
-  console.log(date);
   const [instance, setInstance] = useState({
     timeline_id: currentTimeline.timeline_id,
     instance_id: id,
@@ -40,9 +30,9 @@ const EditInstance = function (props) {
     day: day,
   });
 
-  const handleClick = (instance) => {
+  const handleClick = (instance, event) => {
+    event.preventDefault();
     props.editInstance(instance);
-    history.push("/timeline");
   };
 
   const monthNames = [
@@ -160,10 +150,8 @@ const EditInstance = function (props) {
             </div>
             <div className="new-instance-button">
               <button
-                form="editInstance"
-                type="submit"
                 id="button"
-                value="Submit"
+                onClick={(event) => handleClick(instance, event)}
               >
                 Save
               </button>

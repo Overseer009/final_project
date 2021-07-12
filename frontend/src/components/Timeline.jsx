@@ -1,8 +1,10 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Timeline.css";
 import TimelineItem from "./TimelineItem.jsx";
 
 const Timeline = function (props) {
+  const { getInstances, setSelectedInstance } = props;
+
   const timelineBuilder = (start, end) => {
     const months = {
       1: "January",
@@ -48,10 +50,10 @@ const Timeline = function (props) {
   const [currentInstances, setCurrentInstances] = useState([]);
 
   useEffect(() => {
-    props.getInstances(localCurrentTimeline).then((res) => {
+    getInstances(localCurrentTimeline).then((res) => {
       setCurrentInstances(res);
     });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -64,7 +66,7 @@ const Timeline = function (props) {
               key={month}
               month={month}
               currentIn={currentInstances}
-              setSelectedInstance={props.setSelectedInstance}
+              setSelectedInstance={setSelectedInstance}
             />
           );
         })}

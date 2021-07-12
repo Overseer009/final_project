@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const MyTimelines = function (props) {
+  const { deleteTimeline, setMyTimelines, myTimelines } = props;
   const history = useHistory();
 
   let localUserTimelines = localStorage.getItem("userTimelines");
@@ -19,7 +20,7 @@ const MyTimelines = function (props) {
   };
 
   const handleClickDelete = (timelineId) => {
-    props.deleteTimeline(timelineId, currentUser);
+    deleteTimeline(timelineId, currentUser);
   };
 
   const handleClickCreateTimeline = () => {
@@ -27,15 +28,15 @@ const MyTimelines = function (props) {
   };
   console.log(props.myTimelines);
   useEffect(() => {
-    props.setMyTimelines(localUserTimelines);
-  }, []);
+    setMyTimelines(localUserTimelines);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className="timeline-list">
       <div className="timeline-list-content">
         <span className="timeline-list-title">My Timelines</span>
         <div className="list">
-          {props.myTimelines !== undefined && props.myTimelines.length > 0 ? (
-            props.myTimelines.map((timeline) => {
+          {myTimelines !== undefined && myTimelines.length > 0 ? (
+            myTimelines.map((timeline) => {
               return (
                 <div key={timeline.id} className="my-timeline-list">
                   <li
