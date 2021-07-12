@@ -38,7 +38,11 @@ const Nav = function (props) {
   const myTimelines = (
     <div className="navbar-nav">
       <Link className="nav-item nav-link" to="/timelines/new">
-        <FontAwesomeIcon icon={faPlus} /> New Timeline
+        <div className="new-timeline">
+          <div className="plus"><FontAwesomeIcon icon={faPlus}/></div>
+          New Timeline 
+        </div>
+
       </Link>
       <div
         className="nav-item nav-link"

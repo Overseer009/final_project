@@ -50,6 +50,15 @@
   text-decoration: none;
 }
 
+.new-timeline {
+  display: flex;
+  align-items: center;
+}
+
+.plus {
+  font-size: 15px;
+}
+
 .nav-item {
   display: flex;
   user-select: none;

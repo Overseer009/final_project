@@ -57,11 +57,9 @@ const TimelineItem = function (props) {
                 })}
               </ul>
             </div>
-            <div className="make-it">
-              <span className="add-new-event" onClick={handleClickAdd}>
-                <FontAwesomeIcon icon={faPlus} />
-              </span>
-            </div>
+            <span className="add-new-event" onClick={handleClickAdd}>
+              <FontAwesomeIcon icon={faPlus} />
+            </span>
           </div>
           <span
             className="circle"
