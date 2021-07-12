@@ -1,16 +1,14 @@
 import "./App.css";
 import React from "react";
-import { Router, Route, Switch, Redirect, Link } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 
 //Components
 import Login from "./components/logister/Login";
 import Register from "./components/logister/Register";
 import Nav from "./components/Nav";
-import Sidebar from "./components/Sidebar";
 import TimelineCard from "./components/Cards/TimelineCard";
 import InstanceCard from "./components/Cards/InstanceCard";
 import Timeline from "./components/Timeline";
-import TimelineItem from "./components/TimelineItem";
 import MyTimelines from "./components/MyTimelines";
 import Home from "./components/Home";
 import AddInstance from "./components/AddInstance";

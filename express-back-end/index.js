@@ -110,7 +110,7 @@ app.post("/api/instances/new", (req, res) => {
 
 app.post("/api/instances/delete", (req, res) => {
   deleteInstance(req.body.id)
-    .then(res.status(200))
+    .then(res.status(200).send("deleted instance!"))
     .catch((err) => err.message);
 });
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./Timeline.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -31,17 +31,24 @@ const TimelineItem = function (props) {
   return (
     <div className="timeline-item">
       {view ? (
-        <div className="timeline-item-content">
+        <div
+          className="timeline-item-content"
+          onClick={() => handleClickView(view)}
+        >
           <span className="tag">{props.month}</span>
           <div className="event-list">
             <div className="eventList">
               <ul className="ul-instance">
                 {sortedCurrentInstances.map((element) => {
-                  console.log(element);
                   if (element.month === props.month) {
                     return (
-                      <li className="instance-list" style={{ color: "#fff" }}>
-                          <div className="list-items"
+                      <li
+                        key={element.id}
+                        className="instance-list"
+                        style={{ color: "#fff" }}
+                      >
+                        <div className="list-items">
+                          <div
                             onClick={() => handleClick(element)}
                             key={element.name}
                           >
@@ -51,9 +58,11 @@ const TimelineItem = function (props) {
                             </div>
                             <div id="instance-list-name">{element.name}</div>
                           </div>
+                        </div>
                       </li>
                     );
                   }
+                  return <div></div>;
                 })}
               </ul>
             </div>
@@ -68,7 +77,10 @@ const TimelineItem = function (props) {
           ></span>
         </div>
       ) : (
-        <div className="timeline-item-content">
+        <div
+          className="timeline-item-content"
+          onClick={() => handleClickView(view)}
+        >
           <span
             style={{ display: "inline" }}
             className="circle"
