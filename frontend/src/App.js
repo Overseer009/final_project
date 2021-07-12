@@ -43,7 +43,7 @@ function App() {
   } = useApplicationData();
 
   return (
-    <body className="App-Body">
+    <section className="App-Body">
       <main className="App">
         <Router history={history}>
           <Switch>
@@ -131,6 +131,11 @@ function App() {
               />
             </Route>
             <Route path="/editinstance">
+              <Nav
+                user_id={true}
+                logout={logout}
+                getUserTimelines={getUserTimelines}
+              />
               <EditInstance
                 editInstance={editInstance}
                 prependZero={prependZero}
@@ -141,9 +146,8 @@ function App() {
           </Switch>
         </Router>
       </main>
-    </body>
+    </section>
   );
 }
 
 export default App;
-  

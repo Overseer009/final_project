@@ -45,7 +45,9 @@ const useApplicationData = () => {
       .then((res) => {
         if (res.data) {
           localStorage.setItem("currentUser", JSON.stringify(res.data));
-          history.push("/timelines/new");
+          getUserTimelines(res.data).then((response) => {
+            history.push("/mytimelines");
+          });
         }
       })
       .catch((err) => console.log("Invalid User: ------>", err));

@@ -59,74 +59,122 @@ const EditInstance = function (props) {
     "November",
     "December",
   ];
+  // <button onClick={() => handleClick(instance)}>Save Instance</button>;
   return (
-    <div className="timeline-item">
-      <div className="timeline-item-content">
-        <span className="tag" style={{ background: "#018f69" }}></span>
-        <form onSubmit={(e) => e.preventDefault()} className="addInstance">
-          <label className="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            value={instance.name}
-            onChange={(event) =>
-              setInstance({
-                ...instance,
-                name: event.target.value,
-              })
-            }
-          ></input>
-          <label className="name">Description</label>
-          <input
-            type="text"
-            id="description"
-            value={instance.description}
-            onChange={(event) =>
-              setInstance({
-                ...instance,
-                description: event.target.value,
-              })
-            }
-          ></input>
-          <label className="name">Picture URL</label>
-          <input
-            type="url"
-            id="url"
-            value={instance.image}
-            onChange={(event) =>
-              setInstance({
-                ...instance,
-                image: event.target.value,
-              })
-            }
-          ></input>
-          <label>Start date:</label>
-
-          <input
-            type="date"
-            id="date-picker"
-            value={date}
-            onChange={(event) => {
-              const dateNum = new Date(event.target.value);
-              const monthString = monthNames[dateNum.getMonth()];
-              const dayNum = dateNum.getUTCDate();
-              setDate(event.target.value);
-              setInstance({
-                ...instance,
-                month: monthString,
-                day: dayNum,
-              });
+    <section className="time-card">
+      <div className="container-newTimeline">
+        <div className="content">
+          <div className="title">
+            <span id="title">Edit Your Instance</span>
+          </div>
+          {/* <span className="tag" style={{ background: "#018f69" }}></span> */}
+          <form
+            id="editInstance"
+            autoComplete="off"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleClick(instance);
             }}
-            min={`2021-${currentTimeline.start_month}-01`}
-            max={`2021-${currentTimeline.end_month}-31`}
-          ></input>
-          <button onClick={() => handleClick(instance)}>Save Instance</button>
-        </form>
-        <button className="back-button" onClick={history.goBack}>
-          Back(maybe somesort of icon)
-        </button>
+          >
+            <div className="note">
+              <span>
+                <em>Name*</em>
+              </span>
+            </div>
+            <div className="enterName">
+              <input
+                required
+                type="text"
+                id="name"
+                value={instance.name}
+                onChange={(event) =>
+                  setInstance({
+                    ...instance,
+                    name: event.target.value,
+                  })
+                }
+              ></input>
+            </div>
+            <div className="note">
+              <span>
+                <em>Description*</em>
+              </span>
+            </div>
+            <div className="enterName">
+              <textarea
+                required
+                type="text"
+                id="description"
+                value={instance.description}
+                onChange={(event) =>
+                  setInstance({
+                    ...instance,
+                    description: event.target.value,
+                  })
+                }
+              ></textarea>
+            </div>
+            <div className="note">
+              <span>
+                <em>Image URL</em>
+              </span>
+            </div>
+            <div className="enterName">
+              <input
+                type="url"
+                id="url"
+                value={instance.image}
+                onChange={(event) =>
+                  setInstance({
+                    ...instance,
+                    image: event.target.value,
+                  })
+                }
+              ></input>
+            </div>
+            <div className="note">
+              <span>
+                <em>Date*</em>
+              </span>
+            </div>
+            <div className="enterName">
+              <input
+                required
+                type="date"
+                id="date-picker"
+                value={date}
+                onChange={(event) => {
+                  const dateNum = new Date(event.target.value);
+                  const monthString = monthNames[dateNum.getMonth()];
+                  const dayNum = dateNum.getUTCDate();
+                  setDate(event.target.value);
+                  setInstance({
+                    ...instance,
+                    month: monthString,
+                    day: dayNum,
+                  });
+                }}
+                min={`2021-${currentTimeline.start_month}-01`}
+                max={`2021-${currentTimeline.end_month}-31`}
+              ></input>
+            </div>
+            <div className="new-instance-button">
+              <button
+                form="editInstance"
+                type="submit"
+                id="button"
+                value="Submit"
+              >
+                Save
+              </button>
+              <button id="button" onClick={history.goBack}>
+                Back
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

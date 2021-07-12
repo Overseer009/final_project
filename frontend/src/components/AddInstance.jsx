@@ -38,6 +38,7 @@ const AddInstance = function (props) {
     "November",
     "December",
   ];
+
   return (
     <section className="time-card">
       <div className="container-newTimeline">
@@ -46,14 +47,22 @@ const AddInstance = function (props) {
             <span id="title">Create a New Instance</span>
           </div>
           <span className="tag" style={{ background: "#018f69" }}></span>
-          <form id="addInstance" autoComplete="off">
+          <form
+            id="addInstance"
+            autoComplete="off"
+            onSubmit={(e) => {
+              e.preventDefault();
+              props.createInstance(newInstance);
+            }}
+          >
             <div className="note">
               <span>
-                <em>Name</em>
+                <em>Name*</em>
               </span>
             </div>
             <div className="enterName">
               <input
+                required
                 type="text"
                 id="name"
                 value={newInstance.name}
@@ -67,11 +76,12 @@ const AddInstance = function (props) {
             </div>
             <div className="note">
               <span>
-                <em>Description</em>
+                <em>Description*</em>
               </span>
             </div>
             <div className="enterName">
               <textarea
+                required
                 type="text"
                 id="description"
                 value={newInstance.description}
@@ -103,35 +113,37 @@ const AddInstance = function (props) {
             </div>
             <div className="note">
               <span>
-                <em>Date</em>
+                <em>Date*</em>
               </span>
-              <div className="enterName">
-                <input
-                  type="date"
-                  id="date-picker"
-                  value={date}
-                  onChange={(event) => {
-                    console.log(event.target.value);
-                    const dateNum = new Date(event.target.value);
-                    const monthString = monthNames[dateNum.getMonth()];
-                    const dayNum = dateNum.getUTCDate();
-                    setDate(event.target.value);
-                    setInstance({
-                      ...newInstance,
-                      month: monthString,
-                      day: dayNum,
-                    });
-                  }}
-                  min={`2021-${currentTimeline.start_month}-01`}
-                  max={`2021-${currentTimeline.end_month}-31`}
-                ></input>
-              </div>
+            </div>
+            <div className="enterName">
+              <input
+                required
+                type="date"
+                id="date-picker"
+                value={date}
+                onChange={(event) => {
+                  console.log(event.target.value);
+                  const dateNum = new Date(event.target.value);
+                  const monthString = monthNames[dateNum.getMonth()];
+                  const dayNum = dateNum.getUTCDate();
+                  setDate(event.target.value);
+                  setInstance({
+                    ...newInstance,
+                    month: monthString,
+                    day: dayNum,
+                  });
+                }}
+                min={`2021-${currentTimeline.start_month}-01`}
+                max={`2021-${currentTimeline.end_month}-31`}
+              ></input>
             </div>
             <div className="new-instance-button">
               <button
-                type="button"
+                form="addInstance"
+                type="submit"
                 id="button"
-                onClick={() => props.createInstance(newInstance)}
+                value="Submit"
               >
                 Create
               </button>

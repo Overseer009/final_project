@@ -2,8 +2,8 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: grey;
+.App-Body {
+  background-color: rgba(70, 143, 70, 0.297);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,7 +150,6 @@ body {
   height: 20px;
   z-index: 100;
   transition: box-shadow 0.3s ease-in-out;
-  
 }
 
 .circle:hover {
@@ -216,19 +215,7 @@ body {
 
 @media screen and (min-width: 1600px) {
   .timeline-item:nth-child(even) .timeline-item-content {
-    margin-left: 50%;
-  }
-}
-
-@media screen and (min-width: 1700px) {
-  .timeline-item:nth-child(even) .timeline-item-content {
-    margin-left: 55%;
-  }
-}
-
-@media screen and (min-width: 1920px) {
-  .timeline-item:nth-child(even) .timeline-item-content {
-    margin-left: 60%;
+    margin-left: 0;
   }
 }
 

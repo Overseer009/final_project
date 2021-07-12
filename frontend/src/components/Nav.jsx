@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = function (props) {
   let currentUser = localStorage.getItem("currentUser");
@@ -36,7 +38,7 @@ const Nav = function (props) {
   const myTimelines = (
     <div className="navbar-nav">
       <Link className="nav-item nav-link" to="/timelines/new">
-        + New Timeline
+        <FontAwesomeIcon icon={faPlus} /> New Timeline
       </Link>
       <div
         className="nav-item nav-link"
