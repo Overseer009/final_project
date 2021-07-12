@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import "./AddInstance.css";
-import { useHistory } from "react-router-dom";
 
 const AddInstance = function (props) {
   let currentTimeline = localStorage.getItem("currentTimeline");
   currentTimeline = JSON.parse(currentTimeline);
-  const history = useHistory();
 
   let currentMonth = localStorage.getItem("currentMonth");
   currentMonth = JSON.parse(currentMonth);
@@ -41,11 +39,6 @@ const AddInstance = function (props) {
     "December",
   ];
 
-  const handleSubmit = (newInstance) => {
-    props.createInstance(newInstance);
-    history.push("/timeline");
-  };
-
   return (
     <section className="time-card">
       <div className="container-newTimeline">
@@ -57,11 +50,14 @@ const AddInstance = function (props) {
           <form
             id="addInstance"
             autoComplete="off"
-            onSubmit={() => handleSubmit(newInstance)}
+            onSubmit={(e) => {
+              e.preventDefault();
+              props.createInstance(newInstance);
+            }}
           >
             <div className="note">
               <span>
-                <em>Name</em>
+                <em>Name*</em>
               </span>
             </div>
             <div className="enterName">
@@ -80,7 +76,7 @@ const AddInstance = function (props) {
             </div>
             <div className="note">
               <span>
-                <em>Description</em>
+                <em>Description*</em>
               </span>
             </div>
             <div className="enterName">
@@ -117,7 +113,7 @@ const AddInstance = function (props) {
             </div>
             <div className="note">
               <span>
-                <em>Date</em>
+                <em>Date*</em>
               </span>
               <div className="enterName">
                 <input
