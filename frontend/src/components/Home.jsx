@@ -29,7 +29,7 @@ const Home = function () {
   );
   return (
     <div className="homepage">
-      <div className="welcome">Welcome to Timelines.</div>
+      <div className="welcome">Welcome to the Timeliner</div>
 
       {currentUser ? yesUser : noUser}
     </div>
