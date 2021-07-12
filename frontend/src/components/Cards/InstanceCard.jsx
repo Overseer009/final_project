@@ -1,18 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import "./styles.css";
 
 const InstanceCard = function (props) {
   let selectedInstance = localStorage.getItem("selectedInstance");
   selectedInstance = JSON.parse(selectedInstance);
   console.log("THIS IS THE SELECTED INSTANCE", selectedInstance);
-  let history = useHistory();
 
   const handleClick = (id) => {
     console.log("inside handleClick", id);
     props.deleteInstance(id);
-    history.push("/timeline");
   };
 
   return (

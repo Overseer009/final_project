@@ -24,9 +24,9 @@ const Nav = function (props) {
 
   const yesUser = (
     <div className="navbar-nav">
-      <a id="user-display">
+      <p id="user-display">
         {currentUser ? `Welcome, ${currentUser.name}` : ""}
-      </a>
+      </p>
       <span className="nav-item nav-link" onClick={(event) => props.logout()}>
         Log out
       </span>

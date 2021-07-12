@@ -25,12 +25,12 @@
   margin-right: 0.5em;
   user-select: none;
   font-size: 32px;
-  font-family: "Lobster", cursive;
+  font-family: "Fredericka the Great", cursive;
 }
 
 #user-display {
   font-size: 28px;
-  font-family: "Lobster", cursive;
+  font-family: "Fredericka the Great", cursive;
   color: white;
   margin-right: 20px;
   margin-top: 5px;
@@ -51,7 +51,7 @@
 .nav-item {
   display: flex;
   user-select: none;
-  font-family: "Lobster", cursive;
+  font-family: "Fredericka the Great", cursive;
   font-size: 24px;
 }
 

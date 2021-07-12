@@ -81,8 +81,8 @@ const useApplicationData = () => {
     const reqPackage = { id: instanceId };
     axios
       .post("/api/instances/delete", reqPackage)
-      .then((res) => {
-        return res.rows;
+      .then(() => {
+        history.push("/timeline");
       })
       .catch((err) => err.message);
   };
