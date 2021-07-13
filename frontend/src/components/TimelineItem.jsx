@@ -48,7 +48,7 @@ const TimelineItem = function (props) {
                         style={{ color: "#fff" }}
                       >
                         <div className="list-items">
-                          <div 
+                          <div
                             className="items-in-list"
                             onClick={() => handleClick(element)}
                             key={element.name}
