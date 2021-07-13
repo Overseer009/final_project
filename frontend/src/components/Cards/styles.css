@@ -89,7 +89,6 @@
   padding-top: 10px;
 }
 
-
 .instDisplays {
   padding: 20px;
 }
@@ -164,7 +163,7 @@
   padding: 5px;
   min-height: 100px;
   padding-top: 30px;
-  text-align:justify
+  text-align: justify;
 }
 
 #button {
@@ -208,6 +207,11 @@
 #instanceTitle {
   
   overflow-wrap: break-word;
+}
+
+.myreact-icons {
+  color: red;
+  height: 2em;
 }
 
 /* .instDisplays {
