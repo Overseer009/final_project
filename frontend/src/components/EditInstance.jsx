@@ -59,12 +59,12 @@ const EditInstance = function (props) {
           </div>
           {/* <span className="tag" style={{ background: "#018f69" }}></span> */}
           <form
-            id="editInstance"
-            autoComplete="off"
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleClick(instance);
-            }}
+          // id="editInstance"
+          // autoComplete="off"
+          // onSubmit={(e) => {
+          //   e.preventDefault();
+          //   handleClick(instance);
+          // }}
           >
             <div className="note">
               <span>
@@ -155,11 +155,11 @@ const EditInstance = function (props) {
               >
                 Save
               </button>
-              <button id="button" onClick={history.goBack}>
-                Back
-              </button>
             </div>
           </form>
+          <button id="button" onClick={history.goBack}>
+            Back
+          </button>
         </div>
       </div>
     </section>
