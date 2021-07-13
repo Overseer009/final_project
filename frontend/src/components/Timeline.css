@@ -197,15 +197,14 @@
 
 .list-items {
   display: flex;
-
 }
 
 #instance-list-name {
   width: 70%;
-  white-space: nowrap;  
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: rgba(255,255,255,.55);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 #instance-list-name:hover {
