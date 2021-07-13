@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHourglassHalf } from "@fortawesome/free-solid-svg-icons";
 
 const InstanceCard = function (props) {
   let selectedInstance = localStorage.getItem("selectedInstance");
@@ -12,22 +14,28 @@ const InstanceCard = function (props) {
     props.deleteInstance(id);
   };
 
+  const imageDisplay = (selectedInstance) => {
+    if (selectedInstance.image) {
+      return <img className="instanceImage" src={selectedInstance.image}></img>;
+    }
+    return (
+      <FontAwesomeIcon
+        value={{ color: "white" }}
+        className="fontAwesome"
+        icon={faHourglassHalf}
+        size="6x"
+        color="white"
+      />
+    );
+  };
+
   return (
     <section className="time-card">
       <div className="container-instance">
         <div className="instanceContent">
           <div id="instanceCardDisplay" className="instDisplays">
             <div className="firstLine">
-              <div id="image">
-                <img
-                  className="instanceImage"
-                  src={
-                    selectedInstance.image
-                      ? selectedInstance.image
-                      : "https://api.freelogodesign.org/files/4f9bfa98572c45a98f0fb5f55bb0b168/thumb/logo_200x200.png?v=637616367530000000"
-                  }
-                />
-              </div>
+              <div id="image">{imageDisplay(selectedInstance)}</div>
               <div className="date-name">
                 <span id="instanceDate" className="note">
                   <div id="instDates">
