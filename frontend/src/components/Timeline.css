@@ -195,10 +195,12 @@
   list-style: none;
 }
 
-
+.items-in-list {
+  display: flex;
+}
 
 #instance-list-name {
-  width: 65%;
+  width: 42%;
   white-space: nowrap;  
   overflow: hidden;
   text-overflow: ellipsis;
@@ -209,6 +211,14 @@
 
 
 .timeline-item:nth-child(odd) .instance-list-date {
+  width: 82px;
+}
+
+/* .timeline-item:nth-child(odd) .instance-list-name {
+  width: 10%;
+} */
+
+.timeline-item:nth-child(even) .instance-list-date {
   width: 82px;
 }
 
