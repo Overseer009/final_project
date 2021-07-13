@@ -4,6 +4,7 @@
   border-radius: 25px;
   width: 500px;
   background-color: #333;
+  animation: fade 1s ease-in;
 }
 
 .time-card {
@@ -200,10 +201,11 @@
 }
 
 #instanceName {
-  width: 50%;
+  width: 90%;
 }
 
 #instanceTitle {
+  
   overflow-wrap: break-word;
 }
 

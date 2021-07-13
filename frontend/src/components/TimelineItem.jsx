@@ -52,7 +52,7 @@ const TimelineItem = function (props) {
                             onClick={() => handleClick(element)}
                             key={element.name}
                           >
-                            <div id="instance-list-date">
+                            <div className="instance-list-date">
                               <em>{element.month.substring(0, 3)}</em>
                               <em> {element.day}:&nbsp;&nbsp;</em>
                             </div>

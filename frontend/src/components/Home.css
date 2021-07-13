@@ -20,6 +20,7 @@
   font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
+  animation: fade 1s ease-in;
 }
 
 .intro-container {
@@ -34,8 +35,18 @@
   width: 60%;
   background-color: #333;
   color: white;
+  animation: fade 1s ease-in;
 }
 
 .invitation {
   padding-bottom: none;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
