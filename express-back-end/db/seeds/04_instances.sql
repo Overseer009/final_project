@@ -44,3 +44,50 @@ INSERT INTO instances (timeline_id, instance_colour_id, name, description, month
 INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (11, 5, 'FDA Advisory Panel Recommends Pfizer, BioNTech COVID-19 Vaccine', 'The results of a nearly 44,000-person trial demonstrate that the COVID-19 vaccine from Pfizer and BioNTech is 95% effective, making it as effective as vaccines for shingles and measles. Pfizer also announces that it will seek FDA approval within days so that distribution of the vaccine can happen by the end of the year.', 'December', 10);
 INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (11, 5, 'New COVID-19 Variant Circling the UK', 'The UK announces that a new strain of the virus that causes COVID-19, B.1.1.7, is spreading across the country. The novel variant is more contagious, but does not appear to be more lethal or lead to more severe disease.', 'December', 21);
 INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (11, 5, 'First US Case of New COVID-19 Variant Found in Colorado', 'The recently discovered novel variant found a week prior in the United Kingdom is detected in a Colorado man in his 20s with no travel history. Scientists say they are concerned, but not surprised, since viruses are known to mutate.', 'December', 29);
+
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day, image) VALUES (12, 1, 'Lotide', 'Today we started our first project, Lotide! Lotide is a clone of the Lodash JavaScript library.', 'April', 26, 'https://d.pr/i/GCeLfa+');
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (12, 1, 'Mock Programming Test', 'Today we completed our first Fundamental Friday which included our first programming test.', 'April', 30, 'https://www.personality-and-aptitude-career-tests.com/images/programmer.gif');
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (12, 1, 'Submit Lotide', 'Its finally time to submit Lotide in compass!', 'May', 3, 'https://www.personality-and-aptitude-career-tests.com/images/programmer.gif');
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (12, 1, 'TinyApp', 'Today we will start the our next project, TinyApp. TinyApp is a URL shortening service similar to TInyURL, Bitly, or Goo.gl', 'May', 10, 'https://d.pr/i/1bi2X/2bN5EotL+');
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (12, 1, 'Submit TinyApp', 'Its finally time to submit TinyApp in compass!', 'May', 13, 'https://d.pr/i/1bi2X/2bN5EotL+');
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (12, 1, 'Tweeter', 'A single page app (SPA) built with HTML, CSS, JS, jQuery and AJAX.', 'May', 17, 'https://d.pr/i/nxGKF0+');
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (12, 1, 'Submit Tweeter', 'Its finally time to submit Tweeter in compass!', 'May', 20, 'https://d.pr/i/nxGKF0+');
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (12, 1, 'Midterm Project', 'You and your team will have 5 days to build a full stack web app for a client of your choice.', 'May', 28, 'https://d.pr/i/pZcRYt+');
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (12, 1, 'Present Midterm Project', 'Today you will present your midterm to the rest of the cohort and submit your work for evaluation.', 'June', 3, 'https://d.pr/i/pZcRYt+');
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (12, 1, 'Scheduler', 'Using the latest tools and techniques, we build and test a React application that allows users to book and cancel interviews. We combine conside API with a WebSocket server to build a realtime experience.', 'June', 7, 'https://s3-us-west-2.amazonaws.com/reactv2/figures/00887645-020b-4f58-b0f1-72ebce67ac2f.png');
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (12, 1, 'Submit Scheduler', 'Today we will finally submit our Scheduler project!', 'June', 16, 'https://s3-us-west-2.amazonaws.com/reactv2/figures/00887645-020b-4f58-b0f1-72ebce67ac2f.png');
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (12, 1, 'Final Project', 'You will have two weeks to work with your cohort-mates to build an application from the ground up. Your group will decice what the application does and which technologies you will use.', 'July', 2, 'https://d.pr/i/JTIygV+');
+
+
+INSERT INTO instances (timeline_id, instance_colour_id, name, description, month, day) VALUES (12, 1, 'Presentation Day', 'Today is the big day! Today we present our final projects.', 'July', 15, 'https://d.pr/i/JTIygV+');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
