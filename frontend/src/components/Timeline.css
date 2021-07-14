@@ -7,14 +7,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  width: 100%;
+  flex-direction: column; 
   min-height: 100vh;
 }
 
-#root {
-  width: 100%;
-}
 
 .timeline-container {
   display: flex;
@@ -52,14 +48,14 @@
 }
 
 .timeline-item-content {
-  max-width: 100%;
+  box-sizing: content-box;
   background-color: #333;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   padding: 15px;
-  width: 500px;
+  width: 300px;
   position: relative;
 }
 
@@ -102,12 +98,12 @@
 .list-items {
   color: white;
   cursor: pointer;
-  display: flex;
 }
 
 .event-list {
-  max-width: 100%;
+  /* max-width: 100%; */
   margin-top: 30px;
+  width: inherit;
 }
 
 .timeline-item:nth-child(odd) .timeline-item-content .tag {
@@ -199,7 +195,7 @@
 }
 
 #instance-list-name {
-  width: 42%;
+  width: 74%;
   white-space: nowrap;  
   overflow: hidden;
   text-overflow: ellipsis;
@@ -207,16 +203,8 @@
   text-align: left;
 }
 
-.timeline-item:nth-child(odd) .instance-list-date {
-  width: 82px;
-}
-
-/* .timeline-item:nth-child(odd) .instance-list-name {
-  width: 10%;
-} */
-
-.timeline-item:nth-child(even) .instance-list-date {
-  width: 82px;
+.instance-list-date {
+  width: 21%;
 }
 
 #instance-list-name:hover {

@@ -30,6 +30,7 @@ const TimelineItem = function (props) {
 
   return (
     <div className="timeline-item">
+      
       {view ? (
         <div
           className="timeline-item-content"
