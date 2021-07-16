@@ -21,6 +21,7 @@ Timeline.create(user_id: 2, start_month: 2, end_month: 11, name: "timeline B")
 Timeline.create(user_id: 3, start_month: 1, end_month: 5, name: "timeline C")
 
 
+
 puts "create instance_colours..."
 
 InstanceColour.create(colour: 'Red')
